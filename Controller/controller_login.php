@@ -29,10 +29,10 @@ if ($rut && $pass) {
         
         switch ($_SESSION['tipo_usuario']){
             case 1:
-                echo '<script language="javascript">alert("Bienvenido E. Bodega");window.location.href="../MenuBodega.php"</script>';
+                echo '<script language="javascript">alert("Bienvenido E. Bodega");window.location.href="../menuBodega.php"</script>';
                 break;
             case 2:
-                echo '<script language="javascript">alert("Bienvenido E. Seguridad");window.location.href="../MenuSeguridad.php"</script>';
+                echo '<script language="javascript">alert("Bienvenido E. Seguridad");window.location.href="../menuSeguridad.php"</script>';
                 break;
             default:
                 header("location: ../index.php");
