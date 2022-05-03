@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
@@ -20,8 +20,23 @@ if ($rut && $pass) {
     
     $valid=$data->isUserPassValid($rut, $pass);
     if ($valid) {
+        $rs = $data->getUserbyRut($rut);
+        foreach ($rs as $key){
+            $_SESSION['Rut'] = $key['rut'];
+            $_SESSION['tipo_usuario'] = $key['tipo_usuario_id_fk'];
+        }
         
-        echo '<script language="javascript">alert("Hola");window.location.href="../Home.php"</script>';
+        
+        switch ($_SESSION['tipo_usuario']){
+            case 1:
+                echo '<script language="javascript">alert("Bienvenido E. Bodega");window.location.href="../MenuBodega.php"</script>';
+                break;
+            case 2:
+                echo '<script language="javascript">alert("Bienvenido E. Seguridad");window.location.href="../MenuSeguridad.php"</script>';
+                break;
+            default:
+                header("location: ../index.php");
+        }      
     } else if(!$valid){
         echo '<script language="javascript">alert("Error de autentificacion o El Usuario esta Inactivo");window.location.href="../index.php"</script>';
     }

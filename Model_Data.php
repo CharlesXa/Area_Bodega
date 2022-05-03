@@ -39,6 +39,11 @@
         return false;
     }
 
+    public function getUserbyRut($rut) {
+        $sql = "SELECT * FROM usuario where rut = '$rut'";
+        $query = $this->con->query($sql);
+        return $query;
+    }
 }
 
 ?>

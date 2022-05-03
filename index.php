@@ -9,11 +9,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
         <link rel="stylesheet" href="Materialize/css/materialize.css">
         <script src="Materialize/js/materialize.js"></script>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/jquery.rut.js"></script>
         <title>LogIn</title>
     </head>
     <body>
         <div class="container">
-            <div class="row" style="margin-top: 15%">
+            <div class="row" style="margin-top: 10%">
                 <div class="col s6 offset-s3">
                     <div class="row">
                         <div class="col s12">
@@ -36,7 +38,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
                                     </div>
                                     <div class="card-action" style="border-radius: 10px">
                                         <div class="row">
-                                            <input class="waves-effect waves-light btn col s12" style="background-color: #009688" type="submit" value="Ingresar">
+                                            <button class="btn waves-effect waves-light col s6 offset-s3" type="submit" name="action">Iniciar Sesion
+                                                <i class="material-icons right">send</i>
+                                            </button>
+                                            <!--<input class="waves-effect waves-light btn col s12" style="background-color: #009688" type="submit" value="Ingresar">-->
                                         </div>      
                                     </div>
                                 </div>
@@ -46,5 +51,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
                 </div>
             </div>
         </div>
+        <script>
+            $(function () {
+                $("input#rut").rut({
+                    formatOn: 'keyup',
+                    minimumLength: 8, // validar largo mínimo; default: 2
+                    validateOn: 'change' // si no se quiere validar, pasar null
+                });
+                var input = document.getElementById('rut');
+                input.addEventListener('input', function () {
+                    if (this.value.length >= 13)
+                        this.value = this.value.slice(0, 12);
+                })
+            })
+        </script>
     </body>
 </html>
