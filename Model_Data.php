@@ -1,5 +1,6 @@
-<?php 
-    class Data {
+<?php
+
+class Data {
 
     private $con_info = [
         "host" => "localhost",
@@ -23,7 +24,7 @@
     public function getConnection() {
         return $this->con;
     }
-    
+
     //reconoce si existe un usuario con ese rut y passwd
     public function isUserPassValid($rut, $pass) {
         $sql = "SELECT COUNT(*) AS 'existe' 
@@ -44,8 +45,19 @@
         $query = $this->con->query($sql);
         return $query;
     }
-}
 
+    public function getArea() {
+        $sql = "SELECT * FROM area_usuario;";
+        $query = $this->con->query($sql);
+        return $query;
+    }
+
+    public function addStock($nombre, $cantidad, $descripcion, $area) {
+        $sql = "INSERT INTO `stock` (`id`, `nombre`, `activo`, `cantidad_t`, `descripcion`, `area_user_id_fk`) VALUES (null, '$nombre', '1', '$cantidad', '$descripcion', '$area');";
+        $this->con->query($sql);
+    }
+
+}
 ?>
 
 

@@ -30,7 +30,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- navbar -->
         <nav>
             <div class="nav-wrapper" style='background-color: #353535'>
-                <a href="#" class="brand-logo center">Bodega SGV</a>
+                <a href="menuBodega.php" class="brand-logo center">Bodega SGV</a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="Controller/controllerLogOut.php">Cerrar Sesion</a></li>
                     <li><a href="badges.html">Buscar Equipaje</a></li>
@@ -41,16 +41,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </nav>
         <!-- Dropdown Structure -->
         <ul id="dropdown" class="dropdown-content">
-            <li><a href="#!">Ingresar Stock</a></li>
+            <li><a href="ingresarStock.php">Ingresar Stock</a></li>
             <li><a href="#!">Actualizar Stock</a></li>
-        </ul>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col s12">
-                    <iframe src="https://www.santotomas.cl/" name="subhtml" width="1330" height="520" scrolling="auto" frameborder="1" style="overflow: hidden; align-content: center"></iframe>
-                </div>
-
-            </div>
+        </ul
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
                     M.AutoInit();

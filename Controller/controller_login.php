@@ -23,7 +23,7 @@ if ($rut && $pass) {
         $rs = $data->getUserbyRut($rut);
         foreach ($rs as $key){
             $_SESSION['Rut'] = $key['rut'];
-            $_SESSION['tipo_usuario'] = $key['tipo_usuario_id_fk'];
+            $_SESSION['tipo_usuario'] = $key['area_usuario_id_fk'];
         }
         
         
