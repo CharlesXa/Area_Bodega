@@ -27,7 +27,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <title>Menu Bodega</title>
     </head>
     <body>
-        <!-- navbar -->
         <nav>
             <div class="nav-wrapper" style='background-color: #353535'>
                 <a href="#" class="brand-logo center">Bodega SGV</a>
