@@ -28,9 +28,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <title>Menu Bodega</title>
     </head>
     <body>
+        <!-- navbar -->
         <nav>
             <div class="nav-wrapper" style='background-color: #353535'>
                 <a href="#" class="brand-logo center">Bodega SGV</a>
+                <a class="brand-logo" style="margin-left: 10px; font-size: 20px">Bienvenido: <?php echo $rut; ?></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="Controller/controllerLogOut.php">Cerrar Sesion</a></li>
                     <!-- Dropdown Trigger -->
@@ -41,66 +43,123 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </nav>
         <!-- Dropdown Structure -->
         <ul id="dropdown" class="dropdown-content">
-            <li><a href="ingresarStock.php" target="subhtml">Ingresar Stock</a></li>
-            <li><a href="actualizarStock.php" target="subhtml">Actualizar Stock</a></li>
+            <li><a href="">Ingresar Stock</a></li>
+            <li><a href="">Actualizar Stock</a></li>
         </ul>
         <ul id="dropdown1" class="dropdown-content">
             <li><a href="#!">Ingresar Equipaje</a></li>
             <li><a href="#!">Buscar Equipaje</a></li>
         </ul>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col s12">
-                    <iframe src="" alt="Aqui se visualizara el registro de solicitudes" name="subhtml" width="1330" height="520" scrolling="auto" frameborder="1" style="overflow: hidden; align-content: center"></iframe>
-                </div>
+        <div class="container">
+            <style>table, th {text-align: center !important}</style>
+            <table class="table" id="datos" border="1">
+                <thead>
+                    <tr>
+                        <th colspan="4" style="font-size: 25px">Historial de Solicitudes</th>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Fecha y Hora</th>
+                        <th>ID de la solicitud</th>
+                    </tr>
+                </thead>
 
+                <tbody>
+                    <tr>
+                        <td></td>   
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>                   
+                </tbody>
+            </table>
+        </div>
+        <footer class="page-footer" style="background-color: #353535">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">SGV</h5>
+                        <p class="grey-text text-lighten-4"></p>
+                    </div>
+                    <div class="col l2 s12">
+                        <h5 class="white-text">Links</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 1</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 2</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 3</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 4</a></li>
+                        </ul>
+                    </div>
+                    <div class="col l2 s12">
+                        <h5 class="white-text">Links</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 1</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 2</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 3</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 4</a></li>
+                        </ul>
+                    </div>
+                    <div class="col l2 s12">
+                        <h5 class="white-text">Links</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 1</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 2</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 3</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 4</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    M.AutoInit();
-                });
-            </script>
-            <footer class="page-footer" style="background-color: #353535">
-                <div class="container">
-                    <div class="row">
-                        <div class="col l6 s12">
-                            <h5 class="white-text">SGV</h5>
-                            <p class="grey-text text-lighten-4"></p>
-                        </div>
-                        <div class="col l2 s12">
-                            <h5 class="white-text">Links</h5>
-                            <ul>
-                                <li><a class="grey-text text-lighten-1" href="#!">Link 1</a></li>
-                                <li><a class="grey-text text-lighten-1" href="#!">Link 2</a></li>
-                                <li><a class="grey-text text-lighten-1" href="#!">Link 3</a></li>
-                                <li><a class="grey-text text-lighten-1" href="#!">Link 4</a></li>
-                            </ul>
-                        </div>
-                        <div class="col l2 s12">
-                            <h5 class="white-text">Links</h5>
-                            <ul>
-                                <li><a class="grey-text text-lighten-1" href="#!">Link 1</a></li>
-                                <li><a class="grey-text text-lighten-1" href="#!">Link 2</a></li>
-                                <li><a class="grey-text text-lighten-1" href="#!">Link 3</a></li>
-                                <li><a class="grey-text text-lighten-1" href="#!">Link 4</a></li>
-                            </ul>
-                        </div>
-                        <div class="col l2 s12">
-                            <h5 class="white-text">Links</h5>
-                            <ul>
-                                <li><a class="grey-text text-lighten-1" href="#!">Link 1</a></li>
-                                <li><a class="grey-text text-lighten-1" href="#!">Link 2</a></li>
-                                <li><a class="grey-text text-lighten-1" href="#!">Link 3</a></li>
-                                <li><a class="grey-text text-lighten-1" href="#!">Link 4</a></li>
-                            </ul>
-                        </div>
-                    </div>
+            <div class="footer-copyright" style="background-color: #252525">
+                <div class="container center">
+                    Aerolíneas SGV © Derechos Reservados - 2022
                 </div>
-                <div class="footer-copyright" style="background-color: #252525">
-                    <div class="container center">
-                        Aerolíneas SGV © Derechos Reservados - 2022
-                    </div>
-                </div>
-            </footer>
+            </div>
+        </footer>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                M.AutoInit();
+            });
+        </script>
     </body>
 </html>
