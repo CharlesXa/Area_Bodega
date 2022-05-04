@@ -12,12 +12,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <title>Menu seguridad</title>
     </head>
-    <body style="background-color: white;">
+    <body style="background-color: #ffffff">
         <nav style="background-color: #353535">
             <div class="nav-wrapper">
                 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <a href="#" class="brand-logo center" style="letter-spacing: 8px">SGV</a>
+                <a href="#" class="brand-logo" style="letter-spacing: 8px">SGV</a>
             </div>
+            <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
+
+            <!-- Dropdown Structure -->
+            <ul id='dropdown1' class='dropdown-content'>
+                <li><a href="#!">one</a></li>
+                <li><a href="#!">two</a></li>
+                <li class="divider" tabindex="-1"></li>
+                <li><a href="#!">three</a></li>
+                <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+                <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+            </ul>
         </nav>
         <ul id="slide-out" class="sidenav">
             <li>
@@ -42,29 +53,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="row center" style="margin-top: 10px">
                         <span class="card-title" style="font-weight: 700; font-size: 23px; color: #505050">Área de Almacenamiento</span>
                     </div>
-                    <section class="z-depth-2" style="border: 3px solid #505050; width: auto; height: auto; border-radius: 20px">   
+                    <section class="z-depth-2" style="border: 1px solid #505050; width: auto; height: auto; border-radius: 10px">   
                         <div class="row" style="padding: 20px">
-                            <div class="col s12 m6 l4">
+                            <div class="col s12 m12 l4">
                                 <div class="card">
                                     <div class="card-image">
-                                        <img src="img/sub-category-1.jpg">
-                                        <span class="card-title">Hangares</span>
-                                        <a href="vistaHangares.php" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">send</i></a>
+                                        <img src="img/bg_card_bodega1.jpg" height="150px">
+                                        <span class="card-title">Bodega General</span>
+                                        <a href="menuV_Hangar.php" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">send</i></a>
                                     </div>
                                     <div class="card-content">
-                                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                                        <p>I am a very simple card.</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col s12 m6 l4">
-                                <div class="card">
+                            <div class="col s12 m12 l4">
+                                <div class="card"> 
                                     <div class="card-image">
-                                        <img src="img/sub-category-1.jpg">
+                                        <img src="img/bg_card_bodega2.jpg" height="150px">
                                         <span class="card-title">Bodegas</span>
                                         <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">send</i></a>
                                     </div>
                                     <div class="card-content">
-                                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                                        <p>I am a very simple card.</p>
                                     </div>
                                 </div>
                             </div>
@@ -75,29 +86,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="row center" style="margin-top: 10px">
                         <span class="card-title" style="font-weight: 700; font-size: 23px; color: #505050">Terminal T1</span>
                     </div>
-                    <section class="z-depth-2" style="border: 3px solid #505050; width: auto; height: auto; border-radius: 20px">   
+                    <section class="z-depth-2" style="border: 1px solid #505050; width: auto; height: auto; border-radius: 10px">   
                         <div class="row" style="padding: 20px">
-                            <div class="col s12 m6 l4">
+                            <div class="col s12 m12 l4">
                                 <div class="card">
                                     <div class="card-image">
-                                        <img src="img/sub-category-1.jpg">
-                                        <span class="card-title">Hangares</span>
+                                        <img src="img/sub-category-1.jpg" height="150px">
+                                        <span class="card-title">asd</span>
                                         <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">send</i></a>
                                     </div>
                                     <div class="card-content">
-                                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                                        <p>I am a very simple card.</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col s12 m6 l4">
+                            <div class="col s12 m12 l4">
                                 <div class="card">
                                     <div class="card-image">
-                                        <img src="img/sub-category-1.jpg">
-                                        <span class="card-title">Bodegas</span>
+                                        <img src="img/sub-category-1.jpg" height="150px">
+                                        <span class="card-title">asd</span>
                                         <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">send</i></a>
                                     </div>
                                     <div class="card-content">
-                                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                                        <p>I am a very simple card.</p>
                                     </div>
                                 </div>
                             </div>
@@ -108,29 +119,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="row center" style="margin-top: 10px">
                         <span class="card-title" style="font-weight: 700; font-size: 23px; color: #505050;">Terminal T2</span>
                     </div>
-                    <section class="z-depth-2" style="border: 3px solid #505050; width: auto; height: auto;  border-radius: 20px">   
+                    <section class="z-depth-2" style="border: 1px solid #505050; width: auto; height: auto;  border-radius: 10px">   
                         <div class="row" style="padding: 20px">
-                            <div class="col s12 m6 l4">
+                            <div class="col s12 m12 l4">
                                 <div class="card">
                                     <div class="card-image">
-                                        <img src="img/sub-category-1.jpg">
-                                        <span class="card-title">Hangares</span>
+                                        <img src="img/sub-category-1.jpg" height="150px">
+                                        <span class="card-title">asd</span>
                                         <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">send</i></a>
                                     </div>
                                     <div class="card-content">
-                                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                                        <p>I am a very simple card.</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col s12 m6 l4">
+                            <div class="col s12 m12 l4">
                                 <div class="card">
                                     <div class="card-image">
-                                        <img src="img/sub-category-1.jpg">
-                                        <span class="card-title">Bodegas</span>
+                                        <img src="img/sub-category-1.jpg" height="150px">
+                                        <span class="card-title">asd</span>
                                         <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">send</i></a>
                                     </div>
                                     <div class="card-content">
-                                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                                        <p>I am a very simple card.</p>
                                     </div>
                                 </div>
                             </div>
@@ -141,29 +152,41 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="row center" style="margin-top: 10px">
                         <span class="card-title" style="font-weight: 700; font-size: 23px; color: #505050">Estacionamientos</span>
                     </div>
-                    <section class="z-depth-2" style="border: 3px solid #505050; width: auto; height: auto; border-radius: 20px">   
+                    <section class="z-depth-2" style="border: 1px solid #505050; width: auto; height: auto; border-radius: 10px">   
                         <div class="row" style="padding: 20px">
-                            <div class="col s12 m6 l4">
+                            <div class="col s12 m12 l4">
                                 <div class="card">
                                     <div class="card-image">
-                                        <img src="img/sub-category-1.jpg">
-                                        <span class="card-title">Aviones</span>
+                                        <img src="img/bg_card_hangares.jpg" height="150px">
+                                        <span class="card-title">Hangares</span>
                                         <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">send</i></a>
                                     </div>
                                     <div class="card-content">
-                                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                                        <p>I am a very simple card.</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col s12 m6 l4">
+                            <div class="col s12 m12 l4">
                                 <div class="card">
                                     <div class="card-image">
-                                        <img src="img/sub-category-1.jpg">
-                                        <span class="card-title">Autos</span>
+                                        <img src="img/sub-category-1.jpg" height="150px">
+                                        <span class="card-title">E. Terminal T1</span>
                                         <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">send</i></a>
                                     </div>
                                     <div class="card-content">
-                                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                                        <p>I am a very simple card.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m12 l4">
+                                <div class="card">
+                                    <div class="card-image">
+                                        <img src="img/sub-category-1.jpg" height="150px">
+                                        <span class="card-title">E. Terminal T2</span>
+                                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">send</i></a>
+                                    </div>
+                                    <div class="card-content">
+                                        <p>I am a very simple card.</p>
                                     </div>
                                 </div>
                             </div>
@@ -177,33 +200,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="row">
                     <div class="col l6 s12">
                         <h5 class="white-text">SGV</h5>
-                        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                        <p class="grey-text text-lighten-4"></p>
                     </div>
                     <div class="col l2 s12">
                         <h5 class="white-text">Links</h5>
                         <ul>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 1</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 2</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 3</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 4</a></li>
                         </ul>
                     </div>
                     <div class="col l2 s12">
                         <h5 class="white-text">Links</h5>
                         <ul>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 1</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 2</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 3</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 4</a></li>
                         </ul>
                     </div>
                     <div class="col l2 s12">
                         <h5 class="white-text">Links</h5>
                         <ul>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 1</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 2</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 3</a></li>
+                            <li><a class="grey-text text-lighten-1" href="#!">Link 4</a></li>
                         </ul>
                     </div>
                 </div>
