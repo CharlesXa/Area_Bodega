@@ -33,9 +33,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <a href="#" class="brand-logo center">Bodega SGV</a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="Controller/controllerLogOut.php">Cerrar Sesion</a></li>
-                    <li><a href="badges.html">Buscar Equipaje</a></li>
                     <!-- Dropdown Trigger -->
                     <li><a class="dropdown-trigger" href="#" data-target="dropdown">Stock<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Equipaje<i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
             </div>
         </nav>
@@ -43,6 +43,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <ul id="dropdown" class="dropdown-content">
             <li><a href="#!">Ingresar Stock</a></li>
             <li><a href="#!">Actualizar Stock</a></li>
+        </ul>
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="#!">Ingresar Equipaje</a></li>
+            <li><a href="#!">Buscar Equipaje</a></li>
         </ul>
         <div class="container-fluid">
             <div class="row">

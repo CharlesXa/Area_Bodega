@@ -23,11 +23,11 @@ if ($rut && $pass) {
         $rs = $data->getUserbyRut($rut);
         foreach ($rs as $key){
             $_SESSION['Rut'] = $key['rut'];
-            $_SESSION['tipo_usuario'] = $key['tipo_usuario_id_fk'];
+            $_SESSION['area_usuario'] = $key['area_usuario_id_fk'];
         }
         
         
-        switch ($_SESSION['tipo_usuario']){
+        switch ($_SESSION['area_usuario']){
             case 1:
                 echo '<script language="javascript">alert("Bienvenido E. Bodega");window.location.href="../menuBodega.php"</script>';
                 break;
