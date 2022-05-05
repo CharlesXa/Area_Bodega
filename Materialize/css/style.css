@@ -211,7 +211,7 @@
 .home-section{
   position: relative;
   background: #E4E9F7;
-  height: 100vh;
+  *height: 100vh;
   left: 260px;
   width: calc(100% - 260px);
   transition: all 0.5s ease;
@@ -222,7 +222,7 @@
 }
 .home-section .home-content{
   height: 60px;
-  display: flex;
+  *display: flex;
   align-items: center;
 }
 .home-section .home-content .bx-menu,

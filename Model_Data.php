@@ -56,7 +56,18 @@ class Data {
         $sql = "INSERT INTO `stock` (`id`, `nombre`, `activo`, `cantidad_t`, `descripcion`, `area_user_id_fk`) VALUES (null, '$nombre', '1', '$cantidad', '$descripcion', '$area');";
         $this->con->query($sql);
     }
-
+    
+    public function getStockByArea($area) {
+        $sql = "SELECT * FROM stock where area_user_id_fk = '$area'";
+        $query = $this->con->query($sql);
+        return $query;
+    }
+    
+    public function getStock() {
+        $sql = "SELECT * FROM stock";
+        $query = $this->con->query($sql);
+        return $query;
+    }
 }
 ?>
 
