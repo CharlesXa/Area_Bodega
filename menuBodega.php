@@ -32,7 +32,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <title>Menu Bodega</title>
     </head>
-    <body>
+    <body style="background-color: #E4E9F7">
         <div class="sidebar active">
             <div class="logo-details">
                 <a href="menuBodega.php" style="padding:15px; padding-top: 25px">
@@ -56,9 +56,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                     <ul class="sub-menu">
                         <li><a class="link_name" href="#">Stock</a></li>
-                        <li><a href="#">Ingreso</a></li>
-                        <li><a href="#">Actualizar</a></li>
-                        <li><a href="#">Visualizar</a></li>
+                        <li><a href="ingresarStock.php">Ingreso</a></li>
+                        <li><a href="actualizarStock.php">Actualizar</a></li>
+                        <li><a href="visualizarStock.php">Visualizar</a></li>
                     </ul>
                 </li>
                 <li>
@@ -162,8 +162,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>  
 
         </section>
-        <footer class="page-footer" style="background-color: #353535">
-            <div class="footer-copyright" style="background-color: #252525">
+        <footer class="page-footer" style="background-color: transparent">
+            <div class="footer-copyright" style="background-color: #11101d">
                 <div class="container center">
                     SGV © Derechos Reservados - 2022
                 </div>
