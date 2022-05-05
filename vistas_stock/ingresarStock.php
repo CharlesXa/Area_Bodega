@@ -77,7 +77,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <div class="profile_name">Bienvenido:</div>
                             <div class="job"><?php echo $nombre . ' ' . $apellido ?></div>
                         </div>
-                        <a href="Controller/controllerLogOut.php"><i class='bx bx-log-out'></i></a>
+                        <a href="../Controller/controllerLogOut.php"><i class='bx bx-log-out'></i></a>
                     </div>
                 </li>
             </ul>
