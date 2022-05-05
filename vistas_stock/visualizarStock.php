@@ -84,63 +84,70 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
         <section class="home-section">
             <div class="home-content">
-                <i class='bx bx-menu' ></i>
-                <div class="container" >
-                    <div class="row">
-                        <div class="col s12">
-                            <h2 align="center">Visualizacion de Stock Aeropuerto</h2>
-                            <form method="post">
-                                <div class="row">
-                                    <div class="col s12 m6">
-                                        <div class="row">
-                                            <div class="col s12 title_input">Area:
-                                                <div class="input-field col s12">
-                                                    <select name="cbo_area" id="area" required>
-                                                        <option value="0">-- Seleccionar --</option>
-                                                        <?php
-                                                        $area = $data->getArea();
+                <div class="navbar-fixed">
+                    <nav  style="background-color: #1d1b31;">
+                        <div class="nav-wrapper">
+                            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bx bx-menu white-text" ></i></a>
+                        </div>
+                    </nav>
+                </div>
+            </div> 
+            <div class="container" >
+                <div class="row">
+                    <div class="col s12">
+                        <h2 align="center">Visualizacion de Stock Aeropuerto</h2>
+                        <form method="post">
+                            <div class="row">
+                                <div class="col s12 m6">
+                                    <div class="row">
+                                        <div class="col s12 title_input">Area:
+                                            <div class="input-field col s12">
+                                                <select name="cbo_area" id="area" required>
+                                                    <option value="0">-- Seleccionar --</option>
+                                                    <?php
+                                                    $area = $data->getArea();
 
-                                                        foreach ($area as $key) {
-                                                            echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col s12 m6">
-                                        <div class="row">
-                                            <div class="col s12 title_input">
-                                                <button class="btn white-text indigo darken-3 col s12 m4 offset-m4" name="btn_cargar" type="submit" style=" height: 50px; margin-top: 40px; border-radius: 50px; font-weight: 600;">Cargar Stock</button>
+                                                    foreach ($area as $key) {
+                                                        echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
+                                                    }
+                                                    ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="rows">
-                                    <div class="col s12">
-                                        <table class="table centered">
-                                            <thead >
-                                            <td>#</td>
-                                            <td>Nombre</td>
-                                            <td>Cantidad</td>
-                                            <td>Descripcion</td>
-                                            <td>Actualizar</td>
-                                            </thead>
-                                            <tbody>
+                                <div class="col s12 m6">
+                                    <div class="row">
+                                        <div class="col s12 title_input">
+                                            <button class="btn white-text indigo darken-3 col s12 m4 offset-m4" name="btn_cargar" type="submit" style=" height: 50px; margin-top: 40px; border-radius: 50px; font-weight: 600;">Cargar Stock</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rows">
+                                <div class="col s12">
+                                    <table class="table centered">
+                                        <thead >
+                                        <td>#</td>
+                                        <td>Nombre</td>
+                                        <td>Cantidad</td>
+                                        <td>Descripcion</td>
+                                        <td>Actualizar</td>
+                                        </thead>
+                                        <tbody>
 
-                                                <?php
-                                                $selected = 0;
-                                                $stock_area = 0;
-                                                if (isset($_POST['btn_cargar'])) {
-                                                    $selected = $_POST['cbo_area'];
-                                                    if ($selected == 0) {
-                                                        $stock_area = $data->getStock();
-                                                    } else {
-                                                        $stock_area = $data->getStockByArea($selected);
-                                                    }
-                                                    foreach ($stock_area as $key) {
-                                                        echo '
+                                            <?php
+                                            $selected = 0;
+                                            $stock_area = 0;
+                                            if (isset($_POST['btn_cargar'])) {
+                                                $selected = $_POST['cbo_area'];
+                                                if ($selected == 0) {
+                                                    $stock_area = $data->getStock();
+                                                } else {
+                                                    $stock_area = $data->getStockByArea($selected);
+                                                }
+                                                foreach ($stock_area as $key) {
+                                                    echo '
                                                                     <tr>
                                                                         <td>' . $key['id'] . '</td>
                                                                         <td>' . $key['nombre'] . '</td>
@@ -149,21 +156,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                                                         <td></td>
                                                                     </tr>
                                                                 ';
-                                                    }
                                                 }
-                                                ?>
+                                            }
+                                            ?>
 
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                        </tbody>
+                                    </table>
                                 </div>
+                            </div>
 
-                                
-                            </form>
-                        </div>
+
+                        </form>
                     </div>
                 </div>
-            </div>  
+            </div>
         </section>
         <script>
             document.addEventListener('DOMContentLoaded', function () {

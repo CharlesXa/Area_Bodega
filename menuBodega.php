@@ -25,7 +25,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link rel="stylesheet" href="Materialize/css/materialize.css">
         <script src="Materialize/js/materialize.js"></script>
         <link rel="icon" href="img/iconoBodega.png"/>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="Materialize/css/style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -56,9 +56,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                     <ul class="sub-menu">
                         <li><a class="link_name" href="#">Stock</a></li>
-                        <li><a href="ingresarStock.php">Ingreso</a></li>
-                        <li><a href="actualizarStock.php">Actualizar</a></li>
-                        <li><a href="visualizarStock.php">Visualizar</a></li>
+                        <li><a href="vistas_stock/ingresarStock.php">Ingreso</a></li>
+                        <li><a href="vistas_stock/actualizarStock.php">Actualizar</a></li>
+                        <li><a href="vistas_stock/visualizarStock.php">Visualizar</a></li>
                     </ul>
                 </li>
                 <li>
@@ -92,88 +92,198 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
         <section class="home-section">
             <div class="home-content">
-                <i class='bx bx-menu' ></i>
-                <div class="container" style="margin-top:600px">
-                    <style>table, th {
-                            text-align: center !important
-                        }</style>
-                    <table class="table" id="datos" border="1">
-                        <thead>
-                            <tr>
-                                <th colspan="4" style="font-size: 25px">Historial de Solicitudes</th>
-                            </tr>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Cantidad</th>
-                                <th>Fecha y Hora</th>
-                                <th>ID de la solicitud</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td></td>   
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>                   
-                        </tbody>
-                    </table>
-                </div>
-            </div>  
-
-        </section>
-        <footer class="page-footer" style="background-color: transparent">
-            <div class="footer-copyright" style="background-color: #11101d">
-                <div class="container center">
-                    SGV © Derechos Reservados - 2022
+                <div class="navbar-fixed">
+                    <nav  style="background-color: #1d1b31;">
+                        <div class="nav-wrapper">
+                            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bx bx-menu white-text" ></i></a>
+                        </div>
+                    </nav>
                 </div>
             </div>
-        </footer>
+            <table class="table responsive-table centered" id="datos" border="1">
+                <thead align="center">
+                    <tr>
+                        <th colspan="4" style="font-size: 25px; text-align: center">Historial de Solicitudes</th>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Fecha y Hora</th>
+                        <th>ID de la solicitud</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php
+                    $historial = $data->getHistorial();
+                    foreach ($historial as $key) {
+                        echo '
+                                    <tr>
+                                        <td>' . $key['id'] . '</td>   
+                                        <td>' . $key['nombre'] . '</td>   
+                                        <td>' . $key['cantidad'] . '</td>   
+                                        <td>' . $key['fecha_hora'] . '</td>   
+                                        <td>' . $key['solicitud_id_fk'] . '</td>   
+                                    </tr>
+                                ';
+                    }
+                    ?>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <footer class="page-footer" style="background-color: transparent">
+                <div class="footer-copyright" style="background-color: #1d1b31">
+                    <div class="container center">
+                        SGV © Derechos Reservados - 2022
+                    </div>
+                </div>
+            </footer>
+        </section>
+
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();
             });
         </script>
-        <script src="script.js"></script>
+        <script src="js/script.js"></script>
     </body>
 </html>

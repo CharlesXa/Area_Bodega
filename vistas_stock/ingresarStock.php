@@ -84,62 +84,69 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
         <section class="home-section">
             <div class="home-content">
-                <i class='bx bx-menu' ></i>
-                <div class="container" >
-                    <div class="row">
-                        <div class="col s12">
-                            <h2 align="center">Ingreso de Stock</h2>
-                            <form method="post" action="">
-                                <div class="row">
-                                    <div class="col s12 m6">
-                                        <div class="row">
-                                            <div class="col s12 title_input">Nombre:
-                                                <input id="nombre" name="txt_nombre" type="text" class="validate" required>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col s12 title_input">Area:
-                                                <div class="input-field col s12">
-                                                    <select name="cbo_area" id="salud" required>
-                                                        <option value="">-- Seleccionar --</option>
-                                                        <?php
-                                                        $area = $data->getArea();
-
-                                                        foreach ($area as $key) {
-                                                            echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col s12 m6">
-                                        <div class="row">
-                                            <div class="col s12 title_input">Cantidad:
-                                                <input id="cantidad" name="txt_cantidad" type="number" class="validate" required>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col s12 title_input">Area:
-                                                <div class="input-field col s12">
-                                                    <textarea id="textarea2" class="materialize-textarea" data-length="120"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s6 offset-s3">
-                                        <button class="btn white-text indigo darken-3 col s12 m4 offset-m4" name="btn_ingresar" type="submit" style=" height: 50px; margin-top: 40px; border-radius: 50px; font-weight: 600;">Ingresar Stock</button>
-                                    </div>
-                                </div>
-                            </form>
+                <div class="navbar-fixed">
+                    <nav  style="background-color: #1d1b31;">
+                        <div class="nav-wrapper">
+                            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bx bx-menu white-text" ></i></a>
                         </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="container" >
+                <div class="row">
+                    <div class="col s12">
+                        <h2 align="center">Ingreso de Stock</h2>
+                        <form method="post" action="">
+                            <div class="row">
+                                <div class="col s12 m6">
+                                    <div class="row">
+                                        <div class="col s12 title_input">Nombre:
+                                            <input id="nombre" name="txt_nombre" type="text" class="validate" required>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 title_input">Area:
+                                            <div class="input-field col s12">
+                                                <select name="cbo_area" id="salud" required>
+                                                    <option value="">-- Seleccionar --</option>
+                                                    <?php
+                                                    $area = $data->getArea();
+
+                                                    foreach ($area as $key) {
+                                                        echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col s12 m6">
+                                    <div class="row">
+                                        <div class="col s12 title_input">Cantidad:
+                                            <input id="cantidad" name="txt_cantidad" type="number" class="validate" required>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 title_input">Area:
+                                            <div class="input-field col s12">
+                                                <textarea id="textarea2" class="materialize-textarea" data-length="120"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s6 offset-s3">
+                                    <button class="btn white-text indigo darken-3 col s12 m4 offset-m4" name="btn_ingresar" type="submit" style=" height: 50px; margin-top: 40px; border-radius: 50px; font-weight: 600;">Ingresar Stock</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </div>  
+            </div>
         </section>
+
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();
