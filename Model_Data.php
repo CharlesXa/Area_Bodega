@@ -68,6 +68,13 @@ class Data {
         $query = $this->con->query($sql);
         return $query;
     }
+    
+    public function getHistorial() {
+        $sql = "SELECT * FROM historial;";
+        $query = $this->con->query($sql);
+        return $query;
+    }
+    
 }
 ?>
 
