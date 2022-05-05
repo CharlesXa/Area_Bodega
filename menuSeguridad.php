@@ -49,7 +49,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <li>
                     <div class="profile-details">
                         <div class="profile-content">
-                            <img src="img/iconPerfil.png" alt="profileImg">
+                            <a href="Controller/controllerLogOut.php"><img src="img/iconPerfil.png" alt="profileImg"></a>
                         </div>
                         <div class="name-job">
                             <div class="profile_name">Bienvenido:</div>

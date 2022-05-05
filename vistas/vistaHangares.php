@@ -10,7 +10,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
     <body>
         <video src="" id="video"></video>
-        <video src="" id="video1"></video>
 
         <script>
             navigator.mediaDevices.enumerateDevices().then(devices => {
