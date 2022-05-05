@@ -13,7 +13,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
         <script src="js/jquery.rut.js"></script>
         <title>LogIn</title>
     </head>
-    <body>
+    <body style="background-color: #363771">
         <div class="container">
             <div class="row" style="margin-top: 10%">
                 <div class="col s6 offset-s3">
@@ -36,7 +36,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-action" style="border-radius: 10px">
+                                    <div class="card-action" style="border-radius: 10px; background-color: ">
                                         <div class="row">
                                             <button class="btn waves-effect waves-light col s6 offset-s3"  style="background-color: #11101d"type="submit" name="action">Iniciar Sesion
                                                 <i class="material-icons right">send</i>
