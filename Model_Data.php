@@ -44,6 +44,7 @@
         $query = $this->con->query($sql);
         return $query;
     }
+    
 }
 
 ?>

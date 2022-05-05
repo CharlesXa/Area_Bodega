@@ -22,8 +22,14 @@ if ($rut && $pass) {
     if ($valid) {
         $rs = $data->getUserbyRut($rut);
         foreach ($rs as $key){
-            $_SESSION['Rut'] = $key['rut'];
+            $_SESSION['id'] = $key['id'];
+            $_SESSION['rut'] = $key['rut'];
+            $_SESSION['nombre'] = $key['nombre'];
+            $_SESSION['apellido'] = $key['apellido'];
+            $_SESSION['email'] = $key['email'];
+            $_SESSION['telefono'] = $key['telefono'];
             $_SESSION['area_usuario'] = $key['area_usuario_id_fk'];
+            
         }
         
         

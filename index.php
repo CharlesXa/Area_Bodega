@@ -38,7 +38,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
                                     </div>
                                     <div class="card-action" style="border-radius: 10px">
                                         <div class="row">
-                                            <button class="btn waves-effect waves-light col s6 offset-s3" type="submit" name="action">Iniciar Sesion
+                                            <button class="btn waves-effect waves-light col s6 offset-s3"  style="background-color: #11101d"type="submit" name="action">Iniciar Sesion
                                                 <i class="material-icons right">send</i>
                                             </button>
                                             <!--<input class="waves-effect waves-light btn col s12" style="background-color: #009688" type="submit" value="Ingresar">-->
