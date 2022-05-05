@@ -3,6 +3,7 @@
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 .materialize-red {
   background-color: #e51c23 !important;
 }
@@ -2969,7 +2970,7 @@ ul.staggered-list li {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 10px 0px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255);
   background-color: rgba(51, 51, 51, 0.08);
 }
 
@@ -4758,8 +4759,9 @@ small {
 }
 
 .card .card-title {
-  font-size: 24px;
-  font-weight: 300;
+  font-size: 19px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
 }
 
 .card .card-title.activator {
@@ -4888,7 +4890,7 @@ small {
 }
 
 .card .card-content {
-  padding: 24px;
+  padding: 7px 0px 1px 10px;
   border-radius: 0 0 2px 2px;
 }
 

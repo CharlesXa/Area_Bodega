@@ -33,7 +33,7 @@ if ($rut && $pass) {
         }
         
         
-        switch ($_SESSION['tipo_usuario']){
+        switch ($_SESSION['area_usuario']){
             case 1:
                 echo '<script language="javascript">alert("Bienvenido E. Bodega");window.location.href="../menuBodega.php"</script>';
                 break;
