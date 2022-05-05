@@ -100,12 +100,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </nav>
                 </div>
             </div>
-            <table class="table" id="datos" border="1">
-                <thead>
+            <table class="table responsive-table centered" id="datos" border="1">
+                <thead align="center">
                     <tr>
                         <th colspan="4" style="font-size: 25px; text-align: center">Historial de Solicitudes</th>
                     </tr>
-                    <tr style="text-align: center">
+                    <tr>
                         <th>Nombre</th>
                         <th>Cantidad</th>
                         <th>Fecha y Hora</th>
