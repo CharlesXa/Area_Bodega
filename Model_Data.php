@@ -29,7 +29,7 @@ class Data {
     public function isUserPassValid($rut, $pass) {
         $sql = "SELECT COUNT(*) AS 'existe' 
 	            FROM usuario
-	            WHERE rut = '$rut' AND passwd ='$pass'";
+	            WHERE rut = '$rut' AND passwd = sha2('$pass',0)";
 
         $query = $this->con->query($sql);
 

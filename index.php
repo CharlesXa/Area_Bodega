@@ -11,42 +11,55 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="js/jquery.rut.js"></script>
+        <link href="Materialize/css/styleLogin.css" rel="stylesheet">
         <title>LogIn</title>
     </head>
-    <body style="background-color: #363771">
+    <body>
         <div class="container">
-            <div class="row" style="margin-top: 10%">
-                <div class="col s6 offset-s3">
-                    <div class="row">
-                        <div class="col s12">
-                            <form method="post" action="Controller/controller_login.php">
-                                <div class="card" style="background-color: whitesmoke; border-radius: 10px">
-                                    <div class="card-content">
-                                        <span class="card-title" align="center">Iniciar Sesion</span>
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">account_circle</i>
-                                                <input id="rut" name="txt_rut" type="text" class="validate" required>
-                                                <label for="rut">R.U.T</label>
-                                            </div>
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">lock_open</i>
-                                                <input id="passwd" name="txt_pass" type="password" class="validate" required>
-                                                <label for="passwd">Password</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-action" style="border-radius: 10px; background-color: ">
-                                        <div class="row">
-                                            <button class="btn waves-effect waves-light col s6 offset-s3"  style="background-color: #11101d"type="submit" name="action">Iniciar Sesion
-                                                <i class="material-icons right">send</i>
-                                            </button>
-                                            <!--<input class="waves-effect waves-light btn col s12" style="background-color: #009688" type="submit" value="Ingresar">-->
-                                        </div>      
-                                    </div>
+            <input type="checkbox" id="flip">
+            <div class="cover">
+                <div class="front">
+                  <!--<img src="images/frontImg.jpg" alt="">-->
+                </div>
+                <div class="back">
+                  <!--<img class="backImg" src="images/backImg.jpg" alt="">-->
+                </div>
+            </div>
+            <div class="forms">
+                <div class="form-content">
+                    <div class="login-form">
+                        <div class="title">Iniciar Sesion</div>
+                        <form name="login" action="Controller/controller_login.php" method="post">
+                            <div class="input-boxes">
+                                <div class="input-box">
+                                    <i class="fas fa-envelope"></i>
+                                    <input id="rut" name="txt_rut" type="text" placeholder="R.U.T" required>
                                 </div>
-                            </form>
-                        </div>
+                                <div class="input-box">
+                                    <i class="fas fa-lock"></i>
+                                    <input name="txt_pass" type="password" placeholder="Password" required>
+                                </div>
+                                <div class="button input-box">
+                                    <input type="submit" value="Ingresar">
+                                </div>
+                                <div class="text sign-up-text">¿Olvidaste tu contraseña? <label for="flip">Reestablecela</label></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-form">
+                        <div class="title">Reestablecer Contraseña</div>
+                        <form action="#">
+                            <div class="input-boxes">
+                                <div class="input-box">
+                                    <i class="fas fa-envelope"></i>
+                                    <input id="txt_email" type="text" placeholder="Ingresa Tu Email" required>
+                                </div>
+                                <div class="button input-box">
+                                    <input type="submit" value="Reestablecer">
+                                </div>
+                                <div class="text sign-up-text"><label for="flip">Cancelar</label></div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
