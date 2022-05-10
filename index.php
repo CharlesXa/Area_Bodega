@@ -11,6 +11,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="js/jquery.rut.js"></script>
+        <link rel="icon" href="img/iconLogin.png"/>
         <link href="Materialize/css/styleLogin.css" rel="stylesheet">
         <script src="js/validarut.js"></script>
         <title>LogIn</title>
