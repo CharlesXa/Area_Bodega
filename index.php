@@ -48,14 +48,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
                     </div>
                     <div class="signup-form">
                         <div class="title">Reestablecer Contraseña</div>
-                        <form action="#">
+                        <form action="mail/enviar.php" method="post">
                             <div class="input-boxes">
                                 <div class="input-box">
                                     <i class="fas fa-envelope"></i>
-                                    <input id="txt_email" type="text" placeholder="Ingresa Tu Email" required>
+                                    <input name="mail" id="txt_email" type="text" placeholder="Ingresa Tu Email" required>
                                 </div>
                                 <div class="button input-box">
-                                    <input type="submit" value="Reestablecer">
+                                    <input name="btn_enviar" type="submit" value="Reestablecer">
                                 </div>
                                 <div class="text sign-up-text"><label for="flip">Cancelar</label></div>
                             </div>

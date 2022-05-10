@@ -1,5 +1,7 @@
 <?php
 
+require 'clases_php/Usuario.php';
+
 class Data {
 
     private $con_info = [
@@ -56,25 +58,58 @@ class Data {
         $sql = "INSERT INTO `stock` (`id`, `nombre`, `activo`, `cantidad_t`, `descripcion`, `area_user_id_fk`) VALUES (null, '$nombre', '1', '$cantidad', '$descripcion', '$area');";
         $this->con->query($sql);
     }
-    
+
     public function getStockByArea($area) {
         $sql = "SELECT * FROM stock where area_user_id_fk = '$area'";
         $query = $this->con->query($sql);
         return $query;
     }
-    
+
     public function getStock() {
         $sql = "SELECT * FROM stock";
         $query = $this->con->query($sql);
         return $query;
     }
-    
+
     public function getHistorial() {
         $sql = "SELECT * FROM historial;";
         $query = $this->con->query($sql);
         return $query;
     }
-    
+
+    public function getUserbyemail($email) {
+        $sql = "SELECT *, COUNT(*) AS 'existe' FROM usuario where email = '$email';";
+        $query = $this->con->query($sql);
+        $existe = 0;
+        if ($query) {
+            foreach ($query as $option) {
+                $id = $option['id'];
+                $rut= $option['rut'];
+                $nombre= $option['nombre'];
+                $apellido= $option['apellido'];
+                $passwd= $option['passwd'];
+                $email= $option['email'];
+                $telefono= $option['telefono'];
+                $area_usuario_id_fk= $option['area_usuario_id_fk'];
+                $tipo_user_id_fk= $option['tipo_user_id_fk'];
+                $passwd_t= $option['passwd_t'];
+                $existe = $option['existe'];
+                $user = new Usuario();
+                $user->Usuario($id, $rut, $nombre, $apellido, $passwd, $email, $telefono, $area_usuario_id_fk, $tipo_user_id_fk, $passwd_t);
+                
+            }
+            if ($existe !=1){
+                return false;
+            }else{
+                return $user;
+            }
+        }
+        else{
+            return false;
+        }
+        
+    }
+
 }
 ?>
 
