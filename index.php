@@ -12,6 +12,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="js/jquery.rut.js"></script>
         <link href="Materialize/css/styleLogin.css" rel="stylesheet">
+        <script src="js/validarut.js"></script>
         <title>LogIn</title>
     </head>
     <body>
@@ -33,7 +34,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
                             <div class="input-boxes">
                                 <div class="input-box">
                                     <i class="fas fa-envelope"></i>
-                                    <input id="rut" name="txt_rut" type="text" placeholder="R.U.T" required>
+                                    <input id="rut" name="txt_rut" type="text" placeholder="R.U.T" required onchange="javascript:return Rut(document.login.rut.value)">
                                 </div>
                                 <div class="input-box">
                                     <i class="fas fa-lock"></i>

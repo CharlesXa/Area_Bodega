@@ -101,7 +101,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <div class="col s12 m6">
                                     <div class="row">
                                         <div class="col s12 title_input">Nombre:
-                                            <input id="nombre" name="txt_nombre" type="text" class="validate" required>
+                                            <input id="nombre"  name="txt_nombre" type="text" class="validate" required>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -124,7 +124,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <div class="col s12 m6">
                                     <div class="row">
                                         <div class="col s12 title_input">Cantidad:
-                                            <input id="cantidad" name="txt_cantidad" type="number" class="validate" required>
+                                            <input id="cantidad" name="txt_cantidad" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="number" class="validate" required>
                                         </div>
                                     </div>
                                     <div class="row">
