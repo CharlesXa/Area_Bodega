@@ -19,6 +19,7 @@ $data = new Data();
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -30,9 +31,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
         <title>Menu Bodega</title>
+
     </head>
-    <body style="background-color: #E4E9F7">
+    <body style="background-color: #E4E9F7" >
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>Modal Header</h4>
+                <p>A bunch of text</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
+
         <div class="sidebar active">
             <div class="logo-details">
                 <a href="menuBodega.php" style="padding:15px; padding-top: 25px">
@@ -278,11 +292,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </footer>
         </section>
-
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();
             });
+            $(document).ready(function () {
+                $('#modal1').modal('modal-trigger');
+            });
+
+
         </script>
         <script src="js/script.js"></script>
     </body>

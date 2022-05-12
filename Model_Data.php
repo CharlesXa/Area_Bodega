@@ -109,6 +109,11 @@ class Data {
         }
         
     }
+    
+    public function updStock($id,$cantidad) {
+        $sql = "UPDATE `stock` SET `cantidad_t` = '$cantidad' WHERE `stock`.`id` = $id;";
+        $query = $this->con->query($sql);
+    }
 
 }
 ?>

@@ -96,7 +96,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="row">
                     <div class="col s12">
                         <h2 align="center">Ingreso de Stock</h2>
-                        <form method="post" action="">
+                        <form method="post" action="../Controller/controller_ingStock.php">
                             <div class="row">
                                 <div class="col s12 m6">
                                     <div class="row">
@@ -128,9 +128,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col s12 title_input">Area:
+                                        <div class="col s12 title_input">Descripción:
                                             <div class="input-field col s12">
-                                                <textarea id="textarea2" class="materialize-textarea" data-length="120"></textarea>
+                                                <textarea id="textarea2" name="txt_descrip" class="materialize-textarea" data-length="120"></textarea>
                                             </div>
                                         </div>
                                     </div>

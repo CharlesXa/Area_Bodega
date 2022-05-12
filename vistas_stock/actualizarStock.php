@@ -103,7 +103,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         <div class="col s12 title_input">Area:
                                             <div class="input-field col s12">
                                                 <select name="cbo_area" id="area" required>
-                                                    <option value="">-- Seleccionar --</option>
+                                                    <option value="0">-- Seleccionar --</option>
                                                     <?php
                                                     $area = $data->getArea();
 
@@ -124,52 +124,54 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     </div>
                                 </div>
                             </div>
-                            <div class="rows">
-                                <div class="col s12">
-                                    <table class="table centered">
-                                        <thead >
-                                        <td>#</td>
-                                        <td>Nombre</td>
-                                        <td>Cantidad</td>
-                                        <td>Descripcion</td>
-                                        <td>Actualizar</td>
-                                        </thead>
-                                        <tbody>
-
-                                            <?php
-                                            $selected = 0;
-                                            if (isset($_POST['btn_cargar'])) {
-                                                $selected = $_POST['cbo_area'];
-                                                if ($selected == 0) {
-                                                    
-                                                } else {
-                                                    $stock_area = $data->getStockByArea($selected);
-                                                    foreach ($stock_area as $key) {
-                                                        echo '
-                                                                    <tr>
-                                                                        <td>' . $key['id'] . '</td>
-                                                                        <td>' . $key['nombre'] . '</td>
-                                                                        <td>' . $key['cantidad_t'] . '</td>
-                                                                        <td>' . $key['descripcion'] . '</td>
-                                                                        <td></td>
-                                                                    </tr>
-                                                                ';
-                                                    }
-                                                }
-                                            }
-                                            ?>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col s6 offset-s3">
-                                    <button class="btn white-text indigo darken-3 col s12 m4 offset-m4" name="btn_ingresar" type="submit" style=" height: 50px; margin-top: 40px; border-radius: 50px; font-weight: 600;">Ingresar Stock</button>
-                                </div>
-                            </div>
                         </form>
+                        <div class="rows">
+                            <div class="col s12">
+                                <table class="table">
+                                    <thead>
+                                    <td>#</td>
+                                    <td>Nombre</td>
+                                    <td>Cantidad</td>
+                                    <td>Descripcion</td>
+                                    <td>Actualizar</td>
+                                    </thead>
+                                    <tbody>
+
+                                        <?php
+                                        $selected = 0;
+                                        $n = 0;
+                                        if (isset($_POST['btn_cargar'])) {
+                                            $selected = $_POST['cbo_area'];
+                                            if ($selected == 0) {
+                                                $stock_area = $data->getStock();
+                                            } else {
+                                                $stock_area = $data->getStockByArea($selected);
+                                            }
+                                            foreach ($stock_area as $key) {
+                                                echo '
+                                                            '
+                                                ?>
+                                            <form method="post" id="form<?php echo $key['id']; ?>" action="../Controller/controller_actStock.php">
+                                                <tr>
+
+                                                    <td><input type="number" name="txt_id" value="<?php echo $key['id']; ?>" style="width: 30px" readonly></td>
+                                                    <td><?php echo $key['nombre']; ?></td>
+                                                    <td><input type="number" name="txt_cantidad" value="<?php echo $key['cantidad_t']; ?>" style="width: 70px"></td>
+                                                    <td><?php echo $key['descripcion']; ?></td>
+                                                    <td><button class="btn white-text indigo darken-3" name="btn_actualizar" type="submit" style="height: 50px; border-radius: 50px; font-weight: 600;">Actualizar</button></td>
+
+                                                </tr>
+                                            </form>
+                                            <?php
+                                            '';
+                                        }
+                                    }
+                                    ?>
+                                    </form>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -180,6 +182,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             });
             $(document).ready(function () {
                 $('textarea#textarea2').characterCounter();
+
             });
         </script>
         <script src="../js/script.js"></script>
