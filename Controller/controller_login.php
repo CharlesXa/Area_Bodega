@@ -29,6 +29,8 @@ if ($rut && $pass) {
             $_SESSION['email'] = $key['email'];
             $_SESSION['telefono'] = $key['telefono'];
             $_SESSION['area_usuario'] = $key['area_usuario_id_fk'];
+            $_SESSION['tipo_usuario'] = $key['tipo_user_id_fk'];
+            $_SESSION['passwd_t'] = $key['passwd_t'];
             
         }
         

@@ -6,10 +6,15 @@ include_once '../Model_Data.php';
 
 $data = new Data();
 
+$caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+$longitud = 10;
+$clave_t = substr(str_shuffle($caracteres),0, $longitud);
+
 // Valores enviados desde el formulario
 if ($_POST["btn_enviar"]) {
     $email = $_POST["mail"];
     $user = $data->getUserbyemail($email);
+    $data->updatePass($user->getRut(), $clave_t, 1);
 
 // Datos de la cuenta de correo utilizada para enviar vía SMTP
     $smtpHost = "smtp.gmail.com";  // Dominio alternativo brindado en el email de alta 
@@ -49,7 +54,7 @@ if ($_POST["btn_enviar"]) {
                     <p style="font-weight: bold">Estimado '.$user->getNombre().' '.$user->getApellido().'.</p>
                     <p style="margin: 2px; font-size: 15px">Has solicitado el cambio de tu contraseña. te hemos proporcionado una clave temporal para que inicies sesion, una vez iniciada la sesion podrás cambiar la contraseña a tu gusto.</p>
                     <p>Su clave temporal es: </p>
-                    <p style="font-weight: bold;" align="center">$clave</p>
+                    <p style="font-weight: bold; font-size: 40px" align="center">'.$clave_t.'</p>
                     <p style="color: #b3b3b3; font-size: 12px; text-align: center;margin: 30px 0 0">S.G.V © Derechos Reservados - 2022</p>
                 </div>
             </td>

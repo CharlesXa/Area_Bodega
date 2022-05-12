@@ -107,32 +107,63 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
         <section class="home-section">
             <div class="home-content">
-                <div class="navbar-fixed">
-                    <nav  style="background-color: #1d1b31;">
-                        <div class="nav-wrapper">
-                            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bx bx-menu white-text" ></i></a>
-                        </div>
-                    </nav>
+                <div>
+                    <!-- Modal Structure -->
+                    <div id="modal_1" class="modal" style="position: absolute; margin-top: 150px">
+                        <form class="col s12" action="controller/controllerUpdatepass.php" method="post">
+                            <div class="modal-content">
+                                <h4>Cambiar contraseña</h4>
+                                <p>Tu contraseña es temporal, reestablecela</p>
+                                <div class="row">
+
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input name="txt_pass" id="icon_prefix" type="password" class="validate">
+                                            <label for="icon_prefix">Nueva contraseña</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input name="txt_pass2" id="icon_telephone" type="password" class="validate">
+                                            <label for="icon_telephone">Confirmar nueva contraseña</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                    <i class="material-icons right">Aceptar</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <table class="table responsive-table centered" id="datos" border="1">
-                <thead align="center">
-                    <tr>
-                        <th colspan="4" style="font-size: 25px; text-align: center">Historial de Solicitudes</th>
-                    </tr>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Cantidad</th>
-                        <th>Fecha y Hora</th>
-                        <th>ID de la solicitud</th>
-                    </tr>
-                </thead>
+            <div class="navbar-fixed">
+                <nav  style="background-color: #1d1b31;">
+                    <div class="nav-wrapper">
+                        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bx bx-menu white-text" ></i></a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <table class="table responsive-table centered" id="datos" border="1">
+            <thead align="center">
+                <tr>
+                    <th colspan="4" style="font-size: 25px; text-align: center">Historial de Solicitudes</th>
+                </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Fecha y Hora</th>
+                    <th>ID de la solicitud</th>
+                </tr>
+            </thead>
 
-                <tbody>
-                    <?php
-                    $historial = $data->getHistorial();
-                    foreach ($historial as $key) {
-                        echo '
+            <tbody>
+                <?php
+                $historial = $data->getHistorial();
+                foreach ($historial as $key) {
+                    echo '
                                     <tr>
                                         <td>' . $key['id'] . '</td>   
                                         <td>' . $key['nombre'] . '</td>   
@@ -141,168 +172,178 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         <td>' . $key['solicitud_id_fk'] . '</td>   
                                     </tr>
                                 ';
-                    }
-                    ?>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-            <footer class="page-footer" style="background-color: transparent">
-                <div class="footer-copyright" style="background-color: #1d1b31">
-                    <div class="container center">
-                        SGV © Derechos Reservados - 2022
-                    </div>
+                }
+                ?>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <footer class="page-footer" style="background-color: transparent">
+            <div class="footer-copyright" style="background-color: #1d1b31">
+                <div class="container center">
+                    SGV © Derechos Reservados - 2022
                 </div>
-            </footer>
-        </section>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            </div>
+        </footer>
+    </section>
+    <script>
+        /document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();
-            });
-            $(document).ready(function () {
-                $('#modal1').modal('modal-trigger');
-            });
+        }); /
+        var temporal = "<?php echo $passwd_t ?>";
 
+                if (temporal == 1) {
+        showModal();
+        console.log(temporal);
+        } else {
+        CloseModal();
+        }
+        function showModal() {
+        document.getElementById('modal_1').style.display = 'block';
+        }
 
-        </script>
-        <script src="js/script.js"></script>
-    </body>
+        function CloseModal() {
+        document.getElementById('modal_1').style.display = 'none';
+        }
+    </script>
+    <script src="js/script.js"></script>
+</body>
 </html>

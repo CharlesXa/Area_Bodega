@@ -121,6 +121,7 @@ class Data {
         $query = $this->con->query($sql);
         
     }
+    
 
 }
 ?>
