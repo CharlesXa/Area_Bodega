@@ -6,6 +6,7 @@ session_start();
 $rut = $_SESSION['rut'];
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
+$passwd_t = $_SESSION['passwd_t'];
 
 if ($rut == null || "") {
     echo '<script language="javascript">alert("Acceso invalido");</script>';

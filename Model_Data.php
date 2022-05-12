@@ -110,6 +110,11 @@ class Data {
         
     }
     
+    public function updatePass($rut, $passwd, $passwd_t) {
+        $sql = "Update usuario SET passwd = SHA2('$passwd',0), passwd_t = '$passwd_t' WHERE usuario.rut = '$rut'";
+        $this->con->query($sql);
+    }
+    
     public function updStock($id,$cantidad) {
         $sql = "UPDATE `stock` SET `cantidad_t` = '$cantidad' WHERE `stock`.`id` = $id;";
         
