@@ -20,7 +20,7 @@ $data = new Data();
         <meta charset="UTF-8">
         <link rel="stylesheet" href="Materialize/css/materialize.css">
         <script src="Materialize/js/materialize.js"></script>
-        <link rel="icon" href="img/iconoBodega.png"/>
+        <link rel="icon" href="img/iconAdmin.png"/>
         <link rel="stylesheet" href="Materialize/css/style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -28,7 +28,7 @@ $data = new Data();
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
-        <title>Menu Bodega</title>
+        <title>Menu Administrador</title>
 
     </head>
     <body style="background-color: #E4E9F7" >
@@ -45,7 +45,7 @@ $data = new Data();
         <div class="sidebar active">
             <div class="logo-details">
                 <a href="menuBodega.php" style="padding:15px; padding-top: 25px">
-                    <img src="img/iconoBodega.png" width="50px" height="50px"/>
+                    <img src="img/iconAdmin.png" width="50px" height="50px"/>
                 </a>
                 <span class="logo_name">Admin S.G.V</span>
             </div>
@@ -59,15 +59,14 @@ $data = new Data();
                     <div class="iocn-link">
                         <a href="#">
                             <i class='bx bx-collection' ></i>
-                            <span class="link_name">Stock</span>
+                            <span class="link_name">Database</span>
                         </a>
                         <i class='bx bxs-chevron-down arrow' ></i>
                     </div>
                     <ul class="sub-menu">
                         <li><a class="link_name" href="#">Stock</a></li>
-                        <li><a href="vistas_stock/ingresarStock.php">Ingreso</a></li>
-                        <li><a href="vistas_stock/actualizarStock.php">Actualizar</a></li>
-                        <li><a href="vistas_stock/visualizarStock.php">Visualizar</a></li>
+                        <li><a href="backup.php">Respaldo</a></li>
+                        <li><a href="vistas_stock/actualizarStock.php">Visualizar tablas</a></li>
                     </ul>
                 </li>
                 <li>
