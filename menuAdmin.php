@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_NOTICE ^ E_ALL);
+error_reporting(0);
 
 include_once 'Model_Data.php';
 session_start();
@@ -15,12 +15,6 @@ if ($rut == null || "") {
 
 $data = new Data();
 ?>
-<!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
--->
-
 <html>
     <head>
         <meta charset="UTF-8">
@@ -53,7 +47,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <a href="menuBodega.php" style="padding:15px; padding-top: 25px">
                     <img src="img/iconoBodega.png" width="50px" height="50px"/>
                 </a>
-                <span class="logo_name">Bodega S.G.V</span>
+                <span class="logo_name">Admin S.G.V</span>
             </div>
             <ul class="nav-links">
                 <li>
@@ -149,31 +143,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <table class="table responsive-table centered" id="datos" border="1">
             <thead align="center">
                 <tr>
-                    <th colspan="4" style="font-size: 25px; text-align: center">Historial de Solicitudes</th>
+                    <th colspan="4" style="font-size: 25px; text-align: center">Listado de usuarios</th>
                 </tr>
                 <tr>
+                    <th>R.U.T</th>
                     <th>Nombre</th>
-                    <th>Cantidad</th>
-                    <th>Fecha y Hora</th>
-                    <th>ID de la solicitud</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Telefono</th>
+                    <th>Area</th>
+                    <th>Tipo de usuario</th>
                 </tr>
             </thead>
 
             <tbody>
-                <?php
-                $historial = $data->getHistorial();
-                foreach ($historial as $key) {
-                    echo '
-                                    <tr>
-                                        <td>' . $key['id'] . '</td>   
-                                        <td>' . $key['nombre'] . '</td>   
-                                        <td>' . $key['cantidad'] . '</td>   
-                                        <td>' . $key['fecha_hora'] . '</td>   
-                                        <td>' . $key['solicitud_id_fk'] . '</td>   
-                                    </tr>
-                                ';
-                }
-                ?>
+                
                 <tr>
                     <td></td>
                     <td></td>
@@ -345,7 +329,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         }
     </script>
     <script src="js/script.js"></script>
-    <~<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
-    <!<!-- <script src="SweetAlerts/AlertLogBodega.js"></script>-->
 </body>
 </html>
+

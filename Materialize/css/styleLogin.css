@@ -9,7 +9,7 @@
 body{
     background-image: url(../../img/fondo.png);
     background-size: auto;
-    background-repeat: no-repeat;
+    *background-repeat: no-repeat;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -215,6 +215,19 @@ body{
     }
     .container #flip:checked ~ .forms .login-form{
         display: none;
+    }
+}
+
+@media(max-width: 560px) and (min-width: 0px){
+    body{
+        background-image: url(../../img/fondo.png);
+        background-size: cover;
+        *background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        *background: #7d2ae8;
+        padding: 30px;
     }
 }
 

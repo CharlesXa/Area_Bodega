@@ -1,10 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet"/>
+    </head>
+    <body style="background-image: url('../img/fondo.png')">
+        <script>
+            function SesionBodega() {
+                swal({
+                    title: "Bienvenido",
+                    text: "Encargado de Bodega",
+                    type: "success",
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Aceptar"
+                },
+                        function () {
+                            window.location.href = '../menuBodega.php';
+                        });
+            }
+            function SesionSeguridad() {
+                swal({
+                    title: "Bienvenido",
+                    text: "Encargado de Seguridad",
+                    type: "success",
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Aceptar"
+                },
+                        function () {
+                            window.location.href = '../menuSeguridad.php';
+                        });
+            }
+
+            function SesionAdmin() {
+                swal({
+                    title: "Bienvenido",
+                    text: "Administrador",
+                    type: "success",
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Aceptar"
+                },
+                        function () {
+                            window.location.href = '../menuAdmin.php';
+                        });
+            }
+            function ErrorLog() {
+                swal({
+                    title: "ERROR",
+                    text: "El correo y/o contraseña no existe",
+                    type: "error",
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Aceptar"
+                },
+                        function () {
+                            window.location.href = '../index.php';
+                        });
+            }
+
+
+        </script>
+    </body>
+</html>
 <?php
 //error_reporting(0);
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
  */
-
 include_once '../Model_Data.php';
 
 session_start();
@@ -13,15 +76,14 @@ session_start();
 $rut = isset($_POST["txt_rut"]) ? $_POST["txt_rut"] : null;
 $pass = isset($_POST["txt_pass"]) ? $_POST["txt_pass"] : null;
 
-
 $data = new Data();
 
 if ($rut && $pass) {
-    
-    $valid=$data->isUserPassValid($rut, $pass);
+
+    $valid = $data->isUserPassValid($rut, $pass);
     if ($valid) {
         $rs = $data->getUserbyRut($rut);
-        foreach ($rs as $key){
+        foreach ($rs as $key) {
             $_SESSION['id'] = $key['id'];
             $_SESSION['rut'] = $key['rut'];
             $_SESSION['nombre'] = $key['nombre'];
@@ -31,23 +93,31 @@ if ($rut && $pass) {
             $_SESSION['area_usuario'] = $key['area_usuario_id_fk'];
             $_SESSION['tipo_usuario'] = $key['tipo_user_id_fk'];
             $_SESSION['passwd_t'] = $key['passwd_t'];
-            
         }
-        
-        
-        switch ($_SESSION['area_usuario']){
+
+
+        switch ($_SESSION['tipo_usuario']) {
             case 1:
-                echo '<script language="javascript">alert("Bienvenido E. Bodega");window.location.href="../menuBodega.php"</script>';
+                echo '<script>SesionAdmin();</script>';
                 break;
             case 2:
-                echo '<script language="javascript">alert("Bienvenido E. Seguridad");window.location.href="../menuSeguridad.php"</script>';
-                break;
-            default:
-                header("location: ../index.php");
-        }      
-    } else if(!$valid){
-        echo '<script language="javascript">alert("Error de autentificacion o El Usuario esta Inactivo");window.location.href="../index.php"</script>';
+                switch ($_SESSION['area_usuario']) {
+                    case 1:
+                        echo '<script>SesionBodega();</script>';
+                        break;
+                    case 2:
+                        echo '<script>SesionSeguridad();</script>';
+                        break;
+                    default:
+                        header("location: ../index.php");
+                }
+        }
+    } else if (!$valid) {
+        echo '<script>ErrorLog();</script>';
     }
 } else {
     header("location: ../index.php");
 }
+?>
+
+
