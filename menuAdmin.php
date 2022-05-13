@@ -157,14 +157,23 @@ $data = new Data();
             </thead>
 
             <tbody>
-                
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <?php
+                $users = $data->getAllusers();
+                    foreach ($users as $key) {
+                        echo ' 
+                                <tr>
+                                    <td>'.$key['rut'].'</td>
+                                    <td>'.$key['nombre'].'</td>
+                                    <td>'.$key['apellido'].'</td>
+                                    <td>'.$key['emai'].'</td>
+                                    <td>'.$key['telefono'].'</td>
+                                    <td>'.$key['area'].'</td>
+                                    <td>'.$key['tipo'].'</td>
+                                </tr>
+                             ';
+                    }
+                ?>
+
                 <tr>
                     <td></td>
                     <td></td>
