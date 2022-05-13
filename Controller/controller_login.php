@@ -32,7 +32,46 @@
                             window.location.href = '../menuSeguridad.php';
                         });
             }
-
+            
+            function SesionRRHH() {
+                swal({
+                    title: "Bienvenido",
+                    text: "Encargado de RRHH",
+                    type: "success",
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Aceptar"
+                },
+                        function () {
+                            window.location.href = '../menuGeneral.php';
+                        });
+            }
+            function SesionZ_Espera() {
+                swal({
+                    title: "Bienvenido",
+                    text: "Encargado de Zona de espera",
+                    type: "success",
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Aceptar"
+                },
+                        function () {
+                            window.location.href = '../menuGeneral.php';
+                        });
+            }
+            
+            
+            function SesionG_Vuelos() {
+                swal({
+                    title: "Bienvenido",
+                    text: "Encargado de Gestion de vuelos",
+                    type: "success",
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Aceptar"
+                },
+                        function () {
+                            window.location.href = '../menuGeneral.php';
+                        });
+            }
+            
             function SesionAdmin() {
                 swal({
                     title: "Bienvenido",
@@ -107,6 +146,16 @@ if ($rut && $pass) {
                         break;
                     case 2:
                         echo '<script>SesionSeguridad();</script>';
+                        break;
+                    
+                    case 3:
+                        echo '<script>SesionRRHH();</script>';
+                        break;
+                    case 4:
+                        echo '<script>SesionZ_Espera();</script>';
+                        break;
+                    case 5:
+                        echo '<script>SesionG_Vuelos();</script>';
                         break;
                     default:
                         header("location: ../index.php");
