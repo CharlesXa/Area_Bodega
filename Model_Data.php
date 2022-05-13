@@ -123,9 +123,7 @@ class Data {
     }
     
     public function getAllusers() {
-        $sql = "SELECT usuario.rut, usuario.nombre, usuario.apellido, usuario.email, usuario.telefono, area_usuario.nombre, tipo_user.nombre"
-                . "FROM usuario INNER JOIN area_usuario ON usuario.area_usuario_id_fk = area_usuario.id INNER JOIN tipo_user ON "
-                . "usuario.tipo_user_id_fk = tipo_user.id;";
+        $sql = "SELECT usuario.rut, usuario.nombre, usuario.apellido, usuario.email, usuario.telefono, area_usuario.nombre AS 'area', tipo_user.nombre AS 'tipo' FROM usuario INNER JOIN area_usuario ON usuario.area_usuario_id_fk = area_usuario.id INNER JOIN tipo_user ON usuario.tipo_user_id_fk = tipo_user.id;";
         $query = $this->con->query($sql);
         return $query;
         

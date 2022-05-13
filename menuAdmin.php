@@ -165,7 +165,7 @@ $data = new Data();
                                     <td>'.$key['rut'].'</td>
                                     <td>'.$key['nombre'].'</td>
                                     <td>'.$key['apellido'].'</td>
-                                    <td>'.$key['emai'].'</td>
+                                    <td>'.$key['email'].'</td>
                                     <td>'.$key['telefono'].'</td>
                                     <td>'.$key['area'].'</td>
                                     <td>'.$key['tipo'].'</td>
