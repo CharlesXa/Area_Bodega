@@ -331,6 +331,7 @@ CREATE TABLE `usuario` (
   `telefono` int(11) DEFAULT NULL,
   `area_usuario_id_fk` int(11) DEFAULT NULL,
   `tipo_user_id_fk` int(11) DEFAULT NULL,
+  `passwd_t` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `area_usuario_id_fk` (`area_usuario_id_fk`),
   KEY `tipo_user_id_fk` (`tipo_user_id_fk`),
@@ -345,7 +346,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'15.116.506-0','Nicolas','Perez','1234','n.perez@gmail.com',949310401,1,2),(2,'20.371.416-5','Ronald','Guerrero','1234','r.guerrero@gmail.com',949310401,2,2),(3,'20.660.314-3','Javier','Villalobos','1234','j.villalobos@gmail.com',949310401,1,2);
+INSERT INTO `usuario` VALUES (1,'15.116.506-0','Nicolas','Perez','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4','nicolasperezcorreo@gmail.com',949310401,1,2,0),(2,'20.371.416-5','Ronald','Guerrero','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4','aweonao5000@gmail.com',949310401,2,2,0),(3,'20.660.314-3','Javier','Villalobos','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4','jr972971@gmail.com',949310401,1,2,0);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -388,4 +389,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-09 21:47:54
+-- Dump completed on 2022-05-12  1:36:14

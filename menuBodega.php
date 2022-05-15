@@ -146,7 +146,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
         </div>
-        <table class="table responsive-table centered" id="datos" border="1">
+        <table class="table centered" id="datos" border="1">
             <thead align="center">
                 <tr>
                     <th colspan="4" style="font-size: 25px; text-align: center">Historial de Solicitudes</th>

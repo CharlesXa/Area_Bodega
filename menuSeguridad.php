@@ -35,7 +35,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <body style="background-color: #E4E9F7">
         <div class="sidebar close">
             <div class="logo-details">
-                <a href="menuSeguridad.php.php" style="padding: 30px 0 15px 18px">
+                <a href="menuSeguridad.php" style="padding: 30px 0 15px 18px">
                     <img src="img/favicon.png" width="40px" height="40px"/>
                 </a>
                 <span class="logo_name">Seguridad S.G.V</span>
@@ -45,6 +45,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <a href="#">
                         <span class="link_name"></span>
                     </a>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a class="modal-trigger" href="#modal1">
+                            <i class='bx bx-comment' ></i>
+                            <!--<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>-->
+                            <span title="Generar reporte" class="link_name">Generar reporte</span>
+                        </a>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a class="modal-trigger" href="#modal1">Generar reporte</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a class="modal-trigger" href="#modal2">
+                            <i class='bx bx-user' ></i>
+                            <span class="link_name">P. de Seguridad</span>
+                        </a>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a href="#modal2">Politicas de Seguridad</a></li>
+                    </ul>
                 </li>
                 <li>
                     <div class="profile-details">
@@ -60,16 +83,92 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </li>
             </ul>
         </div>
-        <section class="home-section">
-            <div class="home-content">
-                <div class="navbar-fixed">
-                    <nav  style="background-color: #1d1b31;">
-                        <div class="nav-wrapper">
-                            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bx bx-menu white-text" ></i></a>
+        <!-- Modal de generar Reporte -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500">Reporte</h4>
+                <div class="row grey lighten-3">
+                    <form class="col s12" style="padding: 30px">
+                        <div class="row">
+                            <div class="input-field col s12 m6 l6">
+                                <input id="a" type="text" class="validate" style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
+                                <label for="a">R.U.T</label>
+                            </div>
                         </div>
-                    </nav>
+                        <div class="row">
+                            <div class="input-field col s12 m6 l6">
+                                <input id="c" type="text" class="validate" style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
+                                <label for="c">Nombre</label>
+                            </div>
+                            <div class="input-field col s12 m6 l6">
+                                <input id="b" type="text" class="validate" style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
+                                <label for="b">Apellido</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s10 m6 l4" style="background-color: white; border-radius: 5px; margin-left: 12px">
+                                <select>
+                                    <option value="" disabled selected>Gravedad</option>
+                                    <option value="1">Leve</option>
+                                    <option value="2">Media</option>
+                                    <option value="3">Grave</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s10 m6 l3" style="background-color: white; border-radius: 5px; margin-left: 12px">
+                                <input style="border-bottom: none" placeholder="" id="datepicker" type="text" class="datepicker">
+                                <label style="transform: translate(-19px, -22px);" for="datepicker">Fecha</label>
+                            </div>
+                            <div class="input-field col s10 m6 l3" style="background-color: white; border-radius: 5px; margin-left: 12px">
+                                <input style="border-bottom: none" placeholder="" id="timepicker" type="text" class="timepicker">
+                                <label style="transform: translate(-19px, -22px);" for="timepicker" style="">Hora</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="textarea2" class="materialize-textarea" data-length="120" style="background-color: white; border-radius: 5px; border-bottom: none;; text-indent: 18px;"></textarea>
+                                <label for="textarea2">Observaciones</label>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
+            <div class="modal-footer" style="text-align: center; margin-bottom: 10px">
+                <a href="#" class="modal-close waves-effect waves-light btn yellow darken-3">Cancelar</a>
+                <a href="#" class="modal-close waves-effect waves-light btn" style="background: #1d1b31;">Aceptar</a>
+            </div>
+        </div>
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500">Personal Autorizado</h4>
+                <div class="row grey lighten-3">
+                    <form class="col s12" style="padding: 30px">
+                        <div class="row">
+                            <div class="input-field col s12 m6 l6">
+                                <input id="a" type="text" class="validate" style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
+                            </div>
+                            <div class="input-field col s12 m6 l6">
+                                <input id="a" type="text" class="validate" style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer" style="text-align: center; margin-bottom: 10px">
+                <a href="#!" class="modal-close waves-effect waves-light btn indigo darken-4">Cerrar</a>
+            </div>
+        </div>
+        <section class="home-section">
+            <div class="nav-wrapper">
+                <nav  style="background-color: #1d1b31;">
+                    <div class="nav-wrapper">
+                        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bx bx-menu white-text" ></i></a>
+                    </div>
+                </nav>
+            </div>
+            <!--<div class="home-content">
+            </div>-->
             <div class="row" style="padding: 20px 50px">
                 <div class="col s12">
                     <div class="col s12 m6 l16">
@@ -289,10 +388,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </footer>
         </section>
 
-        <script>
+        <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();
-            });
+            })
             const card1 = document.querySelector('.activator_nivel_1_t1');
             const card2 = document.querySelector('.activator_nivel_2_t1');
             const card3 = document.querySelector('.activator_nivel_3_t1');

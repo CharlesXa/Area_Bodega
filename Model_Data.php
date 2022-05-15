@@ -28,10 +28,10 @@ class Data {
     }
 
     //reconoce si existe un usuario con ese rut y passwd
-    public function isUserPassValid($rut, $pass) {
+    public function isUserPassValid($correo, $pass) {
         $sql = "SELECT COUNT(*) AS 'existe' 
 	            FROM usuario
-	            WHERE rut = '$rut' AND passwd = sha2('$pass',0)";
+	            WHERE email = '$correo' AND passwd = sha2('$pass',0)";
 
         $query = $this->con->query($sql);
 
@@ -42,8 +42,8 @@ class Data {
         return false;
     }
 
-    public function getUserbyRut($rut) {
-        $sql = "SELECT * FROM usuario where rut = '$rut'";
+    public function getUserbyRut($correo) {
+        $sql = "SELECT * FROM usuario where email = '$correo'";
         $query = $this->con->query($sql);
         return $query;
     }

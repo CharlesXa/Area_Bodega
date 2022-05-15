@@ -212,7 +212,7 @@
 .home-section{
     position: relative;
     background: #E4E9F7;
-    *height: 100vh;
+    height: 100vh;
     left: 260px;
     width: calc(100% - 260px);
     transition: all 0.5s ease;
@@ -240,9 +240,9 @@
     font-weight: 600;
 }
 .pruea span{
-    
+
 }
-@media (max-width: 800px) and (min-width: 401px) {
+@media (max-width: 800px) and (min-width: 40px) {
     .sidebar.close .nav-links li .sub-menu{
         display: none;
     }
@@ -252,6 +252,7 @@
     .sidebar.close{
         width: 0;
     }
+
     .home-section{
         left: 78px;
         width: calc(100% - 78px);
@@ -274,5 +275,40 @@
     .pruea{
         display: block;
     }
+
 }
+/*@media (max-width: 360px) and (min-width: 40px) {
+    .sidebar.close .nav-links li .sub-menu{
+        display: none;
+    }
+    .sidebar{
+        width: 0px;
+    }
+    .sidebar.close{
+        width: 0;
+    }
+
+    .home-section{
+        left: 0px;
+        width: calc(100% - 78px);
+        z-index: 100;
+    }
+    .sidebar.close ~ .home-section{
+        width: 100%;
+        left: 0;
+    }
+    .sidebar .logo_name{
+        display: none;
+    }
+    .sidebar .profile-details img{
+        height: 0px;
+        width: 0px;
+        transition: all 0.1s ease;
+        padding: 10px;
+        background: #11101d;
+    }
+    .name-job{
+        display: none;
+    }
+}*/
 

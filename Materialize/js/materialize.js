@@ -8731,7 +8731,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     autoClose: false,
 
     // the default output format for the input field value
-    format: 'mmm dd, yyyy',
+    format: 'dd-mm-yyyy',
 
     // Used to create date object from current input string
     parse: null,
@@ -8782,16 +8782,13 @@ $jscomp.polyfill = function (e, r, p, m) {
 
     // internationalization
     i18n: {
-      cancel: 'Cancel',
-      clear: 'Clear',
-      done: 'Ok',
-      previousMonth: '‹',
-      nextMonth: '›',
-      months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-      monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      weekdays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-      weekdaysAbbrev: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+        months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        weekdays: ['Domingo', 'Lunes', 'Martes', 'Miércoles,', 'Jueves', 'Viernes', 'Sábado'],
+        weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mier', 'Jue', 'Vie', 'Sab'],
+        weekdaysAbbrev: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+        cancel: ['Cancelar'],
+        done: ['Aceptar']
     },
 
     // events array
@@ -9664,13 +9661,13 @@ $jscomp.polyfill = function (e, r, p, m) {
 
     // internationalization
     i18n: {
-      cancel: 'Cancel',
-      clear: 'Clear',
-      done: 'Ok'
+      cancel: 'Cancelar',
+      clear: 'Limpiar',
+      done: 'Aceptar'
     },
 
     autoClose: false, // auto close when minute is selected
-    twelveHour: true, // change to 12 hour AM/PM clock from 24 hour
+    twelveHour: false, // change to 12 hour AM/PM clock from 24 hour
     vibrate: true, // vibrate the device when dragging clock hand
 
     // Callbacks

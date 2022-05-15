@@ -1,85 +1,140 @@
-<!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edit this template
--->
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="Materialize/css/materialize.css">
-        <script src="Materialize/js/materialize.js"></script>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="js/jquery.rut.js"></script>
         <link rel="icon" href="img/iconLogin.png"/>
         <link href="Materialize/css/styleLogin.css" rel="stylesheet">
-        <script src="js/validarut.js"></script>
-        <title>LogIn</title>
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+        <title>Iniciar sesión</title>
     </head>
     <body>
-        <div class="container">
-            <input type="checkbox" id="flip">
-            <div class="cover">
-                <div class="front">
-                  <!--<img src="images/frontImg.jpg" alt="">-->
-                </div>
-                <div class="back">
-                  <!--<img class="backImg" src="images/backImg.jpg" alt="">-->
-                </div>
+        <header class="header">
+            <div class="nav-cont logo-nav">
+                <img src="img/iconoBodega.png" width="50px" height="50px">
+                <a>Bodega/Seguridad</a>
+                <img src="img/favicon.png" width="50px" height="50px">
             </div>
+        </header>
+        <div class="container">
             <div class="forms">
-                <div class="form-content">
-                    <div class="login-form">
-                        <div class="title">Iniciar Sesion</div>
-                        <form name="login" action="Controller/controller_login.php" method="post">
-                            <div class="input-boxes">
-                                <div class="input-box">
-                                    <i class="fas fa-envelope"></i>
-                                    <input id="rut" name="txt_rut" type="text" placeholder="R.U.T" required onchange="javascript:return Rut(document.login.rut.value)">
-                                </div>
-                                <div class="input-box">
-                                    <i class="fas fa-lock"></i>
-                                    <input name="txt_pass" type="password" placeholder="Password" required>
-                                </div>
-                                <div class="button input-box">
-                                    <input type="submit" value="Ingresar">
-                                </div>
-                                <div class="text sign-up-text">¿Olvidaste tu contraseña? <label for="flip">Reestablecela</label></div>
+                <div class="form login">
+                    <span class="titulo">Iniciar sesión</span>
+                    <form name="login" action="Controller/controller_login.php" method="post">
+                        <div class="input-field">
+                            <input type="text" name="txt_correo" placeholder="Correo electronico" id="email" required>
+                            <i class="uil uil-envelope icon"></i>
+                        </div>
+                        <span id="emailVal"></span>
+                        <div class="input-field">
+                            <input type="password" name="txt_pass" class="passwd" placeholder="Contraseña" required>
+                            <i class="uil uil-lock icon"></i>
+                            <i class="uil uil-eye-slash mostrarPass"></i>
+                        </div>
+                        <!--<div class="checkbox-text">
+                            <div class="checkbox-content">
+                                <input type="checkbox" id="remember">
+                                <label for="remember" class="text">Recordarme</label>
                             </div>
-                        </form>
+                        </div>-->
+                        <div class="input-field button">
+                            <input type="submit" value="Iniciar sesión" required>
+                        </div>
+                    </form>
+                    <div class="login-singup">
+                        <span class="text">¿Olvidaste tu contraseña?
+                            <a href="#" class="text signup-link">Restablécela</a>
+                        </span>
                     </div>
-                    <div class="signup-form">
-                        <div class="title">Reestablecer Contraseña</div>
-                        <form action="mail/enviar.php" method="post">
-                            <div class="input-boxes">
-                                <div class="input-box">
-                                    <i class="fas fa-envelope"></i>
-                                    <input name="mail" id="txt_email" type="text" placeholder="Ingresa Tu Email" required>
-                                </div>
-                                <div class="button input-box">
-                                    <input name="btn_enviar" type="submit" value="Reestablecer">
-                                </div>
-                                <div class="text sign-up-text"><label for="flip">Cancelar</label></div>
-                            </div>
-                        </form>
+                </div>
+                <div class="form forgotpass">
+                    <span class="titulo">Reestablecer Contraseña</span>
+                    <form action="mail/enviar.php" method="post">
+                        <div class="input-field">
+                            <input type="text" name="mail" placeholder="Correo electronico" id="txt_email" required>
+                            <i class="uil uil-envelope icon"></i>
+                        </div>
+                        <span id="emailVal2"></span>
+                        <div class="input-field button">
+                            <input type="submit" name="btn_enviar" value="Restablecer">
+                        </div>
+                    </form>
+                    <div class="login-singup">
+                        <span class="text">
+                            <a href="#" class="text login-link">Cancelar</a>
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
+        <footer>
+            <span>
+                SGV © Derechos Reservados - 2022
+            </span>
+        </footer>
         <script>
-            $(function () {
-                $("input#rut").rut({
-                    formatOn: 'keyup',
-                    minimumLength: 8, // validar largo mínimo; default: 2
-                    validateOn: 'change' // si no se quiere validar, pasar null
-                });
-                var input = document.getElementById('rut');
-                input.addEventListener('input', function () {
-                    if (this.value.length >= 13)
-                        this.value = this.value.slice(0, 12);
+            document.getElementById("email").focus();
+            const container = document.querySelector(".container");
+            passwdShowHide = document.querySelectorAll(".mostrarPass");
+            passwdFields = document.querySelectorAll(".passwd");
+            singUp = document.querySelector(".signup-link");
+            login = document.querySelector(".login-link");
+
+            passwdShowHide.forEach(eyeIcon => {
+                eyeIcon.addEventListener("click", () => {
+                    passwdFields.forEach(passwdFields => {
+                        if (passwdFields.type === "password") {
+                            passwdFields.type = "text";
+                            passwdShowHide.forEach(icon => {
+                                icon.classList.replace("uil-eye-slash", "uil-eye");
+                            })
+                        } else {
+                            passwdFields.type = "password";
+                            passwdShowHide.forEach(icon => {
+                                icon.classList.replace("uil-eye", "uil-eye-slash");
+                            })
+                        }
+                    })
                 })
             })
+
+            singUp.addEventListener("click", () => {
+                container.classList.add("active");
+            })
+            login.addEventListener("click", () => {
+                container.classList.remove("active");
+            })
+            document.getElementById('email').addEventListener('input', function () {
+                campo = event.target;
+                valido = document.getElementById('emailVal');
+                emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+                //Se muestra un texto a modo de ejemplo, luego va a ser un icono
+
+                if (emailRegex.test(campo.value)) {
+                    valido.innerText = "El correo es válido";
+                } else {
+                    valido.innerText = "El correo no es válido";
+                }
+                if (campo.value === "") {
+                    valido.innerText = "";
+                }
+            }
+            );
+            document.getElementById('txt_email').addEventListener('input', function () {
+                campo = event.target;
+                valido = document.getElementById('emailVal2');
+                emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+                //Se muestra un texto a modo de ejemplo, luego va a ser un icono
+
+                if (emailRegex.test(campo.value)) {
+                    valido.innerText = "El correo es válido";
+                } else {
+                    valido.innerText = "El correo no es válido";
+                }
+                if (campo.value === "") {
+                    valido.innerText = "";
+                }
+            }
+            );
         </script>
-        
     </body>
 </html>

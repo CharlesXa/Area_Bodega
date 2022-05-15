@@ -112,16 +112,16 @@ include_once '../Model_Data.php';
 session_start();
 
 /** @var type $_POST */
-$rut = isset($_POST["txt_rut"]) ? $_POST["txt_rut"] : null;
+$correo = isset($_POST["txt_correo"]) ? $_POST["txt_correo"] : null;
 $pass = isset($_POST["txt_pass"]) ? $_POST["txt_pass"] : null;
 
 $data = new Data();
 
-if ($rut && $pass) {
+if ($correo && $pass) {
 
-    $valid = $data->isUserPassValid($rut, $pass);
+    $valid = $data->isUserPassValid($correo, $pass);
     if ($valid) {
-        $rs = $data->getUserbyRut($rut);
+        $rs = $data->getUserbyRut($correo);
         foreach ($rs as $key) {
             $_SESSION['id'] = $key['id'];
             $_SESSION['rut'] = $key['rut'];
