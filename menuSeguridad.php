@@ -84,31 +84,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </ul>
         </div>
         <!-- Modal de generar Reporte -->
+
         <div id="modal1" class="modal">
-            <div class="modal-content">
-                <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500">Reporte</h4>
-                <div class="row grey lighten-3">
-                    <form class="col s12" style="padding: 30px">
+            <button class="modal-close waves-effect waves-light btn yellow darken-3" style="margin-left: 1250px"><i class="material-icons">close</i></button>
+            <form class="col s12" style="padding: 10px" method="post" action="Controller/controller_obs.php">
+                <div class="modal-content">
+                    <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500">Reporte</h4>
+                    <div class="row grey lighten-3">
                         <div class="row">
                             <div class="input-field col s12 m6 l6">
-                                <input id="a" type="text" class="validate" style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
+                                <input id="a" type="text" name="txt_rut" value="<?php echo $rut; ?>" readonly class="validate" style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
                                 <label for="a">R.U.T</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m6 l6">
-                                <input id="c" type="text" class="validate" style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
+                                <input id="c" type="text" name="txt_nombre" value="<?php echo $nombre; ?>" readonly class="validate" style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
                                 <label for="c">Nombre</label>
                             </div>
                             <div class="input-field col s12 m6 l6">
-                                <input id="b" type="text" class="validate" style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
+                                <input id="b" type="text" class="validate" name="txt_apellido" value="<?php echo $apellido; ?>" readonly style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
                                 <label for="b">Apellido</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s10 m6 l4" style="background-color: white; border-radius: 5px; margin-left: 12px">
-                                <select>
-                                    <option value="" disabled selected>Gravedad</option>
+                                <select name="cbo_gravedad">
+                                    <option value="0">--Gravedad--</option>
                                     <option value="1">Leve</option>
                                     <option value="2">Media</option>
                                     <option value="3">Grave</option>
@@ -117,42 +119,90 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                         <div class="row">
                             <div class="input-field col s10 m6 l3" style="background-color: white; border-radius: 5px; margin-left: 12px">
-                                <input style="border-bottom: none" placeholder="" id="datepicker" type="text" class="datepicker">
+                                <input style="border-bottom: none" placeholder="" id="datepicker" name="txt_fecha" type="text" class="datepicker">
                                 <label style="transform: translate(-19px, -22px);" for="datepicker">Fecha</label>
                             </div>
                             <div class="input-field col s10 m6 l3" style="background-color: white; border-radius: 5px; margin-left: 12px">
-                                <input style="border-bottom: none" placeholder="" id="timepicker" type="text" class="timepicker">
+                                <input style="border-bottom: none" placeholder="" id="timepicker" type="text" name="txt_hora" class="timepicker">
                                 <label style="transform: translate(-19px, -22px);" for="timepicker" style="">Hora</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="textarea2" class="materialize-textarea" data-length="120" style="background-color: white; border-radius: 5px; border-bottom: none;; text-indent: 18px;"></textarea>
+                                <textarea id="textarea2" class="materialize-textarea" name="area_obs" data-length="120" style="background-color: white; border-radius: 5px; border-bottom: none;; text-indent: 18px;"></textarea>
                                 <label for="textarea2">Observaciones</label>
                             </div>
                         </div>
-                    </form>
+
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer" style="text-align: center; margin-bottom: 10px">
-                <a href="#" class="modal-close waves-effect waves-light btn yellow darken-3">Cancelar</a>
-                <a href="#" class="modal-close waves-effect waves-light btn" style="background: #1d1b31;">Aceptar</a>
-            </div>
+                <div class="modal-footer" style="text-align: center; margin-bottom: 10px">
+                    <button class="waves-effect waves-light btn" name="btn_reporte" type="submit" style="background: #1d1b31;">Aceptar</button>
+                </div>
+            </form>
         </div>
+
         <div id="modal2" class="modal">
             <div class="modal-content">
                 <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500">Personal Autorizado</h4>
                 <div class="row grey lighten-3">
-                    <form class="col s12" style="padding: 30px">
-                        <div class="row">
-                            <div class="input-field col s12 m6 l6">
-                                <input id="a" type="text" class="validate" style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
-                            </div>
-                            <div class="input-field col s12 m6 l6">
-                                <input id="a" type="text" class="validate" style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
-                            </div>
-                        </div>
-                    </form>
+                    <table class="table responsive-table centered" id="datos" border="1">
+                        <thead align="center">
+                            <tr>
+                                <th colspan="4" style="font-size: 25px; text-align: center">Listado de usuarios</th>
+                            </tr>
+                            <tr>
+                                <th>R.U.T</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Email</th>
+                                <th>Telefono</th>
+                                <th>Area</th>
+                                <th>Tipo de usuario</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?php
+                            $users = $data->getAllusers();
+                            foreach ($users as $key) {
+                                echo ' 
+                                <tr>
+                                    <td>' . $key['rut'] . '</td>
+                                    <td>' . $key['nombre'] . '</td>
+                                    <td>' . $key['apellido'] . '</td>
+                                    <td>' . $key['email'] . '</td>
+                                    <td>' . $key['telefono'] . '</td>
+                                    <td>' . $key['area'] . '</td>
+                                    <td>' . $key['tipo'] . '</td>
+                                </tr>
+                             ';
+                            }
+                            ?>
+
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>                            
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="modal-footer" style="text-align: center; margin-bottom: 10px">
