@@ -129,6 +129,11 @@ class Data {
         
     }
     
+    public function addObs($user,$gravedad,$fecha,$hora,$obs){
+        $sql = "INSERT INTO `reporte` (`id`, `usuario_id_fk`, `gravedad`, `fecha`, `hora`, `observacion`) VALUES (null, '$user', '$gravedad', '$fecha', '$hora', '$obs');";
+        $query= $this->con->query($sql);
+    }
+    
 
 }
 ?>
