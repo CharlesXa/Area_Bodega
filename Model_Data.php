@@ -209,6 +209,22 @@ class Data {
         $query = $this->con->query($sql);
         return $query;
     }
+    
+    public function getTypeUser() {
+        $sql = "SELECT * FROM tipo_user";
+        $query = $this->con->query($sql);
+        return $query;
+    }
+
+    public function addUser($rut, $nombre, $apellido, $email, $telefono, $area, $tipo, $passwT) {
+        $sql="INSERT INTO usuario (id, rut, nombre, apellido, passwd, email, telefono, area_usuario_id_fk, tipo_user_id_fk, passwd_t) VALUES (NULL, '$rut', '$nombre', '$apellido', sha2('$passwT',0), '$email', '$telefono', '$area', '$tipo', '1');";
+        $query= $this->con->query($sql);
+    }
+
+    public function updUser($email,$telefono,$area,$rut) {
+        $sql="UPDATE usuario SET email = '$email', telefono = '$telefono', area_usuario_id_fk = '$area' WHERE usuario.rut = '$rut';";
+        $query= $this->con->query($sql);
+    }
 }
 ?>
 

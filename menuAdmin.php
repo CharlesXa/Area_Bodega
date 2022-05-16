@@ -14,6 +14,8 @@ if ($rut == null || "") {
 }
 
 $data = new Data();
+
+
 ?>
 <html>
     <head>
@@ -26,6 +28,7 @@ $data = new Data();
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="Materialize/js/funciones.js"></script>
 
 
         <title>Menu Administrador</title>
@@ -64,7 +67,7 @@ $data = new Data();
                         <i class='bx bxs-chevron-down arrow' ></i>
                     </div>
                     <ul class="sub-menu">
-                        <li><a class="link_name" href="#">Stock</a></li>
+                        <li><a class="link_name" href="#">Database</a></li>
                         <li><a href="backup.php">Respaldo</a></li>
                         <li><a href="VistaAdmin/vistaDB.php">Visualizar tablas</a></li>
                     </ul>
