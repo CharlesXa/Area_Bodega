@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 
 include_once 'Model_Data.php';
 session_start();
@@ -26,6 +26,7 @@ $data = new Data();
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="Materialize/js/funciones.js"></script>
 
 
         <title>Menu Administrador</title>
@@ -67,21 +68,6 @@ $data = new Data();
                         <li><a class="link_name" href="#">Stock</a></li>
                         <li><a href="backup.php">Respaldo</a></li>
                         <li><a href="VistaAdmin/vistaDB.php">Visualizar tablas</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <div class="iocn-link">
-                        <a href="#">
-                            <i class='bx bx-book-alt' ></i>
-                            <span class="link_name">Equipaje</span>
-                        </a>
-                        <i class='bx bxs-chevron-down arrow' ></i>
-                    </div>
-                    <ul class="sub-menu">
-                        <li><a class="link_name" href="#">Equipaje</a></li>
-                        <li><a href="#">Ingreso</a></li>
-                        <li><a href="#">Busqueda</a></li>
-                        <li><a href="#">Distribucion</a></li>
                     </ul>
                 </li>
                 <li>
@@ -139,10 +125,155 @@ $data = new Data();
                 </div>
             </div>
         </div>
-        <table class="table responsive-table centered" id="datos" border="1">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <div id="modalAgregar" class="modal">
+                        <div class="modal-content">
+                            <h4>Agregar nuevo usuario</h4>
+                            <div class="row">
+                                <form class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input placeholder="11.111.111-1" id="rut" type="text" name="txt_rut" class="validate">
+                                            <label for="txt_rut">Rut</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input placeholder="Juan" id="nombre" type="text" name="txt_nombre" class="validate">
+                                            <label for="txt_nombre">Nombre</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input placeholder="Pinilla" id="apellido" type="text" name="txt_apellido" class="validate">
+                                            <label for="txt_apellido">Apellido</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input placeholder="email@mail.com" id="email" type="text" name="txt_email" class="validate">
+                                            <label for="txt_email">Email</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input placeholder="Pinilla" id="telefono" type="text" name="txt_telefono" class="validate">
+                                            <label for="txt_telefono">Telefono</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <select name="cbo_area" id="area" required>
+                                                <option value="0">-- Seleccionar --</option>
+                                                <?php
+                                                $area = $data->getArea();
+
+                                                foreach ($area as $key) {
+                                                    echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <select name="cbo_tipo" id="tipo" required>
+                                                <option value="0">-- Seleccionar --</option>
+                                                <?php
+                                                $tipo = $data->getTypeUser();
+
+                                                foreach ($tipo as $key) {
+                                                    echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="agregarUsuario" type="button" class="modal-close waves-effect waves-light btn blue darken-3">Agregar Nuevo Usuario</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <div id="modalEditar" class="modal">
+                        <div class="modal-content">
+                            <h4>Editar Datos</h4>
+                            <div class="row">
+                                <form class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input placeholder="11.111.111-1" id="rutEdite" type="text" name="txt_rut" class="validate" readonly>
+                                            <label for="txt_rut">Rut</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input placeholder="Juan" id="nombreE" type="text" name="txt_nombre" class="validate" readonly>
+                                            <label for="txt_nombre">Nombre</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input placeholder="Pinilla" id="apellidoE" type="text" name="txt_apellido" class="validate" readonly>
+                                            <label for="txt_apellido">Apellido</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input placeholder="email@mail.com" id="emailE" type="text" name="txt_email" class="validate">
+                                            <label for="txt_email">Email</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input placeholder="Pinilla" id="telefonoE" type="text" name="txt_telefono" class="validate">
+                                            <label for="txt_telefono">Telefono</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <select name="cbo_area" id="areaE" required>
+                                                <option value="0">-- Seleccionar --</option>
+                                                <?php
+                                                $area = $data->getArea();
+
+                                                foreach ($area as $key) {
+                                                    echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <select name="cbo_tipo" id="tipoE" required readonly>
+                                                <option value="0">-- Seleccionar --</option>
+                                                <?php
+                                                $tipo = $data->getTypeUser();
+
+                                                foreach ($tipo as $key) {
+                                                    echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="actualizar" type="button" class="modal-close waves-effect waves-light btn blue darken-3">Actualizar Usuario</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class="table centered" id="datos" border="1">
             <thead align="center">
                 <tr>
                     <th colspan="4" style="font-size: 25px; text-align: center">Listado de usuarios</th>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <button data-target="modalAgregar" class="btn modal-trigger" style="background-color: #1d1b31;">Agregar Nuevo Usuario</button>
+                    </td>
                 </tr>
                 <tr>
                     <th>R.U.T</th>
@@ -158,56 +289,32 @@ $data = new Data();
             <tbody>
                 <?php
                 $users = $data->getAllusers();
-                    foreach ($users as $key) {
-                        echo ' 
-                                <tr>
-                                    <td>'.$key['rut'].'</td>
-                                    <td>'.$key['nombre'].'</td>
-                                    <td>'.$key['apellido'].'</td>
-                                    <td>'.$key['email'].'</td>
-                                    <td>'.$key['telefono'].'</td>
-                                    <td>'.$key['area'].'</td>
-                                    <td>'.$key['tipo'].'</td>
-                                </tr>
-                             ';
-                    }
+                foreach ($users as $key) {
+                    $datos = $key['rut'] . "||" .
+                            $key['nombre'] . "||" .
+                            $key['apellido'] . "||" .
+                            $key['email'] . "||" .
+                            $key['telefono'] . "||" .
+                            $key['area'] . "||" .
+                            $key['tipo'];
+                    echo ''
+                    ?>
+
+                    <tr>
+                        <td><?php echo $key['rut'] ?></td>
+                        <td><?php echo $key['nombre'] ?></td>
+                        <td><?php echo $key['apellido'] ?></td>
+                        <td><?php echo $key['email'] ?></td>
+                        <td><?php echo $key['telefono'] ?></td>
+                        <td><?php echo $key['area'] ?></td>
+                        <td><?php echo $key['tipo'] ?></td>
+                        <td><button data-target="modalEditar" class="btn modal-trigger" onclick="cargarDatos('<?php echo $datos; ?>');" style="background-color:#1d1b31; "><i class="material-icons">create</i></button></td>
+                    </tr>
+                    <?php
+                    '';
+                }
                 ?>
 
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
                 <tr>
                     <td></td>
                     <td></td>
@@ -295,10 +402,35 @@ $data = new Data();
             </div>
         </footer>
     </section>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#agregarUsuario').click(function () {
+                rut = $('#rut').val();
+                nombre = $('#nombre').val();
+                apellido = $('#apellido').val();
+                email = $('#email').val();
+                telefono = $('#telefono').val();
+                area = $('#area').val();
+                tipo = $('#tipo').val();
+                passwT = rut.substring(0, 6) + nombre.substring(0, 3);
+
+                agregarUsuario(rut, nombre, apellido, email, telefono, area, tipo, passwT);
+                location.reload(true);
+            });
+
+            $('#actualizar').click(function () {
+
+                actualizarUsuario();
+                location.reload(true);
+            });
+
+        });
+    </script>
     <script>
-        /*document.addEventListener('DOMContentLoaded', function () {
-         M.AutoInit();
-         }); */
+        document.addEventListener('DOMContentLoaded', function () {
+            M.AutoInit();
+        });
         var temporal = "<?php echo $passwd_t ?>";
 
         if (temporal == 1) {
