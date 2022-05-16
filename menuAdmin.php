@@ -14,6 +14,8 @@ if ($rut == null || "") {
 }
 
 $data = new Data();
+
+
 ?>
 <html>
     <head>
@@ -65,7 +67,7 @@ $data = new Data();
                         <i class='bx bxs-chevron-down arrow' ></i>
                     </div>
                     <ul class="sub-menu">
-                        <li><a class="link_name" href="#">Stock</a></li>
+                        <li><a class="link_name" href="#">Database</a></li>
                         <li><a href="backup.php">Respaldo</a></li>
                         <li><a href="VistaAdmin/vistaDB.php">Visualizar tablas</a></li>
                     </ul>
