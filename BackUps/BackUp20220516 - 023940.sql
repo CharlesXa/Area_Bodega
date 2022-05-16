@@ -3,7 +3,7 @@
 -- Host: localhost	Database: areabodega_1
 -- ------------------------------------------------------
 -- Server version 	10.4.24-MariaDB
--- Date: Mon, 16 May 2022 01:46:12 +0200
+-- Date: Mon, 16 May 2022 02:39:40 +0200
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -229,7 +229,7 @@ CREATE TABLE `reporte` (
   PRIMARY KEY (`id`),
   KEY `usuario_id_fk` (`usuario_id_fk`),
   CONSTRAINT `reporte_ibfk_1` FOREIGN KEY (`usuario_id_fk`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,11 +239,12 @@ CREATE TABLE `reporte` (
 LOCK TABLES `reporte` WRITE;
 /*!40000 ALTER TABLE `reporte` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `reporte` VALUES (1,2,'Leve','2022-05-15','08:31:00','uwu');
 /*!40000 ALTER TABLE `reporte` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `reporte` with 0 row(s)
+-- Dumped table `reporte` with 1 row(s)
 --
 
 --
@@ -478,4 +479,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Mon, 16 May 2022 01:46:12 +0200
+-- Dump completed on: Mon, 16 May 2022 02:39:40 +0200

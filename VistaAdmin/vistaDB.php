@@ -18,19 +18,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../Materialize/css/materialize.css">
         <script src="../Materialize/js/materialize.js"></script>
+        <link rel="icon" href="../img/iconAdmin.png"/>
         <link rel="stylesheet" href="../Materialize/css/style.css">
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <title></title>
+        <title>Visualizar Tablas</title>
     </head>
     <body style="background-color: #E4E9F7">
         <div class="sidebar active">
             <div class="logo-details">
-                <a href="../menuBodega.php" style="padding:15px; padding-top: 25px">
-                    <img src="../img/iconoBodega.png" width="50px" height="50px"/>
+                <a href="../menuAdmin.php" style="padding:15px; padding-top: 25px">
+                    <img src="../img/iconAdmin.png" width="50px" height="50px"/>
                 </a>
-                <span class="logo_name">Bodega S.G.V</span>
+                <span class="logo_name">Admin S.G.V</span>
             </div>
             <ul class="nav-links">
                 <li>
@@ -42,30 +43,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="iocn-link">
                         <a href="#">
                             <i class='bx bx-collection' ></i>
-                            <span class="link_name">Stock</span>
+                            <span class="link_name">Database</span>
                         </a>
                         <i class='bx bxs-chevron-down arrow' ></i>
                     </div>
                     <ul class="sub-menu">
                         <li><a class="link_name" href="#">Stock</a></li>
-                        <li><a href="ingresarStock.php">Ingreso</a></li>
-                        <li><a href="actualizarStock.php">Actualizar</a></li>
-                        <li><a href="visualizarStock.php">Visualizar</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <div class="iocn-link">
-                        <a href="#">
-                            <i class='bx bx-book-alt' ></i>
-                            <span class="link_name">Equipaje</span>
-                        </a>
-                        <i class='bx bxs-chevron-down arrow' ></i>
-                    </div>
-                    <ul class="sub-menu">
-                        <li><a class="link_name" href="#">Equipaje</a></li>
-                        <li><a href="#">Ingreso</a></li>
-                        <li><a href="#">Busqueda</a></li>
-                        <li><a href="#">Distribucion</a></li>
+                        <li><a href="../backup.php">Respaldo</a></li>
+                        <li><a href="VistaAdmin/vistaDB.php">Visualizar tablas</a></li>
                     </ul>
                 </li>
                 <li>
@@ -95,7 +80,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="container" >
                 <div class="row">
                     <div class="col s12">
-                        <h2 align="center">Visualizacion de Stock Aeropuerto</h2>
+                        <h2 align="center">Visualizacion de tablas de base de datos</h2>
                         <form method="post">
                             <div class="row">
                                 <div class="col s12 m6">
@@ -106,10 +91,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                                     <option value="0">-- Seleccionar --</option>
                                                     <?php
                                                     $tables = $data->getAllTables();
-                                                    $value=1;
+                                                    $value = 1;
                                                     foreach ($tables as $key) {
-                                                        echo '<option value="' . $key['Tables_in_areabodega_1']. '">' . $key['Tables_in_areabodega_1'] . '</option>';
-                                                        $value=$value+1;
+                                                        echo '<option value="' . $key['Tables_in_areabodega_1'] . '">' . $key['Tables_in_areabodega_1'] . '</option>';
+                                                        $value = $value + 1;
                                                     }
                                                     ?>
                                                 </select>
@@ -120,7 +105,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <div class="col s12 m6">
                                     <div class="row">
                                         <div class="col s12 title_input">
-                                            <button class="btn white-text indigo darken-3 col s12 m4 offset-m4" name="btn_cargar" type="submit" style=" height: 50px; margin-top: 40px; border-radius: 50px; font-weight: 600;">Cargar Stock</button>
+                                            <button class="btn white-text indigo darken-3 col s12 m4 offset-m4" name="btn_cargar" type="submit" style=" height: 50px; margin-top: 40px; border-radius: 50px; font-weight: 600;">Mostrar Tabla</button>
                                         </div>
                                     </div>
                                 </div>

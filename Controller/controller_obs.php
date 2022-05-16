@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
--->
-<html>
+<html lang="es">
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Title</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet"/>
     </head>
-    <body>
+    <body style="background-image: url('../img/fondo.png')">
+        <script>
+            function envio() {
+                swal({
+                    title: "Enviado",
+                    text: "Se ha generado el reporte",
+                    type: "success",
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Aceptar"
+                },
+                        function () {
+                            window.location.href = '../menuSeguridad.php';
+                        });
+            }
+        </script>
     </body>
 </html>
 <?php
@@ -47,5 +59,5 @@ $data = new Data();
 echo $rut . " " . $nombre . " " . $apellido . " " . $txtGravedad . " " . $newformat . " " . $hora . " " . $obs;
 $data->addObs($user, $txtGravedad, $newformat, $hora, $obs);
 
-//Nick, falta alert de redireccion porfi
+echo '<script>envio();</script>';
 ?>
