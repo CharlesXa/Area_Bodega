@@ -66,7 +66,7 @@ $data = new Data();
                     <ul class="sub-menu">
                         <li><a class="link_name" href="#">Stock</a></li>
                         <li><a href="backup.php">Respaldo</a></li>
-                        <li><a href="vistas_stock/actualizarStock.php">Visualizar tablas</a></li>
+                        <li><a href="VistaAdmin/vistaDB.php">Visualizar tablas</a></li>
                     </ul>
                 </li>
                 <li>

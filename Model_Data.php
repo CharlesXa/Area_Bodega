@@ -134,6 +134,18 @@ class Data {
         $query= $this->con->query($sql);
     }
     
+    
+    public function getAllTables() {
+        $sql="SHOW TABLES FROM areabodega_1;";
+        $query= $this->con->query($sql);
+        return $query;
+    }
+    
+    public function getDataTables($table) {
+        $sql="SELECT * FROM $table";
+        $query= $this->con->query($sql);
+        return $query;
+    }
 
 }
 ?>
