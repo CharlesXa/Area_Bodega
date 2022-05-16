@@ -70,21 +70,6 @@ $data = new Data();
                     </ul>
                 </li>
                 <li>
-                    <div class="iocn-link">
-                        <a href="#">
-                            <i class='bx bx-book-alt' ></i>
-                            <span class="link_name">Equipaje</span>
-                        </a>
-                        <i class='bx bxs-chevron-down arrow' ></i>
-                    </div>
-                    <ul class="sub-menu">
-                        <li><a class="link_name" href="#">Equipaje</a></li>
-                        <li><a href="#">Ingreso</a></li>
-                        <li><a href="#">Busqueda</a></li>
-                        <li><a href="#">Distribucion</a></li>
-                    </ul>
-                </li>
-                <li>
                     <div class="profile-details">
                         <div class="profile-content">
                             <img src="img/iconPerfil.png" alt="profileImg">
