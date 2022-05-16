@@ -4,6 +4,7 @@ session_start();
 $rut = $_SESSION['rut'];
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
+$correo = $_SESSION['email'];
 $data = new Data();
 ?>
 
@@ -18,80 +19,46 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../Materialize/css/materialize.css">
         <script src="../Materialize/js/materialize.js"></script>
-        <link rel="stylesheet" href="../Materialize/css/style.css">
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <title></title>
     </head>
     <body style="background-color: #E4E9F7">
-        <div class="sidebar active">
-            <div class="logo-details">
-                <a href="../menuBodega.php" style="padding:15px; padding-top: 25px">
-                    <img src="../img/iconoBodega.png" width="50px" height="50px"/>
-                </a>
-                <span class="logo_name">Bodega S.G.V</span>
-            </div>
-            <ul class="nav-links">
-                <li>
-                    <a href="#">
-                        <span class="link_name"></span>
+        <section>
+            <nav class="nav-extended" style="background-color: #1d1b31;">
+                <div class="nav-wrapper">
+                    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 30px">menu</i></a>
+                    <a href="../menuBodega.php">
+                        <img src="../img/iconoBodega.png">
+                        <span class="brand-logo">Menu Bodega</span>
                     </a>
-                </li>
-                <li>
-                    <div class="iocn-link">
-                        <a href="#">
-                            <i class='bx bx-collection' ></i>
-                            <span class="link_name">Stock</span>
-                        </a>
-                        <i class='bx bxs-chevron-down arrow' ></i>
-                    </div>
-                    <ul class="sub-menu">
-                        <li><a class="link_name" href="#">Stock</a></li>
-                        <li><a href="ingresarStock.php">Ingreso</a></li>
-                        <li><a href="actualizarStock.php">Actualizar</a></li>
-                        <li><a href="visualizarStock.php">Visualizar</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <div class="iocn-link">
-                        <a href="#">
-                            <i class='bx bx-book-alt' ></i>
-                            <span class="link_name">Equipaje</span>
-                        </a>
-                        <i class='bx bxs-chevron-down arrow' ></i>
-                    </div>
-                    <ul class="sub-menu">
-                        <li><a class="link_name" href="#">Equipaje</a></li>
-                        <li><a href="#">Ingreso</a></li>
-                        <li><a href="#">Busqueda</a></li>
-                        <li><a href="#">Distribucion</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <div class="profile-details">
-                        <div class="profile-content">
-                            <img src="../img/iconPerfil.png" alt="profileImg">
-                        </div>
-                        <div class="name-job">
-                            <div class="profile_name">Bienvenido:</div>
-                            <div class="job"><?php echo $nombre . ' ' . $apellido ?></div>
-                        </div>
-                        <a href="../Controller/controllerLogOut.php"><i class='bx bx-log-out'></i></a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <section class="home-section">
-            <div class="home-content">
-                <div class="navbar-fixed">
-                    <nav  style="background-color: #1d1b31;">
-                        <div class="nav-wrapper">
-                            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bx bx-menu white-text" ></i></a>
-                        </div>
-                    </nav>
                 </div>
-            </div>  
+            </nav>
+            <ul id="slide-out" class="sidenav" style="background-color: #1d1b31;">
+                <li><div class="user-view">
+                        <div class="background" style="background-color: #1d1b31;">
+                        </div>
+                        <a href="#user"><img class="circle" src="../img/iconPerfil.png"></a>
+                        <a href="#name"><span class="white-text name" style="font-size: 20px"><?php echo $nombre . ' ' . $apellido ?></span></a>
+                        <a href="#email"><span class="white-text email" style="font-size: 14px"><?php echo $correo ?></span></a>
+                    </div></li>
+                <li><div class="divider"></div></li>
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Stock<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
+                <ul id='dropdown1' class='dropdown-content' style="background-color: #1d1b31;">
+                    <li><a href="ingresarStock.php">Ingreso</a></li>
+                    <li><a href="#">Actualizar</a></li>
+                    <li><a href="visualizarStock.php">Visualizar</a></li>
+                </ul>
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Equipaje<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
+                <ul id='dropdown2' class='dropdown-content' style="background-color: #1d1b31;">
+                    <li><a href="#">Ingreso</a></li>
+                    <li><a href="#">Busqueda</a></li>
+                    <li><a href="#">Distribucion</a></li>
+                </ul>
+                <li><div class="divider"></div></li>
+                <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
+            </ul>  
             <div class="container" >
                 <div class="row">
                     <div class="col s12">

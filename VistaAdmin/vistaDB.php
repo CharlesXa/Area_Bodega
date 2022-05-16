@@ -123,7 +123,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div>
                 <div id="area_usuario" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <table class="table responsive-table centered" id="datos" border="1">
+                        <table class="table centered" id="datos" border="1">
                             <thead align="center">
                                 <tr>
                                     <th colspan="4" style="font-size: 40px; text-align: center">Areas</th>
@@ -153,7 +153,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <div id="avion" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <table class="table responsive-table centered" id="datos" border="1">
+                        <table class="table centered" id="datos" border="1">
                             <thead align="center">
                                 <tr>
                                     <th colspan="4" style="font-size: 40px; text-align: center">Aviones</th>
@@ -189,7 +189,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <div id="boleto" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <table class="table responsive-table centered" id="datos" border="1">
+                        <table class="table centered" id="datos" border="1">
                             <thead align="center">
                                 <tr>
                                     <th colspan="4" style="font-size: 40px; text-align: center">Boletos</th>
@@ -225,7 +225,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <div id="tipo_clasificacion" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <table class="table responsive-table centered" id="datos" border="1">
+                        <table class="table centered" id="datos" border="1">
                             <thead align="center">
                                 <tr>
                                     <th colspan="4" style="font-size: 40px; text-align: center">Clasificaciones</th>
@@ -255,7 +255,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <div id="carga" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <table class="table responsive-table centered" id="datos" border="1">
+                        <table class="table centered" id="datos" border="1">
                             <thead align="center">
                                 <tr>
                                     <th colspan="4" style="font-size: 40px; text-align: center">Registro de cargas</th>
@@ -295,7 +295,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <div id="cliente" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <table class="table responsive-table centered" id="datos" border="1">
+                        <table class="table centered" id="datos" border="1">
                             <thead align="center">
                                 <tr>
                                     <th colspan="4" style="font-size: 40px; text-align: center">Clientes </th>
@@ -337,7 +337,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <div id="historial" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <table class="table responsive-table centered" id="datos" border="1">
+                        <table class="table centered" id="datos" border="1">
                             <thead align="center">
                                 <tr>
                                     <th colspan="4" style="font-size: 40px; text-align: center">Historial</th>
@@ -373,7 +373,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <div id="reporte" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <table class="table responsive-table centered" id="datos" border="1">
+                        <table class="table centered" id="datos" border="1">
                             <thead align="center">
                                 <tr>
                                     <th colspan="4" style="font-size: 40px; text-align: center">Reportes</th>
@@ -411,7 +411,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <div id="solicitud" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <table class="table responsive-table centered" id="datos" border="1">
+                        <table class="table centered" id="datos" border="1">
                             <thead align="center">
                                 <tr>
                                     <th colspan="4" style="font-size: 40px; text-align: center">Solicitudes</th>
@@ -447,7 +447,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <div id="stock" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <table class="table responsive-table centered" id="datos" border="1">
+                        <table class="table centered" id="datos" border="1">
                             <thead align="center">
                                 <tr>
                                     <th colspan="4" style="font-size: 40px; text-align: center">Stock</th>
@@ -485,7 +485,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <div id="tipo_carga" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <table class="table responsive-table centered" id="datos" border="1">
+                        <table class="table centered" id="datos" border="1">
                             <thead align="center">
                                 <tr>
                                     <th colspan="4" style="font-size: 40px; text-align: center">Tipos de Carga</th>
@@ -515,7 +515,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <div id="tipo_clasificacion" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <table class="table responsive-table centered" id="datos" border="1">
+                        <table class="table centered" id="datos" border="1">
                             <thead align="center">
                                 <tr>
                                     <th colspan="4" style="font-size: 40px; text-align: center">Tipos de Clasificacion</th>
@@ -545,7 +545,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <div id="tipo_user" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <table class="table responsive-table centered" id="datos" border="1">
+                        <table class="table centered" id="datos" border="1">
                             <thead align="center">
                                 <tr>
                                     <th colspan="4" style="font-size: 40px; text-align: center">Tipos de Usuario</th>
@@ -575,7 +575,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <div id="usuario" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <table class="table responsive-table centered" id="datos" border="1">
+                        <table class="table centered" id="datos" border="1">
                             <thead align="center">
                                 <tr>
                                     <th colspan="4" style="font-size: 25px; text-align: center">Usuarios</th>
@@ -617,7 +617,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <div id="vuelo" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <table class="table responsive-table centered" id="datos" border="1">
+                        <table class="table centered" id="datos" border="1">
                             <thead align="center">
                                 <tr>
                                     <th colspan="4" style="font-size: 40px; text-align: center">Vuelos</th>

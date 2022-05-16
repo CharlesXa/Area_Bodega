@@ -7,8 +7,13 @@ $rut = $_SESSION['rut'];
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
 $passwd_t = $_SESSION['passwd_t'];
+$correo = $_SESSION['email'];
 
-if ($rut == null || "") {
+if ($correo == null || "") {
+    echo '<script language="javascript">alert("Acceso invalido");</script>';
+    echo "<script> window.location.replace('index.php') </script>";
+}
+if ($correo != "nicolasperezcorreo@gmail.com") {
     echo '<script language="javascript">alert("Acceso invalido");</script>';
     echo "<script> window.location.replace('index.php') </script>";
 }
@@ -27,7 +32,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link rel="stylesheet" href="Materialize/css/materialize.css">
         <script src="Materialize/js/materialize.js"></script>
         <link rel="icon" href="img/iconoBodega.png"/>
-        <link rel="stylesheet" href="Materialize/css/style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -47,8 +51,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
             </div>
         </div>
-
-        <div class="sidebar active">
+        <!--<div class="sidebar active">
             <div class="logo-details">
                 <a href="menuBodega.php" style="padding:15px; padding-top: 25px">
                     <img src="img/iconoBodega.png" width="50px" height="50px"/>
@@ -104,16 +107,40 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                 </li>
             </ul>
-        </div>
+        </div>-->
         <section class="home-section">
             <div class="home-content">
-                <div class="navbar-fixed">
-                    <nav  style="background-color: #1d1b31;">
-                        <div class="nav-wrapper">
-                            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bx bx-menu white-text" ></i></a>
-                        </div>
-                    </nav>
-                </div>
+                <nav class="nav-extended" style="background-color: #1d1b31;">
+                    <div class="nav-wrapper">
+                        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 30px">menu</i></a>
+                        <img src="img/iconoBodega.png">
+                        <span class="brand-logo">Menu Bodega</span>
+                    </div>
+                </nav>
+                <ul id="slide-out" class="sidenav" style="background-color: #1d1b31;">
+                    <li><div class="user-view">
+                            <div class="background" style="background-color: #1d1b31;">
+                            </div>
+                            <a href="#user"><img class="circle" src="img/iconPerfil.png"></a>
+                            <a href="#name"><span class="white-text name" style="font-size: 20px"><?php echo $nombre . ' ' . $apellido ?></span></a>
+                            <a href="#email"><span class="white-text email" style="font-size: 14px"><?php echo $correo ?></span></a>
+                        </div></li>
+                    <li><div class="divider"></div></li>
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Stock<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
+                    <ul id='dropdown1' class='dropdown-content' style="background-color: #1d1b31;">
+                        <li><a href="vistas_stock/ingresarStock.php">Ingreso</a></li>
+                        <li><a href="vistas_stock/actualizarStock.php">Actualizar</a></li>
+                        <li><a href="vistas_stock/visualizarStock.php">Visualizar</a></li>
+                    </ul>
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Equipaje<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
+                    <ul id='dropdown2' class='dropdown-content' style="background-color: #1d1b31;">
+                        <li><a href="#">Ingreso</a></li>
+                        <li><a href="#">Busqueda</a></li>
+                        <li><a href="#">Distribucion</a></li>
+                    </ul>
+                    <li><div class="divider"></div></li>
+                    <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
+                </ul>
                 <div>
                     <!-- Modal Structure -->
                     <div id="modal_1" class="modal" style="position: absolute; margin-top: 150px">
@@ -145,207 +172,205 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                 </div>
             </div>
-        </div>
-        <table class="table centered" id="datos" border="1">
-            <thead align="center">
-                <tr>
-                    <th colspan="4" style="font-size: 25px; text-align: center">Historial de Solicitudes</th>
-                </tr>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Cantidad</th>
-                    <th>Fecha y Hora</th>
-                    <th>ID de la solicitud</th>
-                </tr>
-            </thead>
+            <table class="table centered container" id="datos">
+                <thead>
+                    <tr>
+                        <th colspan="4" text-align: center" class="table_Tit">Historial de Solicitudes</th>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Fecha y Hora</th>
+                        <th>ID de la solicitud</th>
+                    </tr>
+                </thead>
 
-            <tbody>
-                <?php
-                $historial = $data->getHistorial();
-                foreach ($historial as $key) {
-                    echo '
-                                    <tr>
-                                        <td>' . $key['id'] . '</td>   
-                                        <td>' . $key['nombre'] . '</td>   
+                <tbody>
+                    <?php
+                    $historial = $data->getHistorial();
+                    foreach ($historial as $key) {
+                        echo '
+                                    <tr> 
+                                        <td>' . $key['articulo'] . '</td>   
                                         <td>' . $key['cantidad'] . '</td>   
-                                        <td>' . $key['fecha_hora'] . '</td>   
-                                        <td>' . $key['solicitud_id_fk'] . '</td>   
+                                        <td>' . $key['fecha y hora de solicitud'] . '</td>   
+                                        <td>' . $key['id de la solicitud'] . '</td>   
                                     </tr>
                                 ';
-                }
-                ?>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
-        <footer class="page-footer" style="background-color: transparent">
-            <div class="footer-copyright" style="background-color: #1d1b31">
-                <div class="container center">
-                    SGV © Derechos Reservados - 2022
+                    }
+                    ?>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <footer class="page-footer" style="background-color: transparent">
+                <div class="footer-copyright" style="background-color: #1d1b31">
+                    <div class="container center">
+                        SGV © Derechos Reservados - 2022
+                    </div>
                 </div>
-            </div>
-        </footer>
-    </section>
-    <script>
-        /*document.addEventListener('DOMContentLoaded', function () {
-         M.AutoInit();
-         }); */
-        var temporal = "<?php echo $passwd_t ?>";
+            </footer>
+        </section>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                M.AutoInit();
+            });
+            var temporal = "<?php echo $passwd_t ?>";
 
-        if (temporal == 1) {
-            showModal();
-            console.log(temporal);
-        } else {
-            CloseModal();
-        }
-        function showModal() {
-            document.getElementById('modal_1').style.display = 'block';
-        }
+            if (temporal == 1) {
+                showModal();
+                console.log(temporal);
+            } else {
+                CloseModal();
+            }
+            function showModal() {
+                document.getElementById('modal_1').style.display = 'block';
+            }
 
-        function CloseModal() {
-            document.getElementById('modal_1').style.display = 'none';
-        }
-    </script>
-    <script src="js/script.js"></script>
-    <~<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
-    <!<!-- <script src="SweetAlerts/AlertLogBodega.js"></script>-->
-</body>
+            function CloseModal() {
+                document.getElementById('modal_1').style.display = 'none';
+            }
+        </script>
+        <script src="js/script.js"></script>
+        <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+        <!-- <script src="SweetAlerts/AlertLogBodega.js"></script>-->
+    </body>
 </html>

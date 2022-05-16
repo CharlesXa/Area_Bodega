@@ -6,8 +6,13 @@ session_start();
 $rut = $_SESSION['rut'];
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
+$correo = $_SESSION['email'];
 
-if ($rut == null || "") {
+if ($correo == null || "") {
+    echo '<script language="javascript">alert("Acceso invalido");</script>';
+    echo "<script> window.location.replace('index.php') </script>";
+}
+if ($correo != "aweonao5000@gmail.com") {
     echo '<script language="javascript">alert("Acceso invalido");</script>';
     echo "<script> window.location.replace('index.php') </script>";
 }
@@ -26,91 +31,38 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link rel="stylesheet" href="Materialize/css/materialize.css">
         <script src="Materialize/js/materialize.js"></script>
         <link rel="icon" href="img/favicon.png"/>
-        <link rel="stylesheet" href="Materialize/css/style.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <title>Menu seguridad</title>
     </head>
     <body style="background-color: #E4E9F7">
-        <div class="sidebar close">
-            <div class="logo-details">
-                <a href="menuSeguridad.php" style="padding: 30px 0 15px 18px">
-                    <img src="img/favicon.png" width="40px" height="40px"/>
-                </a>
-                <span class="logo_name">Seguridad S.G.V</span>
-            </div>
-            <ul class="nav-links">
-                <li>
-                    <a href="#">
-                        <span class="link_name"></span>
-                    </a>
-                </li>
-                <li>
-                    <div class="iocn-link">
-                        <a class="modal-trigger" href="#modal1">
-                            <i class='bx bx-comment' ></i>
-                            <!--<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>-->
-                            <span title="Generar reporte" class="link_name">Generar reporte</span>
-                        </a>
-                    </div>
-                    <ul class="sub-menu">
-                        <li><a class="modal-trigger" href="#modal1">Generar reporte</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <div class="iocn-link">
-                        <a class="modal-trigger" href="#modal2">
-                            <i class='bx bx-user' ></i>
-                            <span class="link_name">P. de Seguridad</span>
-                        </a>
-                    </div>
-                    <ul class="sub-menu">
-                        <li><a href="#modal2">Politicas de Seguridad</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <div class="profile-details">
-                        <div class="profile-content">
-                            <a href="Controller/controllerLogOut.php"><img src="img/iconPerfil.png" alt="profileImg"></a>
-                        </div>
-                        <div class="name-job">
-                            <div class="profile_name">Bienvenido:</div>
-                            <div class="job"><?php echo $nombre . ' ' . $apellido ?></div>
-                        </div>
-                        <a href="Controller/controllerLogOut.php"><i class='bx bx-log-out'></i></a>
-                    </div>
-                </li>
-            </ul>
-        </div>
         <!-- Modal de generar Reporte -->
-
         <div id="modal1" class="modal">
-            <button class="modal-close waves-effect waves-light btn yellow darken-3" style="margin-left: 1250px"><i class="material-icons">close</i></button>
             <form class="col s12" style="padding: 10px" method="post" action="Controller/controller_obs.php">
                 <div class="modal-content">
                     <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500">Reporte</h4>
-                    <div class="row grey lighten-3">
+                    <div class="row grey lighten-3" style="padding: 30px">
                         <div class="row">
                             <div class="input-field col s12 m6 l6">
-                                <input id="a" type="text" name="txt_rut" value="<?php echo $rut; ?>" readonly class="validate" style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
+                                <input id="a" type="text" name="txt_rut" value="<?php echo $rut; ?>" readonly style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
                                 <label for="a">R.U.T</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m6 l6">
-                                <input id="c" type="text" name="txt_nombre" value="<?php echo $nombre; ?>" readonly class="validate" style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
+                                <input id="c" type="text" name="txt_nombre" value="<?php echo $nombre; ?>" readonly style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
                                 <label for="c">Nombre</label>
                             </div>
                             <div class="input-field col s12 m6 l6">
-                                <input id="b" type="text" class="validate" name="txt_apellido" value="<?php echo $apellido; ?>" readonly style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
+                                <input id="b" type="text" name="txt_apellido" value="<?php echo $apellido; ?>" readonly style="background-color: white; border-radius: 5px; border-bottom: none; text-indent: 18px;">
                                 <label for="b">Apellido</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s10 m6 l4" style="background-color: white; border-radius: 5px; margin-left: 12px">
-                                <select name="cbo_gravedad">
-                                    <option value="0">--Gravedad--</option>
+                                <select name="cbo_gravedad" required>
+                                    <option value="0" disabled selected>--Gravedad--</option>
                                     <option value="1">Leve</option>
                                     <option value="2">Media</option>
                                     <option value="3">Grave</option>
@@ -119,25 +71,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                         <div class="row">
                             <div class="input-field col s10 m6 l3" style="background-color: white; border-radius: 5px; margin-left: 12px">
-                                <input style="border-bottom: none" placeholder="" id="datepicker" name="txt_fecha" type="text" class="datepicker">
+                                <input style="border-bottom: none" placeholder="" id="datepicker" name="txt_fecha" type="text" class="datepicker" required>
                                 <label style="transform: translate(-19px, -22px);" for="datepicker">Fecha</label>
                             </div>
                             <div class="input-field col s10 m6 l3" style="background-color: white; border-radius: 5px; margin-left: 12px">
-                                <input style="border-bottom: none" placeholder="" id="timepicker" type="text" name="txt_hora" class="timepicker">
+                                <input style="border-bottom: none" placeholder="" id="timepicker" type="text" name="txt_hora" class="timepicker" required>
                                 <label style="transform: translate(-19px, -22px);" for="timepicker" style="">Hora</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="textarea2" class="materialize-textarea" name="area_obs" data-length="120" style="background-color: white; border-radius: 5px; border-bottom: none;; text-indent: 18px;"></textarea>
+                                <textarea id="textarea2" class="materialize-textarea" name="area_obs" data-length="120" style="background-color: white; border-radius: 5px; border-bottom: none;; text-indent: 18px;" required></textarea>
                                 <label for="textarea2">Observaciones</label>
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <div class="modal-footer" style="text-align: center; margin-bottom: 10px">
-                    <button class="waves-effect waves-light btn" name="btn_reporte" type="submit" style="background: #1d1b31;">Aceptar</button>
+                <div class="modal-footer" style="text-align: center">
+                    <button class="waves-effect btn" name="btn_reporte" type="submit" style="background: #363771; width: 200px; border-radius: 3px; font-weight: 500; letter-spacing: 2px; font-size: 16px">Enviar</button>
                 </div>
             </form>
         </div>
@@ -145,11 +97,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <div id="modal2" class="modal">
             <div class="modal-content">
                 <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500">Personal Autorizado</h4>
-                <div class="row grey lighten-3">
-                    <table class="table responsive-table centered" id="datos" border="1">
-                        <thead align="center">
+                <div class="row">
+                    <table class="table centered striped" id="datos">
+                        <thead>
                             <tr>
-                                <th colspan="4" style="font-size: 25px; text-align: center">Listado de usuarios</th>
+                                <th colspan="1" style="font-size: 25px; text-align: center">Listado de usuarios</th>
                             </tr>
                             <tr>
                                 <th>R.U.T</th>
@@ -178,47 +130,43 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 </tr>
                              ';
                             }
-                            ?>
-
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>                            
+                            ?>                           
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="modal-footer" style="text-align: center; margin-bottom: 10px">
-                <a href="#!" class="modal-close waves-effect waves-light btn indigo darken-4">Cerrar</a>
+            <div class="modal-footer" style="text-align: center; margin-bottom: 10px;">
+                <a href="#!" class="modal-close waves-effect waves-light btn" style="background: #363771; width: 200px; border-radius: 3px; font-weight: 500; letter-spacing: 2px; font-size: 16px">Cerrar</a>
             </div>
         </div>
         <section class="home-section">
-            <div class="nav-wrapper">
-                <nav  style="background-color: #1d1b31;">
-                    <div class="nav-wrapper">
-                        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bx bx-menu white-text" ></i></a>
-                    </div>
-                </nav>
-            </div>
-            <!--<div class="home-content">
-            </div>-->
+            <nav class="nav-extended" style="background-color: #1d1b31;">
+                <div class="nav-wrapper">
+                    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 30px">menu</i></a>
+                    <img src="img/favicon.png">
+                    <span class="brand-logo">Menu Seguridad</span>
+                </div>
+            </nav>
+            <ul id="slide-out" class="sidenav" style="background-color: #1d1b31;">
+                <li><div class="user-view">
+                        <div class="background" style="background-color: #1d1b31;">
+                        </div>
+                        <a href="#user"><img class="circle" src="img/iconPerfil.png"></a>
+                        <a href="#name"><span class="white-text name" style="font-size: 20px"><?php echo $nombre . ' ' . $apellido ?></span></a>
+                        <a href="#email"><span class="white-text email" style="font-size: 14px"><?php echo $correo ?></span></a>
+                    </div></li>
+                <li><div class="divider"></div></li>
+                <li>
+                    <a class="modal-trigger waves-effect" href="#modal1">Generar reporte<i class='bx bx-comment white-text' style="font-size: 22px;"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="modal-trigger waves-effect" href="#modal2">P. de Seguridad<i class='bx bx-user white-text' style="font-size: 22px;"></i>
+                    </a>
+                </li>
+                <li><div class="divider"></div></li>
+                <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
+            </ul>
             <div class="row" style="padding: 20px 50px">
                 <div class="col s12">
                     <div class="col s12 m6 l16">
