@@ -9,6 +9,7 @@
 }
 
 body{
+    font-family: 'Poppins', sans-serif;
     background-color: #D6D5C9;
     display: flex;
     min-height: 100vh;
@@ -2953,7 +2954,7 @@ ul.staggered-list li {
 footer{
     width: 100%;
     background-color: 1d1b31;
-    padding: 15px 0;
+    padding: 0px 0;
     margin-top: auto;
 }
 footer span{
@@ -2995,6 +2996,7 @@ table, th, td {
 }
 
 table {
+    font-family: 'Poppins', sans-serif;
     width: 100%;
     display: table;
     border-collapse: collapse;
@@ -3038,7 +3040,8 @@ td, th {
     border-radius: 2px;
 }
 .table_Tit{
-    font-size: 25px;
+    font-size: 40px;
+    font-weight: 600;
 }
 
 @media only screen and (max-width: 992px) {
@@ -3101,9 +3104,9 @@ td, th {
         border-right: 1px solid rgba(0, 0, 0, 0.12);
     }
 }
-@media only screen and (max-width: 310px) {
+@media only screen and (max-width: 450px) {
     .table_Tit{
-        font-size: 16px;
+        font-size: 30px;
     }
 }
 
@@ -5620,7 +5623,7 @@ button.btn-floating {
 }
 
 .dropdown-content li:hover, .dropdown-content li.active {
-    *background-color: #1d1b31;
+    background-color: #dadada;
 }
 
 .dropdown-content li:focus {
@@ -9143,6 +9146,6 @@ input[type=range]::-ms-thumb {
         text-align: center;
         margin-top: 1.2rem;
     }
-    
+
 }
 

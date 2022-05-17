@@ -72,102 +72,44 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </form>
             </div>
         </div>
-        <!--<div class="sidebar active">
-            <div class="logo-details">
-                <a href="menuBodega.php" style="padding:15px; padding-top: 25px">
-                    <img src="img/iconoBodega.png" width="50px" height="50px"/>
-                </a>
-                <span class="logo_name">Bodega S.G.V</span>
-            </div>
-            <ul class="nav-links">
-                <li>
-                    <a href="#">
-                        <span class="link_name"></span>
-                    </a>
-                </li>
-                <li>
-                    <div class="iocn-link">
-                        <a href="#">
-                            <i class='bx bx-collection' ></i>
-                            <span class="link_name">Stock</span>
-                        </a>
-                        <i class='bx bxs-chevron-down arrow' ></i>
-                    </div>
-                    <ul class="sub-menu">
-                        <li><a class="link_name" href="#">Stock</a></li>
-                        <li><a href="vistas_stock/ingresarStock.php">Ingreso</a></li>
-                        <li><a href="vistas_stock/actualizarStock.php">Actualizar</a></li>
-                        <li><a href="vistas_stock/visualizarStock.php">Visualizar</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <div class="iocn-link">
-                        <a href="#">
-                            <i class='bx bx-book-alt' ></i>
-                            <span class="link_name">Equipaje</span>
-                        </a>
-                        <i class='bx bxs-chevron-down arrow' ></i>
-                    </div>
-                    <ul class="sub-menu">
-                        <li><a class="link_name" href="#">Equipaje</a></li>
-                        <li><a href="#">Ingreso</a></li>
-                        <li><a href="#">Busqueda</a></li>
-                        <li><a href="#">Distribucion</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <div class="profile-details">
-                        <div class="profile-content">
-                            <img src="img/iconPerfil.png" alt="profileImg">
+        <section>
+            <nav class="nav-extended" style="background-color: #1d1b31;">
+                <div class="nav-wrapper">
+                    <a id="menu" href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 30px">menu</i></a>
+                    <img src="img/iconoBodega.png">
+                    <span class="brand-logo">Menu Bodega</span>
+                </div>
+            </nav>
+            <ul id="slide-out" class="sidenav" style="background-color: #1d1b31;">
+                <li><div class="user-view">
+                        <div class="background" style="background-color: #1d1b31;">
                         </div>
-                        <div class="name-job">
-                            <div class="profile_name">Bienvenido:</div>
-                            <div class="job"><?php echo $nombre . ' ' . $apellido ?></div>
-                        </div>
-                        <a href="Controller/controllerLogOut.php"><i class='bx bx-log-out'></i></a>
-                    </div>
-                </li>
-            </ul>
-        </div>-->
-        <section class="home-section">
-            <div class="home-content">
-                <nav class="nav-extended" style="background-color: #1d1b31;">
-                    <div class="nav-wrapper">
-                        <a id="menu" href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 30px">menu</i></a>
-                        <img src="img/iconoBodega.png">
-                        <span class="brand-logo">Menu Bodega</span>
-                    </div>
-                </nav>
-                <ul id="slide-out" class="sidenav" style="background-color: #1d1b31;">
-                    <li><div class="user-view">
-                            <div class="background" style="background-color: #1d1b31;">
-                            </div>
-                            <a href="#user"><img class="circle" src="img/iconPerfil.png"></a>
-                            <a href="#name"><span class="white-text name" style="font-size: 20px"><?php echo $nombre . ' ' . $apellido ?></span></a>
-                            <a href="#email"><span class="white-text email" style="font-size: 14px"><?php echo $correo ?></span></a>
-                        </div></li>
-                    <li><div class="divider"></div></li>
-                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Stock<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
-                    <ul id='dropdown1' class='dropdown-content' style="background-color: #1d1b31;">
-                        <li><a href="vistas_stock/ingresarStock.php">Ingreso</a></li>
-                        <li><a href="vistas_stock/actualizarStock.php">Actualizar</a></li>
-                        <li><a href="vistas_stock/visualizarStock.php">Visualizar</a></li>
-                    </ul>
-                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Equipaje<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
-                    <ul id='dropdown2' class='dropdown-content' style="background-color: #1d1b31;">
-                        <li><a href="#">Ingreso</a></li>
-                        <li><a href="#">Busqueda</a></li>
-                        <li><a href="#">Distribucion</a></li>
-                    </ul>
-                    <li><div class="divider"></div></li>
-                    <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
+                        <a href="#user"><img class="circle" src="img/iconPerfil.png"></a>
+                        <a href="#name"><span class="white-text name" style="font-size: 20px"><?php echo $nombre . ' ' . $apellido ?></span></a>
+                        <a href="#email"><span class="white-text email" style="font-size: 14px"><?php echo $correo ?></span></a>
+                    </div></li>
+                <li><div class="divider"></div></li>
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Stock<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
+                <ul id='dropdown1' class='dropdown-content' style="background-color: #1d1b31;">
+                    <li><a href="vistas_stock/ingresarStock.php">Ingreso</a></li>
+                    <li><a href="vistas_stock/actualizarStock.php">Actualizar</a></li>
+                    <li><a href="vistas_stock/visualizarStock.php">Visualizar</a></li>
                 </ul>
-            </div>
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Equipaje<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
+                <ul id='dropdown2' class='dropdown-content' style="background-color: #1d1b31;">
+                    <li><a href="#">Ingreso</a></li>
+                    <li><a href="#">Busqueda</a></li>
+                    <li><a href="#">Distribucion</a></li>
+                </ul>
+                <li><div class="divider"></div></li>
+                <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
+            </ul>
+            <span class="table_Tit center" style="display: block; margin: 40px 0">Listado de usuarios</span>
             <table class="table centered container" id="datos">
                 <thead>
-                    <tr>
+                    <!--<tr>
                         <th colspan="4" text-align: center" class="table_Tit">Historial de Solicitudes</th>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <th>Nombre</th>
                         <th>Cantidad</th>
@@ -190,156 +132,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 ';
                     }
                     ?>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
                 </tbody>
             </table>
-            <footer class="page-footer" style="background-color: transparent">
-                <div class="footer-copyright" style="background-color: #1d1b31">
-                    <div class="container center">
-                        SGV © Derechos Reservados - 2022
-                    </div>
-                </div>
-            </footer>
         </section>
+        <footer class="page-footer" style="background-color: transparent">
+            <div class="footer-copyright" style="background-color: #1d1b31">
+                <div class="container center">
+                    SGV © Derechos Reservados - 2022
+                </div>
+            </div>
+        </footer>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();
