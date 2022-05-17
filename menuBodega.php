@@ -104,7 +104,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <li><div class="divider"></div></li>
                 <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
             </ul>
-            <span class="table_Tit center" style="display: block; margin: 40px 0">Listado de usuarios</span>
+            <span class="table_Tit center" style="display: block; margin: 40px 0">Registro de solicitudes</span>
             <table class="table centered container" id="datos">
                 <thead>
                     <!--<tr>
