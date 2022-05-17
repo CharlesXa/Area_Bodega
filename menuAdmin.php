@@ -315,7 +315,6 @@ $data = new Data();
             </div>
         </div>
     </footer>
-
     <script type="text/javascript">
         $(document).ready(function () {
             $('#agregarUsuario').click(function () {

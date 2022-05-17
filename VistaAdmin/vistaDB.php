@@ -4,6 +4,7 @@ session_start();
 $rut = $_SESSION['rut'];
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
+$correo = $_SESSION['email'];
 $data = new Data();
 ?>
 
@@ -19,75 +20,48 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link rel="stylesheet" href="../Materialize/css/materialize.css">
         <script src="../Materialize/js/materialize.js"></script>
         <link rel="icon" href="../img/iconAdmin.png"/>
-        <link rel="stylesheet" href="../Materialize/css/style.css">
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <title>Visualizar Tablas</title>
     </head>
     <body style="background-color: #E4E9F7">
-        <div class="sidebar active">
-            <div class="logo-details">
-                <a href="../menuAdmin.php" style="padding:15px; padding-top: 25px">
-                    <img src="../img/iconAdmin.png" width="50px" height="50px"/>
-                </a>
-                <span class="logo_name">Admin S.G.V</span>
-            </div>
-            <ul class="nav-links">
-                <li>
-                    <a href="#">
-                        <span class="link_name"></span>
-                    </a>
-                </li>
-                <li>
-                    <div class="iocn-link">
-                        <a href="#">
-                            <i class='bx bx-collection' ></i>
-                            <span class="link_name">Database</span>
-                        </a>
-                        <i class='bx bxs-chevron-down arrow' ></i>
-                    </div>
-                    <ul class="sub-menu">
-                        <li><a class="link_name" href="#">Stock</a></li>
-                        <li><a href="../backup.php">Respaldo</a></li>
-                        <li><a href="VistaAdmin/vistaDB.php">Visualizar tablas</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <div class="profile-details">
-                        <div class="profile-content">
-                            <img src="../img/iconPerfil.png" alt="profileImg">
-                        </div>
-                        <div class="name-job">
-                            <div class="profile_name">Bienvenido:</div>
-                            <div class="job"><?php echo $nombre . ' ' . $apellido ?></div>
-                        </div>
-                        <a href="../Controller/controllerLogOut.php"><i class='bx bx-log-out'></i></a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <section class="home-section">
-            <div class="home-content">
-                <div class="navbar-fixed">
-                    <nav  style="background-color: #1d1b31;">
-                        <div class="nav-wrapper">
-                            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="bx bx-menu white-text" ></i></a>
-                        </div>
-                    </nav>
+        <section>
+            <nav class="nav-extended" style="background-color: #1d1b31;">
+                <div class="nav-wrapper">
+                    <a id="menu" href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 30px">menu</i></a>
+                    <img src="../img/iconAdmin.png">
+                    <span class="brand-logo">Menu Admin</span>
                 </div>
-            </div> 
+            </nav>
+            <ul id="slide-out" class="sidenav" style="background-color: #1d1b31;">
+                <li><div class="user-view">
+                        <div class="background" style="background-color: #1d1b31;">
+                        </div>
+                        <a href="#user"><img class="circle" src="../img/iconPerfil.png"></a>
+                        <a href="#name"><span class="white-text name" style="font-size: 20px"><?php echo $nombre . ' ' . $apellido ?></span></a>
+                        <a href="#email"><span class="white-text email" style="font-size: 14px"><?php echo $correo ?></span></a>
+                    </div></li>
+                <li><div class="divider"></div></li>
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Database<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
+                <ul id='dropdown1' class='dropdown-content' style="background-color: #1d1b31;">
+                    <li><a href="../backup.php">Respaldo</a></li>
+                    <li><a href="#">Visualizar tablas</a></li>
+                </ul>
+                <li><div class="divider"></div></li>
+                <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
+            </ul>
             <div class="container" >
                 <div class="row">
                     <div class="col s12">
-                        <h2 align="center">Visualizacion de tablas de base de datos</h2>
+                        <h2 align="center">T. Database</h2>
                         <div class="row">
                             <div class="col s12">
-                                <table class="table centered">
-                                    <thead style="font-size: 26px; text-align: center">
+                                <table class="table">
+                                    <thead style="font-size: 20px; text-align: center">
                                         <tr>
                                             <td>Nombre</td>
-                                            <td>Cantidad de Registros</td>
+                                            <td>N° de Registros</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -147,8 +121,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="margin-left: 1100px">Aceptar</a>
+                    <div class="modal-footer center">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
                 <div id="avion" class="modal modal-fixed-footer">
@@ -183,8 +157,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="margin-left: 1100px">Aceptar</a>
+                    <div class="modal-footer center">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
                 <div id="boleto" class="modal modal-fixed-footer">
@@ -219,8 +193,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="margin-left: 1100px">Aceptar</a>
+                    <div class="modal-footer center">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
                 <div id="tipo_clasificacion" class="modal modal-fixed-footer">
@@ -249,8 +223,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="margin-left: 1100px">Aceptar</a>
+                    <div class="modal-footer center">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
                 <div id="carga" class="modal modal-fixed-footer">
@@ -289,8 +263,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="margin-left: 1100px">Aceptar</a>
+                    <div class="modal-footer center">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
                 <div id="cliente" class="modal modal-fixed-footer">
@@ -331,8 +305,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="margin-left: 1100px">Aceptar</a>
+                    <div class="modal-footer center">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
                 <div id="historial" class="modal modal-fixed-footer">
@@ -367,8 +341,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="margin-left: 1100px">Aceptar</a>
+                    <div class="modal-footer center">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
                 <div id="reporte" class="modal modal-fixed-footer">
@@ -405,8 +379,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="margin-left: 1100px">Aceptar</a>
+                    <div class="modal-footer center">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
                 <div id="solicitud" class="modal modal-fixed-footer">
@@ -441,8 +415,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="margin-left: 1100px">Aceptar</a>
+                    <div class="modal-footer center">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
                 <div id="stock" class="modal modal-fixed-footer">
@@ -479,8 +453,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="margin-left: 1100px">Aceptar</a>
+                    <div class="modal-footer center">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
                 <div id="tipo_carga" class="modal modal-fixed-footer">
@@ -509,8 +483,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="margin-left: 1100px">Aceptar</a>
+                    <div class="modal-footer center">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
                 <div id="tipo_clasificacion" class="modal modal-fixed-footer">
@@ -539,8 +513,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="margin-left: 1100px">Aceptar</a>
+                    <div class="modal-footer center">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
                 <div id="tipo_user" class="modal modal-fixed-footer">
@@ -569,8 +543,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="margin-left: 1100px">Aceptar</a>
+                    <div class="modal-footer center">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" >Aceptar</a>
                     </div>
                 </div>
                 <div id="usuario" class="modal modal-fixed-footer">
@@ -612,7 +586,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </table>
                     </div>
                     <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="margin-left: 1100px">Aceptar</a>
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
                 <div id="vuelo" class="modal modal-fixed-footer">
@@ -652,12 +626,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </table>
                     </div>
                     <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="margin-left: 1100px">Aceptar</a>
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
                 <!-- FIN Modals BD -->
             </div>
         </section>
+        <footer class="page-footer" style="background-color: transparent">
+            <div class="footer-copyright" style="background-color: #1d1b31">
+                <div class="container center">
+                    SGV © Derechos Reservados - 2022
+                </div>
+            </div>
+        </footer>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();
