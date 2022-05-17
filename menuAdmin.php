@@ -68,7 +68,7 @@ $data = new Data();
                 <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
             </ul>
             <div>
-                <!-- Modal Structure -->
+                <!--Modal Structure-->
                 <div id="modal_1" class="modal" style="position: absolute; margin-top: 150px">
                     <form class="col s12" action="controller/controllerUpdatepass.php" method="post">
                         <div class="modal-content">
@@ -105,35 +105,35 @@ $data = new Data();
                         <div class="modal-content">
                             <h4>Agregar nuevo usuario</h4>
                             <div class="row">
-                                <form class="col s12">
+                                <form class="col s12 grey lighten-3" style="padding: 20px; border-radius: 10px">
                                     <div class="row">
-                                        <div class="input-field col s6">
-                                            <input id="rut" type="text" name="txt_rut">
+                                        <div class="input-field col s12 m5 l6">
+                                            <input id="rut" type="text" name="txt_rut" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
                                             <label for="txt_rut">Rut</label>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="input-field col s6">
-                                            <input id="nombre" type="text" name="txt_nombre" autocapitalize="sentences">
+                                        <div class="input-field col s12 m5 l6">
+                                            <input id="nombre" type="text" name="txt_nombre" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
                                             <label for="txt_nombre">Nombre</label>
                                         </div>
-                                        <div class="input-field col s6">
-                                            <input id="apellido" type="text" name="txt_apellido">
+                                        <div class="input-field col s12 m5 l6">
+                                            <input id="apellido" type="text" name="txt_apellido" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
                                             <label for="txt_apellido">Apellido</label>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="input-field col s6">
-                                            <input id="email" type="text" name="txt_email">
+                                        <div class="input-field col s12 m5 l6">
+                                            <input id="email" type="text" name="txt_email" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
                                             <label for="txt_email">Email</label>
                                         </div>
-                                        <div class="input-field col s6">
-                                            <input id="telefono" type="text" name="txt_telefono">
+                                        <div class="input-field col s12 m5 l6">
+                                            <input id="telefono" type="text" name="txt_telefono" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
                                             <label for="txt_telefono">Telefono</label>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="input-field col s6">
+                                        <div class="input-field col s10 m5 l5" style="background-color: white; border-radius: 5px; margin-left: 12px">
                                             <select name="cbo_area" id="area" required>
                                                 <option value="0">-- Seleccionar --</option>
                                                 <?php
@@ -145,7 +145,7 @@ $data = new Data();
                                                 ?>
                                             </select>
                                         </div>
-                                        <div class="input-field col s6">
+                                        <div class="input-field col s10 m5 l5" style="background-color: white; border-radius: 5px; margin-left: 12px">
                                             <select name="cbo_tipo" id="tipo" required>
                                                 <option value="0">-- Seleccionar --</option>
                                                 <?php
