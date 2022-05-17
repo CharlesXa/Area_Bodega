@@ -6,6 +6,7 @@ session_start();
 $rut = $_SESSION['rut'];
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
+$passwd_t = $_SESSION['passwd_t'];
 $correo = $_SESSION['email'];
 
 if ($correo == null || "") {

@@ -42,13 +42,34 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
     </head>
     <body style="background-color: #E4E9F7" >
-        <div id="modal1" class="modal">
+        <div id="modal_pass" class="modal" style="margin-top: 100px">
             <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                <form class="col s2" action="controller/controllerUpdatepass.php" method="post">
+                    <div class="modal-content">
+                        <h4 style="font-size: 50px">Cambiar contraseña</h4>
+                        <p style="font: bold; font-size: 20px">Tu contraseña es temporal, reestablecela</p>
+                        <div class="row">
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input name="txt_pass" id="pass" type="password" class="validate" required>
+                                    <label for="pass">Nueva contraseña</label>
+                                </div>
+                            </div>
+                            <div class="row right">
+                                <img style="width: 350px; height: 350px; margin-right: 100px; margin-top:-150px" src="img/iconPass.png"/>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input name="txt_pass2" id="pass2" type="password" class="validate" required>
+                                    <label for="pass">Confirmar nueva contraseña</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button class="btn waves-effect waves-light" type="submit" name="action" style="margin-left:170px; background-color: #1d1b31; width: 200px; height: 50px">Aceptar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
         <!--<div class="sidebar active">
@@ -112,7 +133,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="home-content">
                 <nav class="nav-extended" style="background-color: #1d1b31;">
                     <div class="nav-wrapper">
-                        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 30px">menu</i></a>
+                        <a id="menu" href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 30px">menu</i></a>
                         <img src="img/iconoBodega.png">
                         <span class="brand-logo">Menu Bodega</span>
                     </div>
@@ -141,36 +162,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <li><div class="divider"></div></li>
                     <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
                 </ul>
-                <div>
-                    <!-- Modal Structure -->
-                    <div id="modal_1" class="modal" style="position: absolute; margin-top: 150px">
-                        <form class="col s12" action="controller/controllerUpdatepass.php" method="post">
-                            <div class="modal-content">
-                                <h4>Cambiar contraseña</h4>
-                                <p>Tu contraseña es temporal, reestablecela</p>
-                                <div class="row">
-
-                                    <div class="row">
-                                        <div class="input-field col s6">
-                                            <input name="txt_pass" id="pass" type="password" class="validate" required>
-                                            <label for="pass">Nueva contraseña</label>
-                                        </div>
-                                        <div class="input-field col s6">
-                                            <input name="txt_pass2" id="pass2" type="password" class="validate" required>
-                                            <label for="pass">Confirmar nueva contraseña</label>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn waves-effect waves-light" type="submit" name="action">Aceptar
-                                    <i class="material-icons right">send</i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
             </div>
             <table class="table centered container" id="datos">
                 <thead>
@@ -362,11 +353,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 CloseModal();
             }
             function showModal() {
-                document.getElementById('modal_1').style.display = 'block';
+                document.getElementById('modal_pass').style.display = 'block';
+                document.getElementById('menu').style.visibility = "hidden";
             }
 
             function CloseModal() {
-                document.getElementById('modal_1').style.display = 'none';
+                document.getElementById('modal_pass').style.display = 'none';
+                document.getElementById('menu').style.visibility = "visible";
+
             }
         </script>
         <script src="js/script.js"></script>
