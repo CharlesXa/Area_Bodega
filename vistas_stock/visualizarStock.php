@@ -111,7 +111,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                             if (isset($_POST['btn_cargar'])) {
                                                 $selected = $_POST['cbo_area'];
                                                 if ($selected == 0) {
-                                                    $stock_area = $data->getStock();
+                                                    $stock_area = $data->getAllStock();
                                                 } else {
                                                     $stock_area = $data->getStockByArea($selected);
                                                 }

@@ -60,7 +60,7 @@ class Data {
     }
 
     public function getStockByArea($Area) {
-        $sql = "SELECT stock.nombre, stock.activo as 'activo', stock.cantidad_t, stock.descripcion, area_usuario.nombre AS 'area' FROM stock INNER JOIN area_usuario ON area_user_id_fk = area_usuario.id WHERE area_usuario.id = '$Area';";
+        $sql = "SELECT stock.id, stock.nombre, stock.activo as 'activo', stock.cantidad_t, stock.descripcion, area_usuario.nombre AS 'area' FROM stock INNER JOIN area_usuario ON area_user_id_fk = area_usuario.id WHERE area_usuario.id = '$Area';";
         $query = $this->con->query($sql);
         return $query;
     }
@@ -226,7 +226,13 @@ class Data {
         $query = $this->con->query($sql);
         return $query;
     }
-
+    
+    public function getAllStock() {
+        $sql = "SELECT * FROM stock";
+        $query = $this->con->query($sql);
+        return $query;
+    }
+    
     public function addUser($rut, $nombre, $apellido, $email, $telefono, $area, $tipo, $passwT) {
         $sql = "INSERT INTO usuario (id, rut, nombre, apellido, passwd, email, telefono, area_usuario_id_fk, tipo_user_id_fk, passwd_t) VALUES (NULL, '$rut', '$nombre', '$apellido', sha2('$passwT',0), '$email', '$telefono', '$area', '$tipo', '1');";
         $query = $this->con->query($sql);
@@ -235,6 +241,17 @@ class Data {
     public function updUser($email, $telefono, $area, $rut) {
         $sql = "UPDATE usuario SET email = '$email', telefono = '$telefono', area_usuario_id_fk = '$area' WHERE usuario.rut = '$rut';";
         $query = $this->con->query($sql);
+    }
+    
+    public function getCargaVuelo($vuelo) {
+        $sql="SELECT cliente.nombre as 'Cliente', carga.descripcion, carga.peso AS 'Peso kg', vuelo.codigo as 'Vuelo', avion.nombre AS 'Avion', avion.volumen as 'Volumen' FROM cliente
+                INNER JOIN carga ON cliente.id=carga.cliente_id_fk
+                INNER JOIN boleto ON boleto.cliente_id_fk=cliente.id
+                INNER JOIN vuelo ON vuelo.id=boleto.vuelo_id_fk
+                INNER JOIN avion ON avion.id=vuelo.avion_id_fk
+                WHERE vuelo.destino='$vuelo';";
+        $query= $this->con->query($sql);
+        return $query;
     }
 
 }
