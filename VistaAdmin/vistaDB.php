@@ -38,7 +38,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <li><div class="user-view">
                         <div class="background" style="background-color: #1d1b31;">
                         </div>
-                        <a href="#user"><img class="circle" src="../img/iconPerfil.png"></a>
+                        <a href="../menuAdmin.php"><img class="circle" src="../img/iconPerfil.png"></a>
                         <a href="#name"><span class="white-text name" style="font-size: 20px"><?php echo $nombre . ' ' . $apellido ?></span></a>
                         <a href="#email"><span class="white-text email" style="font-size: 14px"><?php echo $correo ?></span></a>
                     </div></li>
@@ -49,7 +49,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <li><a href="#">Visualizar tablas</a></li>
                 </ul>
                 <li><div class="divider"></div></li>
-                <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
+                <li><a href="../Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
             </ul>
             <div class="container" >
                 <div class="row">
@@ -69,19 +69,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         $table = $data->getAllTables();
                                         $contador = 1;
                                         foreach ($table as $key) {
-                                            echo
-                                            ''
-                                            ?>
-                                        <form method="post" id="form<?php echo $contador; ?>">
-                                            <tr>
-                                                <td><?php echo $key['table_name']; ?></td>
-                                                <td><?php echo $key['table_rows']; ?></td>
-                                                <td><button data-target="<?php echo $key['table_name']; ?>" style="background-color:#1d1b31" class="btn modal-trigger">Visualizar</button></td>
+                                            $name = $key['table_name'];
+                                            $registro = $data->getTable($name);
+                                            foreach ($registro as $value) {
+                                                echo
+                                                ''
+                                                ?>
+                                            <form method="post" id="form<?php echo $contador; ?>">
+                                                <tr>
+                                                    <td><?php echo $name; ?></td>
+                                                    <td><?php echo $value['registro']; ?></td>
+                                                    <td><button data-target="<?php echo $name; ?>" style="background-color:#1d1b31" class="btn modal-trigger">Visualizar</button></td>
 
-                                            </tr>
-                                        </form>
-                                        <?php
-                                        '';
+                                                </tr>
+                                            </form>
+                                            <?php
+                                            '';
+                                        }
                                         $contador = $contador + 1;
                                     }
                                     ?>
@@ -585,7 +589,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer center">
                         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
@@ -625,7 +629,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer center">
                         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>

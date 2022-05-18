@@ -15,7 +15,8 @@ $data = new Data();
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Menu General</title>
+        <meta charset="UTF-8">
+        <title>Menu General - Historial</title>
         <link rel="icon" href="img/iconGeneral.png"/>
         <link rel="stylesheet" href="Materialize/css/materialize.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,45 +75,48 @@ $data = new Data();
                 <li><div class="divider"></div></li>
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Solicitudes<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
                 <ul id='dropdown1' class='dropdown-content' style="background-color: #1d1b31;">
-                    <li><a href="">Ingresar</a></li>
-                    <li><a href="historialSolicitud.php">Historial</a></li>
+                    <li><a href="vistas_stock/ingresarStock.php">Ingresar</a></li>
+                    <li><a href="vistas_stock/actualizarStock.php">Historial</a></li>
                 </ul>
                 <li><div class="divider"></div></li>
                 <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
             </ul>
-            <span class="table_Tit center" style="display: block; margin: 40px 0">Stock Disponible</span>
+            <span class="table_Tit center" style="display: block; margin: 40px 0">Historial de solicitudes</span>
             <table class="table centered responsive-table container" id="datos" border="1">
                 <thead align="center">
                     <tr>
                         <th>Nombre</th>
-                        <th>Activo</th>
                         <th>Cantidad</th>
+                        <th>Fecha-Hora</th>
                         <th>Descripcion</th>
+                        <th>Estado</th>
                         <th>Area</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $stock = $data->getStockByArea($area);
-                    foreach ($stock as $key) {
-                        $activo = '';
-                        switch ($key['activo']) {
+                    $historial = $data->getHistorialByArea($area);
+                    foreach ($historial as $key) {
+                        $estado = '';
+                        switch ($key['estado']) {
                             case 1:
-                                $activo = 'SI';
+                                $estado = 'Completado';
                                 break;
                             case 0:
-                                $activo = 'NO';
+                                $estado = 'Pendiente';
                             default:
                                 break;
                         }
-                        
+
                         echo '
                                     <tr> 
-                                        <td>' . $key['nombre'] . '</td>   
-                                        <td>' . $activo . '</td>   
-                                        <td>' . $key['cantidad_t'] . '</td>   
+                                        <td>' . $key['nombre'] . '</td>
+                                        <td>' . $key['cantidad'] . '</td>
+                                        <td>' . $key['fecha-hora'] . '</td>
                                         <td>' . $key['descripcion'] . '</td>
-                                        <td>' . $key['area'] . '</td>
+                                        <td>' . $estado . '</td>
+                                        <td>' . $key['area'] . '</td> 
+
                                     </tr>
                                 ';
                     }

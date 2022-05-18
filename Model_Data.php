@@ -59,12 +59,17 @@ class Data {
         $this->con->query($sql);
     }
 
-    public function getStockByArea($area) {
-        $sql = "SELECT * FROM stock where area_user_id_fk = '$area'";
+    public function getStockByArea($Area) {
+        $sql = "SELECT stock.nombre, stock.activo as 'activo', stock.cantidad_t, stock.descripcion, area_usuario.nombre AS 'area' FROM stock INNER JOIN area_usuario ON area_user_id_fk = area_usuario.id WHERE area_usuario.id = '$Area';";
         $query = $this->con->query($sql);
         return $query;
     }
-
+    
+    public function getHistorialByArea($Area){
+        $sql = "select stock.nombre as 'nombre', historial.cantidad as 'cantidad', solicitud.fecha_hora as 'fecha-hora', solicitud.descripcion as 'descripcion', solicitud.estado_s as 'estado', area_usuario.nombre as 'area' from historial INNER JOIN stock ON stock_id_fk = stock.id INNER JOIN solicitud ON solicitud_id_fk = solicitud.id INNER JOIN area_usuario ON area_usuario_id_fk = area_usuario.id where area_usuario.id = $Area";
+        $query = $this->con->query($sql);
+        return $query;
+    }
 
     public function getUserbyemail($email) {
         $sql = "SELECT *, COUNT(*) AS 'existe' FROM usuario where email = '$email';";
@@ -118,6 +123,12 @@ class Data {
         $query = $this->con->query($sql);
     }
 
+    public function getTable($name) {
+        $sql = "SELECT COUNT(*) as 'registro' FROM $name";
+        $query = $this->con->query($sql);
+        return $query;
+    }
+
     public function getAllTables() {
         $sql = "SELECT table_name, table_rows
     FROM INFORMATION_SCHEMA.TABLES
@@ -131,85 +142,85 @@ class Data {
         $query = $this->con->query($sql);
         return $query;
     }
-    
-    public function getAllAreas(){
+
+    public function getAllAreas() {
         $sql = "SELECT area_usuario.nombre FROM area_usuario;";
         $query = $this->con->query($sql);
         return $query;
     }
-    
-    public function getAvion(){
+
+    public function getAvion() {
         $sql = "SELECT avion.patente, avion.nombre, avion.capacidad, avion.volumen FROM avion;";
         $query = $this->con->query($sql);
         return $query;
     }
-    
-    public function getTCarga(){
+
+    public function getTCarga() {
         $sql = "SELECT tipo_carga.nombre FROM tipo_carga;";
         $query = $this->con->query($sql);
         return $query;
     }
-    
-    public function getClasificacion(){
+
+    public function getClasificacion() {
         $sql = "SELECT tipo_clasificacion.nombre FROM tipo_clasificacion;";
         $query = $this->con->query($sql);
         return $query;
     }
-    
-    public function getTipoUser(){
+
+    public function getTipoUser() {
         $sql = "SELECT tipo_user.nombre FROM tipo_user;";
         $query = $this->con->query($sql);
         return $query;
     }
-    
-    public function getBoleto(){
+
+    public function getBoleto() {
         $sql = "SELECT boleto.codigo, cliente.nombre as 'Nombre cliente', cliente.apellido as 'Apellido cliente', vuelo.codigo as 'Codigo de vuelo' FROM boleto INNER JOIN cliente ON cliente.id = cliente_id_fk INNER JOIN vuelo ON vuelo.id = vuelo_id_fk;";
         $query = $this->con->query($sql);
         return $query;
     }
-    
-    public function getCarga(){
+
+    public function getCarga() {
         $sql = "SELECT carga.peso, carga.descripcion, tipo_carga.nombre as 'Tipo carga', cliente.rut as 'R.U.T cliente', tipo_clasificacion.nombre as 'Clasificacion', avion.patente as 'Patente de avion' FROM carga INNER JOIN tipo_carga ON tipo_carga_id_fk = tipo_carga.id INNER JOIN cliente ON cliente_id_fk = cliente.id INNER JOIN tipo_clasificacion ON clasificacion_id_fk = tipo_clasificacion.id INNER JOIN avion ON avion_id_fk = avion.id;";
         $query = $this->con->query($sql);
         return $query;
     }
-    
-    public function getCliente(){
+
+    public function getCliente() {
         $sql = "SELECT cliente.rut, cliente.nombre, cliente.apellido, cliente.email, cliente.telefono, cliente.equipaje, cliente.numeroEquipaje FROM cliente;";
         $query = $this->con->query($sql);
         return $query;
     }
-    
-    public function getHistorial(){
+
+    public function getHistorial() {
         $sql = "SELECT historial.cantidad, solicitud.fecha_hora as 'fecha y hora de solicitud', solicitud.id as 'id de la solicitud', stock.nombre as 'articulo' FROM historial INNER JOIN solicitud ON solicitud_id_fk = solicitud.id INNER JOIN stock ON stock_id_fk = stock.id;";
         $query = $this->con->query($sql);
         return $query;
     }
-    
-    public function getReporte(){
+
+    public function getReporte() {
         $sql = "SELECT usuario.rut as 'RUT usuario', reporte.gravedad, reporte.fecha, reporte.hora, reporte.observacion FROM reporte INNER JOIN usuario ON usuario_id_fk = usuario.id;";
         $query = $this->con->query($sql);
         return $query;
     }
-    
-    public function getSolicitud(){
+
+    public function getSolicitud() {
         $sql = "select solicitud.descripcion as 'descripcion', solicitud.fecha_hora 'fecha-hora', solicitud.estado_s as 'estado', usuario.rut as 'RUT usuario' FROM solicitud INNER JOIN usuario ON usuario_id_fk = usuario.id;";
         $query = $this->con->query($sql);
         return $query;
     }
-    
-    public function getStock(){
+
+    public function getStock() {
         $sql = "SELECT stock.nombre as 'nombre', stock.activo as 'activo', stock.cantidad_t as 'cantidad', stock.descripcion as 'descripcion', area_usuario.nombre as 'area' FROM stock INNER JOIN area_usuario ON area_user_id_fk = area_usuario.id;";
         $query = $this->con->query($sql);
         return $query;
     }
-    
-    public function getVuelo(){
+
+    public function getVuelo() {
         $sql = "select vuelo.codigo as 'codigo', vuelo.fecha_horaS as 'fecha-hora salida', vuelo.fecha_horaE as 'fecha-hora entrada', vuelo.destino, vuelo.escala, avion.patente as 'patente de avion' FROM vuelo INNER JOIN avion ON avion_id_fk = avion.id;";
         $query = $this->con->query($sql);
         return $query;
     }
-    
+
     public function getTypeUser() {
         $sql = "SELECT * FROM tipo_user";
         $query = $this->con->query($sql);
@@ -217,14 +228,15 @@ class Data {
     }
 
     public function addUser($rut, $nombre, $apellido, $email, $telefono, $area, $tipo, $passwT) {
-        $sql="INSERT INTO usuario (id, rut, nombre, apellido, passwd, email, telefono, area_usuario_id_fk, tipo_user_id_fk, passwd_t) VALUES (NULL, '$rut', '$nombre', '$apellido', sha2('$passwT',0), '$email', '$telefono', '$area', '$tipo', '1');";
-        $query= $this->con->query($sql);
+        $sql = "INSERT INTO usuario (id, rut, nombre, apellido, passwd, email, telefono, area_usuario_id_fk, tipo_user_id_fk, passwd_t) VALUES (NULL, '$rut', '$nombre', '$apellido', sha2('$passwT',0), '$email', '$telefono', '$area', '$tipo', '1');";
+        $query = $this->con->query($sql);
     }
 
-    public function updUser($email,$telefono,$area,$rut) {
-        $sql="UPDATE usuario SET email = '$email', telefono = '$telefono', area_usuario_id_fk = '$area' WHERE usuario.rut = '$rut';";
-        $query= $this->con->query($sql);
+    public function updUser($email, $telefono, $area, $rut) {
+        $sql = "UPDATE usuario SET email = '$email', telefono = '$telefono', area_usuario_id_fk = '$area' WHERE usuario.rut = '$rut';";
+        $query = $this->con->query($sql);
     }
+
 }
 ?>
 

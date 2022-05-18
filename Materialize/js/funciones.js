@@ -13,10 +13,9 @@ function agregarUsuario(rut, nombre, apellido, email, telefono, area, tipo, pass
         data: cadena,
         success: function (r) {
             if (r == 1) {
-                alert("agregado con exito :)");
+                alertify.success("agregado con exito :)");
             } else {
-
-                alert("Fallo el servidor");
+                alertify.error("Fallo el servidor");
             }
         }
     });
