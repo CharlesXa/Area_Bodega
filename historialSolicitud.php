@@ -96,19 +96,20 @@ $data = new Data();
                 <tbody>
                     <?php
                     $historial = $data->getHistorialByArea($area);
-                    foreach ($historial as $key) {
+                    if($historial){
+                       foreach ($historial as $key) {
                         $estado = '';
-                        switch ($key['estado']) {
-                            case 1:
-                                $estado = 'Completado';
-                                break;
-                            case 0:
-                                $estado = 'Pendiente';
-                            default:
-                                break;
-                        }
+                            switch ($key['estado']) {
+                                case 1:
+                                    $estado = 'Completado';
+                                    break;
+                                case 0:
+                                    $estado = 'Pendiente';
+                                default:
+                                    break;
+                            }
 
-                        echo '
+                            echo '
                                     <tr> 
                                         <td>' . $key['nombre'] . '</td>
                                         <td>' . $key['cantidad'] . '</td>
@@ -119,7 +120,14 @@ $data = new Data();
 
                                     </tr>
                                 ';
-                    }
+                        }
+                    }elseif (!$historial){
+                        echo '
+                                    <tr> 
+                                        <td>No existe ningun registro para esta area aun</td>
+                                    </tr>
+                                ';
+                    } 
                     ?>
                 </tbody>
             </table>
