@@ -10,7 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
     <body>
         <?php
-        // put your code here
+        echo 'me la mamas bien mamada';
         ?>
     </body>
 </html>
