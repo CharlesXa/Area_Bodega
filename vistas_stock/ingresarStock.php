@@ -25,7 +25,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link rel="icon" href="../img/iconoBodega.png"/>
         <title>Ingreso de Stock - Menu Bodega</title>
     </head>
-    <body style="background-color: #E4E9F7">
+    <body style="background-color: white">
         <section>
             <nav class="nav-extended" style="background-color: #1d1b31;">
                 <div class="nav-wrapper">
@@ -64,18 +64,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="container" >
                 <div class="row">
                     <div class="col s12">
-                        <h2 align="center">Ingreso de Stock</h2>
+                        <h2 align="center" class="tit_admin">Ingreso de Stock</h2>
                         <form method="post" action="../Controller/controller_ingStock.php">
                             <div class="row">
                                 <div class="col s12 m6">
                                     <div class="row">
                                         <div class="col s12 title_input">Nombre:
-                                            <input id="nombre"  name="txt_nombre" type="text" class="validate" required>
+                                            <input id="nombre"  name="txt_nombre" type="text" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px" required>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col s12 m6">
+                                    <div class="row">
+                                        <div class="col s12 title_input">Cantidad:
+                                            <input id="cantidad" name="txt_cantidad" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="number" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col s12 m6">
                                     <div class="row">
                                         <div class="col s12 title_input">Area:
-                                            <div class="input-field col s12">
+                                            <div class="input-field col s12" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px">
                                                 <select name="cbo_area" id="salud" required>
                                                     <option value="">-- Seleccionar --</option>
                                                     <?php
@@ -90,24 +99,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col s12 m6">
+                                <div class="col s12 m12">
                                     <div class="row">
-                                        <div class="col s12 title_input">Cantidad:
-                                            <input id="cantidad" name="txt_cantidad" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="number" class="validate" required>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s12 title_input">Descripción:
-                                            <div class="input-field col s12">
-                                                <textarea id="textarea2" name="txt_descrip" class="materialize-textarea" data-length="120"></textarea>
-                                            </div>
+                                        <div class="col s12 m12 l12 title_input">Descripción:
+                                            <input id="textarea2"  name="textarea2" type="text" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px" required>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col s6 offset-s3">
-                                    <button class="btn white-text indigo darken-3 col s12 m4 offset-m4" name="btn_ingresar" type="submit" style=" height: 50px; margin-top: 40px; border-radius: 50px; font-weight: 600;">Ingresar Stock</button>
+                                    <button class="btn white-text waves-effect waves-light indigo darken-3 col s12 m4 offset-m4" name="btn_ingresar" type="submit" style=" height: 50px; margin-top: 40px; border-radius: 6px; font-weight: 600;">Ingresar Stock</button>
                                 </div>
                             </div>
                         </form>
@@ -115,7 +117,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
         </section>
-
+        <footer class="page-footer" style="background-color: transparent">
+            <div class="footer-copyright" style="background-color: #1d1b31">
+                <div class="container center">
+                    SGV © Derechos Reservados - 2022
+                </div>
+            </div>
+        </footer>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();

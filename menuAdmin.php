@@ -27,12 +27,14 @@ $data = new Data();
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="Materialize/js/funciones.js"></script>
+        <script src="js/validarut.js"></script>
+        <script src="js/jquery.rut.js"></script>
 
 
         <title>Menu Administrador</title>
 
     </head>
-    <body style="background-color: #E4E9F7" >
+    <body style="background-color: white" >
         <!-- Modal cambio de pass -->
         <div id="modal_pass" class="modal" style="margin-top: 100px">
             <div class="modal-content">
@@ -67,7 +69,7 @@ $data = new Data();
         <section>
             <nav class="nav-extended" style="background-color: #1d1b31;">
                 <div class="nav-wrapper">
-                    <a id="menu" href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 30px">menu</i></a>
+                    <a id="menu" href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 35px">menu</i></a>
                     <img src="img/iconAdmin.png">
                     <span class="brand-logo">Menu Admin</span>
                 </div>
@@ -119,250 +121,279 @@ $data = new Data();
                     </form>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <div id="modalAgregar" class="modal">
-                        <div class="modal-content">
-                            <h4>Agregar nuevo usuario</h4>
-                            <div class="row">
-                                <form class="col s12 grey lighten-3" style="padding: 20px; border-radius: 10px">
-                                    <div class="row">
-                                        <div class="input-field col s12 m5 l6">
-                                            <input id="rut" type="text" name="txt_rut" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
-                                            <label for="txt_rut">Rut</label>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <div id="modalAgregar" class="modal">
+                            <div class="modal-content">
+                                <h4>Agregar nuevo usuario</h4>
+                                <div class="row">
+                                    <form class="col s12 grey lighten-3" name="datosUser" style="padding: 20px; border-radius: 10px" method="post" >
+                                        <div class="row">
+                                            <div class="input-field col s12 m5 l6">
+                                                <input id="rut" type="text" name="txt_rut" onchange="javascript:return Rut(document.datosUser.txt_rut.value)" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" required>
+                                                <label for="txt_rut">Rut</label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12 m5 l6">
-                                            <input id="nombre" type="text" name="txt_nombre" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
-                                            <label for="txt_nombre">Nombre</label>
+                                        <div class="row">
+                                            <div class="input-field col s12 m5 l6">
+                                                <input id="nombre" type="text" name="txt_nombre" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" required="">
+                                                <label for="txt_nombre">Nombre</label>
+                                            </div>
+                                            <div class="input-field col s12 m5 l6">
+                                                <input id="apellido" type="text" name="txt_apellido" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" required="">
+                                                <label for="txt_apellido">Apellido</label>
+                                            </div>
                                         </div>
-                                        <div class="input-field col s12 m5 l6">
-                                            <input id="apellido" type="text" name="txt_apellido" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
-                                            <label for="txt_apellido">Apellido</label>
+                                        <div class="row">
+                                            <div class="input-field col s12 m5 l6">
+                                                <input id="email" type="text" name="txt_email" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" required="">
+                                                <label for="txt_email">Email</label>
+                                            </div>
+                                            <div class="input-field col s12 m5 l6">
+                                                <input id="telefono" type="text" name="txt_telefono" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" required>
+                                                <label for="txt_telefono">Telefono</label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12 m5 l6">
-                                            <input id="email" type="text" name="txt_email" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
-                                            <label for="txt_email">Email</label>
-                                        </div>
-                                        <div class="input-field col s12 m5 l6">
-                                            <input id="telefono" type="text" name="txt_telefono" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
-                                            <label for="txt_telefono">Telefono</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s10 m5 l5" style="background-color: white; border-radius: 5px; margin-left: 12px">
-                                            <select name="cbo_area" id="area" required>
-                                                <option value="0">-- Seleccionar --</option>
-                                                <?php
-                                                $area = $data->getArea();
+                                        <div class="row">
+                                            <div class="input-field col s10 m5 l5" style="background-color: white; border-radius: 5px; margin-left: 12px">
+                                                <select name="cbo_area" id="area" required>
+                                                    <option value="0">-- Seleccionar --</option>
+                                                    <?php
+                                                    $area = $data->getArea();
 
-                                                foreach ($area as $key) {
-                                                    echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                        <div class="input-field col s10 m5 l5" style="background-color: white; border-radius: 5px; margin-left: 12px">
-                                            <select name="cbo_tipo" id="tipo" required>
-                                                <option value="0">-- Seleccionar --</option>
-                                                <?php
-                                                $tipo = $data->getTypeUser();
+                                                    foreach ($area as $key) {
+                                                        echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <div class="input-field col s10 m5 l5" style="background-color: white; border-radius: 5px; margin-left: 12px">
+                                                <select name="cbo_tipo" id="tipo" required>
+                                                    <option value="0">-- Seleccionar --</option>
+                                                    <?php
+                                                    $tipo = $data->getTypeUser();
 
-                                                foreach ($tipo as $key) {
-                                                    echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
-                                                }
-                                                ?>
-                                            </select>
+                                                    foreach ($tipo as $key) {
+                                                        echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                        <div class="modal-footer center">
-                            <button id="agregarUsuario" type="button" class="modal-close waves-effect waves-light btn blue darken-3">Agregar Nuevo Usuario</button>
+                            <div class="modal-footer center">
+                                <button id="agregarUsuario" type="button" class="modal-close waves-effect waves-light btn blue darken-3">Agregar Nuevo Usuario</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <div id="modalEditar" class="modal">
-                        <div class="modal-content">
-                            <h4>Editar Datos</h4>
-                            <div class="row">
-                                <form class="col s12 grey lighten-3" style="padding: 20px; border-radius: 10px">
-                                    <div class="row">
-                                        <div class="input-field col s12 m5 l6">
-                                            <input placeholder="" id="rutEdite" type="text" name="txt_rut" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" readonly>
-                                            <label for="txt_rut">Rut</label>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <div id="modalEditar" class="modal">
+                            <div class="modal-content">
+                                <h4>Editar Datos</h4>
+                                <div class="row">
+                                    <form class="col s12 grey lighten-3" style="padding: 20px; border-radius: 10px">
+                                        <div class="row">
+                                            <div class="input-field col s12 m5 l6">
+                                                <input placeholder="" id="rutEdite" type="text" name="txt_rut" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" readonly>
+                                                <label for="txt_rut">Rut</label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12 m5 l6" >
-                                            <input placeholder="" id="nombreE" type="text" name="txt_nombre" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" readonly>
-                                            <label for="txt_nombre">Nombre</label>
+                                        <div class="row">
+                                            <div class="input-field col s12 m5 l6" >
+                                                <input placeholder="" id="nombreE" type="text" name="txt_nombre" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" readonly>
+                                                <label for="txt_nombre">Nombre</label>
+                                            </div>
+                                            <div class="input-field col s12 m5 l6">
+                                                <input placeholder="" id="apellidoE" type="text" name="txt_apellido" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" readonly>
+                                                <label for="txt_apellido">Apellido</label>
+                                            </div>
                                         </div>
-                                        <div class="input-field col s12 m5 l6">
-                                            <input placeholder="" id="apellidoE" type="text" name="txt_apellido" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" readonly>
-                                            <label for="txt_apellido">Apellido</label>
+                                        <div class="row">
+                                            <div class="input-field col s12 m5 l6">
+                                                <input placeholder="" id="emailE" type="text" name="txt_email" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
+                                                <label for="txt_email">Email</label>
+                                            </div>
+                                            <div class="input-field col s12 m5 l6">
+                                                <input placeholder="" id="telefonoE" type="text" name="txt_telefono" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
+                                                <label for="txt_telefono">Telefono</label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12 m5 l6">
-                                            <input placeholder="" id="emailE" type="text" name="txt_email" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
-                                            <label for="txt_email">Email</label>
-                                        </div>
-                                        <div class="input-field col s12 m5 l6">
-                                            <input placeholder="" id="telefonoE" type="text" name="txt_telefono" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
-                                            <label for="txt_telefono">Telefono</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s10 m5 l5" style="background-color: white; border-radius: 5px; margin-left: 12px">
-                                            <select name="cbo_area" id="areaE" required>
-                                                <option value="0">-- Seleccionar --</option>
-                                                <?php
-                                                $area = $data->getArea();
+                                        <div class="row">
+                                            <div class="input-field col s12 m5 l6">
+                                                <input placeholder="" id="areaE" type="text" name="txt_area" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
+                                                <label for="txt_area">Area Actual</label>
+                                            </div>
+                                            <div class="input-field col s10 m5 l5" style="background-color: white; border-radius: 5px; margin-left: 12px">
+                                                <select name="cbo_area" id="areaN" required>Nueva Area
+                                                    <option value="0">-- Seleccionar --</option>
+                                                    <?php
+                                                    $area = $data->getArea();
 
-                                                foreach ($area as $key) {
-                                                    echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
-                                                }
-                                                ?>
-                                            </select>
+                                                    foreach ($area as $key) {
+                                                        echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
+                                                    }
+                                                    ?>
+                                                </select><label for="areaN">Nueva Area</label>
+                                            </div>
                                         </div>
-                                        <div class="input-field col s10 m5 l5" style="background-color: white; border-radius: 5px; margin-left: 12px">
-                                            <select name="cbo_tipo" id="tipoE" required readonly>
-                                                <option value="0">-- Seleccionar --</option>
-                                                <?php
-                                                $tipo = $data->getTypeUser();
-
-                                                foreach ($tipo as $key) {
-                                                    echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
-                                                }
-                                                ?>
-                                            </select>
+                                        <div class="row">
+                                            
+                                            
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                        <div class="modal-footer center">
-                            <button id="actualizar" type="button" class="modal-close waves-effect waves-light btn blue darken-3">Actualizar Usuario</button>
+                            <div class="modal-footer center">
+                                <button id="actualizar" type="button" class="modal-close waves-effect waves-light btn blue darken-3">Actualizar Usuario</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <span class="table_Tit center" style="display: block; margin-bottom: 40px">Listado de usuarios</span>
-        <table class="table centered responsive-table container" id="datos" border="1">
-            <thead align="center">
-                <tr>
-                    <th>R.U.T</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Email</th>
-                    <th>Telefono</th>
-                    <th>Area</th>
-                    <th>Tipo de usuario</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <?php
-                $users = $data->getAllusers();
-                foreach ($users as $key) {
-                    $datos = $key['rut'] . "||" .
-                            $key['nombre'] . "||" .
-                            $key['apellido'] . "||" .
-                            $key['email'] . "||" .
-                            $key['telefono'] . "||" .
-                            $key['area'] . "||" .
-                            $key['tipo'];
-                    echo ''
-                    ?>
-
+            <span class="table_Tit center" style="display: block; margin-bottom: 40px">Listado de usuarios</span>
+            <table class="table centered responsive-table container" id="datos" border="1">
+                <thead align="center">
                     <tr>
-                        <td><?php echo $key['rut'] ?></td>
-                        <td><?php echo $key['nombre'] ?></td>
-                        <td><?php echo $key['apellido'] ?></td>
-                        <td><?php echo $key['email'] ?></td>
-                        <td><?php echo $key['telefono'] ?></td>
-                        <td><?php echo $key['area'] ?></td>
-                        <td><?php echo $key['tipo'] ?></td>
-                        <td><button data-target="modalEditar" class="btn modal-trigger" onclick="cargarDatos('<?php echo $datos; ?>');" style="background-color: #fbc02d; "><i class="material-icons">create</i></button></td>
+                        <th>R.U.T</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        <th>Telefono</th>
+                        <th>Area</th>
+                        <th>Tipo de usuario</th>
                     </tr>
+                </thead>
+
+                <tbody>
                     <?php
-                    '';
-                }
-                ?>
-            </tbody>
-        </table>
-        <div class="container center" style="margin-top: 40px">
-            <button data-target="modalAgregar" class="btn modal-trigger center blue darken-3">Agregar Nuevo Usuario</button>
-        </div>
-    </section>
-    <footer class="page-footer" style="background-color: transparent">
-        <div class="footer-copyright" style="background-color: #1d1b31">
-            <div class="container center">
-                SGV © Derechos Reservados - 2022
+                    $users = $data->getAllusers();
+                    foreach ($users as $key) {
+                        $datos = $key['rut'] . "||" .
+                                $key['nombre'] . "||" .
+                                $key['apellido'] . "||" .
+                                $key['email'] . "||" .
+                                $key['telefono'] . "||" .
+                                $key['area'] . "||" .
+                                $key['tipo'];
+                        echo ''
+                        ?>
+
+                        <tr>
+                            <td><?php echo $key['rut'] ?></td>
+                            <td><?php echo $key['nombre'] ?></td>
+                            <td><?php echo $key['apellido'] ?></td>
+                            <td><?php echo $key['email'] ?></td>
+                            <td><?php echo $key['telefono'] ?></td>
+                            <td><?php echo $key['area'] ?></td>
+                            <td><?php echo $key['tipo'] ?></td>
+                            <td><button data-target="modalEditar" class="btn modal-trigger" onclick="cargarDatos('<?php echo $datos; ?>');" style="background-color: #fbc02d; "><i class="material-icons">create</i></button></td>
+                        </tr>
+                        <?php
+                        '';
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <div class="container center" style="margin-top: 40px">
+                <button data-target="modalAgregar" class="btn modal-trigger center blue darken-3">Agregar Nuevo Usuario</button>
             </div>
-        </div>
-    </footer>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#agregarUsuario').click(function () {
-                rut = $('#rut').val();
-                nombre = $('#nombre').val();
-                apellido = $('#apellido').val();
-                email = $('#email').val();
-                telefono = $('#telefono').val();
-                area = $('#area').val();
-                tipo = $('#tipo').val();
-                passwT = rut.substring(0, 6) + nombre.substring(0, 3);
+        </section>
+        <footer class="page-footer" style="background-color: transparent">
+            <div class="footer-copyright" style="background-color: #1d1b31">
+                <div class="container center">
+                    SGV © Derechos Reservados - 2022
+                </div>
+            </div>
+        </footer>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#agregarUsuario').click(function () {
+                    rut = $('#rut').val();
+                    nombre = $('#nombre').val();
+                    apellido = $('#apellido').val();
+                    email = $('#email').val();
+                    telefono = $('#telefono').val();
+                    area = $('#area').val();
+                    tipo = $('#tipo').val();
+                    passwT = rut.substring(0, 6) + nombre.substring(0, 3);
 
-                agregarUsuario(rut, nombre, apellido, email, telefono, area, tipo, passwT);
-                location.reload(true);
+                    agregarUsuario(rut, nombre, apellido, email, telefono, area, tipo, passwT);
+                    location.reload(true);
+                });
+
+                $('#actualizar').click(function () {
+                    actualizarUsuario();
+                    location.reload(true);
+                });
+
             });
-
-            $('#actualizar').click(function () {
-
-                actualizarUsuario();
-                location.reload(true);
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                M.AutoInit();
             });
+            var temporal = "<?php echo $passwd_t ?>";
 
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            M.AutoInit();
-        });
-        var temporal = "<?php echo $passwd_t ?>";
+            if (temporal == 1) {
+                showModal();
+                console.log(temporal);
+            } else {
+                CloseModal();
+            }
+            function showModal() {
+                document.getElementById('modal_pass').style.display = 'block';
+                document.getElementById('menu').style.visibility = "hidden";
+            }
 
-        if (temporal == 1) {
-            showModal();
-            console.log(temporal);
-        } else {
-            CloseModal();
-        }
-        function showModal() {
-            document.getElementById('modal_pass').style.display = 'block';
-            document.getElementById('menu').style.visibility = "hidden";
-        }
+            function CloseModal() {
+                document.getElementById('modal_pass').style.display = 'none';
+                document.getElementById('menu').style.visibility = "visible";
 
-        function CloseModal() {
-            document.getElementById('modal_pass').style.display = 'none';
-            document.getElementById('menu').style.visibility = "visible";
+            }
+        </script>
 
-        }
-    </script>
-    <script src="js/script.js"></script>
-</body>
+        <script src="js/script.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("input#rut").rut({
+                    formatOn: 'keyup',
+                    minimumLength: 8, // validar largo mínimo; default: 2
+                    validateOn: 'change' // si no se quiere validar, pasar null
+                });
+                $(document).ready(function () {
+                    $('.sidenav').sidenav();
+                });
+                var input = document.getElementById('rut');
+                input.addEventListener('input', function () {
+                    if (this.value.length >= 13)
+                        this.value = this.value.slice(0, 12);
+                })
+            })
+            document.getElementById('correo').addEventListener('input', function () {
+                campo = event.target;
+                valido = document.getElementById('emailVal');
+                emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+                //Se muestra un texto a modo de ejemplo, luego va a ser un icono
+
+                if (emailRegex.test(campo.value)) {
+                    valido.innerText = "Correo válido";
+                } else {
+                    valido.innerText = "Correo no válido";
+                }
+            }
+            );
+            let toggle = document.getElementById('add');
+            toggle.onclick = function () {
+                toggle.classList.toggle('active');
+            }
+        </script>
+    </body>
 </html>
 

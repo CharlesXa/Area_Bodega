@@ -31,9 +31,10 @@ function cargarDatos(datos) {
     $('#emailE').val(d[3]);
     $('#telefonoE').val(d[4]);
     area=0;
-    switch (d[5]) {
-        case "bodega":
-            area=1;
+    console.log(d[5]);
+    /*switch (d[5]) {
+        case 1:
+            area="bodega";
             break;
         case "seguridad":
             area=2;
@@ -50,9 +51,9 @@ function cargarDatos(datos) {
         default:
             area=0;
             break;
-    }
-    $('#areaE').val(area);
-    $('#tipoE').val(d[6]);
+    }*/
+    $('#areaE').val(d[5]);
+    
 
 
 
@@ -65,8 +66,8 @@ function actualizarUsuario() {
     apellido = $('#apellidoE').val();
     email = $('#emailE').val();
     telefono = $('#telefonoE').val();
-    area = $('#areaE').val();
-    tipo = $('#tipoE').val();
+    area = $('#areaN').val();
+    
     
     cadena = "rut=" + rut + "&nombre=" + nombre + "&apellido=" + apellido + "&email=" + email + "&telefono=" + telefono + "&area=" + area + "&tipo=" + tipo;
     
@@ -78,10 +79,10 @@ function actualizarUsuario() {
         data: cadena,
         success: function (r) {
             if (r == 1) {
-                alert("Actualizado con exito :)");
-            } else {
-
                 alert("Fallo el servidor");
+            } else {
+                alert("Actualizado con exito :)");
+                
             }
         }
     });

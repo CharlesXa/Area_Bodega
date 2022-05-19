@@ -22,13 +22,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     $email=$_POST['email'];
     $telefono=$_POST['telefono'];
     $area=$_POST['area'];
-    $tipo=$_POST['tipo'];
     
-    echo $rut." ".$nombre." ".$apellido." ".$email." ".$telefono." ".$area." ".$tipo;
+    
+    echo $rut." ".$nombre." ".$apellido." ".$email." ".$telefono." ".$area;
     
     $data=new Data();
     
     $data->updUser($email, $telefono, $area,$rut);
     
-    echo 1;
+    echo true;
 ?>

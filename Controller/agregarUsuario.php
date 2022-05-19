@@ -30,5 +30,5 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     $data->addUser($rut, $nombre, $apellido, $email, $telefono, $area, $tipo, $passwT);
     // Aqui va un alert
     
-    echo 1;
+    echo true;
 ?>

@@ -2688,7 +2688,7 @@ a {
 }
 
 .divider {
-    height: 1px;
+    height: 2px;
     overflow: hidden;
     background-color: #e0e0e0;
 }
@@ -2966,7 +2966,6 @@ footer span{
 }
 
 .page-footer {
-    padding-top: 20px;
     color: #fff;
     background-color: #ee6e73;
 }
@@ -3043,6 +3042,10 @@ td, th {
     font-size: 40px;
     font-weight: 600;
 }
+.tit_personal{
+    font-weight: 500;
+    font-size: 30px;
+}
 
 @media only screen and (max-width: 992px) {
     table.responsive-table {
@@ -3106,7 +3109,11 @@ td, th {
 }
 @media only screen and (max-width: 450px) {
     .table_Tit{
+        font-size: 25px;
+    }
+    .tit_admin{
         font-size: 30px;
+        text-align: center;
     }
 }
 
@@ -3504,6 +3511,21 @@ table span.badge {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
+}
+.row_padd{
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 12px
+}
+
+@media only screen and (max-width: 450px) {
+    .row_padd{
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-top: 25px;
+        padding-bottom: 12px
+    }
 }
 
 .row:after {
@@ -5632,7 +5654,21 @@ button.btn-floating {
 
 .dropdown-content li.divider {
     min-height: 0;
-    height: 1px;
+    height: 2px;
+}
+
+.titel_img{
+    font-size: 23px;
+}
+@media only screen and (max-width: 350px) {
+    .titel_img{
+        font-size: 18px;
+    }
+}
+@media only screen and (max-width: 250px) {
+    .titel_img{
+        font-size: 12px;
+    }
 }
 
 .dropdown-content li > a, .dropdown-content li > span {
@@ -5834,6 +5870,19 @@ body.keyboard-focused .dropdown-content li:focus {
 .modal .modal-content {
     padding: 40px 40px 0px 40px;
 }
+.row_modal_1{
+    padding: 30px;
+}
+
+@media only screen and (max-width: 450px) {
+    .modal .modal-content{
+        padding: 20px 0 0 0;
+    }
+    .row_modal_1{
+        padding: 20px;
+    }
+}
+
 
 .modal .modal-close {
     cursor: pointer;
@@ -6583,7 +6632,6 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
 .input-field.col .prefix ~ .validate ~ label {
     width: calc(100% - 3rem - 1.5rem);
 }
-
 .input-field > label {
     color: #9e9e9e;
     position: absolute;
@@ -6729,6 +6777,16 @@ textarea {
     width: 100%;
     height: 3rem;
     background-color: transparent;
+}
+
+.title_reporte{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+@media only screen and (max-width: 450px) {
+    .title_reporte{
+        margin: 30px 20px;
+    }
 }
 
 textarea.materialize-textarea {
@@ -7591,7 +7649,7 @@ input[type=range]::-ms-thumb {
 
 .sidenav {
     position: fixed;
-    width: 270px;
+    width: 320px;
     left: 0;
     top: 0;
     margin: 0;
@@ -7682,7 +7740,7 @@ input[type=range]::-ms-thumb {
 }
 
 .sidenav .divider {
-    margin: 8px 0 0 0;
+    margin: 2px 0 2px 0;
 }
 
 .sidenav .subheader {
@@ -7773,6 +7831,9 @@ input[type=range]::-ms-thumb {
 }
 
 @media only screen and (max-width: 992px) {
+    .sidenav{
+        width: 260px;
+    }
     .sidenav.sidenav-fixed {
         -webkit-transform: translateX(-105%);
         transform: translateX(-105%);

@@ -25,7 +25,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link rel="icon" href="../img/iconoBodega.png"/>
         <title>Visualizar Stock - Menu Bodega</title>
     </head>
-    <body style="background-color: #E4E9F7">
+    <body style="background-color: white">
         <section>
             <nav class="nav-extended" style="background-color: #1d1b31;">
                 <div class="nav-wrapper">
@@ -64,13 +64,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="container" >
                 <div class="row">
                     <div class="col s12">
-                        <h2 align="center">Visualizacion de Stock Aeropuerto</h2>
+                        <h2 align="center" class="tit_admin">Visualizacion de Stock Aeropuerto</h2>
                         <form method="post">
                             <div class="row">
                                 <div class="col s12 m6">
                                     <div class="row">
                                         <div class="col s12 title_input">Area:
-                                            <div class="input-field col s12">
+                                            <div class="input-field col s12" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px">
                                                 <select name="cbo_area" id="area" required>
                                                     <option value="0">-- Seleccionar --</option>
                                                     <?php
@@ -88,14 +88,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <div class="col s12 m6">
                                     <div class="row">
                                         <div class="col s12 title_input">
-                                            <button class="btn white-text indigo darken-3 col s12 m4 offset-m4" name="btn_cargar" type="submit" style=" height: 50px; margin-top: 40px; border-radius: 50px; font-weight: 600;">Cargar Stock</button>
+                                            <button class="btn white-text waves-effect waves-light indigo darken-3 col s12 m7 offset-m4" name="btn_cargar" type="submit" style=" height: 50px; margin-top: 40px; border-radius: 6px; font-weight: 600;">Cargar Stock</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="rows">
                                 <div class="col s12">
-                                    <table class="table centered">
+                                    <table class="table responsive-table">
                                         <thead >
                                         <td>#</td>
                                         <td>Nombre</td>
@@ -133,13 +133,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     </table>
                                 </div>
                             </div>
-
-
                         </form>
                     </div>
                 </div>
             </div>
         </section>
+        <footer class="page-footer" style="background-color: transparent">
+            <div class="footer-copyright" style="background-color: #1d1b31">
+                <div class="container center">
+                    SGV © Derechos Reservados - 2022
+                </div>
+            </div>
+        </footer>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();

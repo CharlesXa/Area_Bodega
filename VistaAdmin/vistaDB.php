@@ -25,7 +25,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <title>Visualizar Tablas</title>
     </head>
-    <body style="background-color: #E4E9F7">
+    <body style="background-color: white">
         <section>
             <nav class="nav-extended" style="background-color: #1d1b31;">
                 <div class="nav-wrapper">
@@ -43,6 +43,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <a href="#email"><span class="white-text email" style="font-size: 14px"><?php echo $correo ?></span></a>
                     </div></li>
                 <li><div class="divider"></div></li>
+                <li><a href="../menuAdmin.php">Inicio</a></li>
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Database<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
                 <ul id='dropdown1' class='dropdown-content' style="background-color: #1d1b31;">
                     <li><a href="../backup.php">Respaldo</a></li>
@@ -54,7 +55,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="container" >
                 <div class="row">
                     <div class="col s12">
-                        <h2 align="center">Tablas Database</h2>
+                        <h2 class="tit_admin center">Tablas de la base de datos</h2>
                         <div class="row">
                             <div class="col s12">
                                 <table class="table">
@@ -89,7 +90,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         $contador = $contador + 1;
                                     }
                                     ?>
-
                                     </tbody>
                                 </table>
                             </div>

@@ -13,7 +13,8 @@ body{
     justify-content: center;
     height: 100vh;
     background-image: url(../../img/fondo.png);
-    background-color: #ffffe;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .nav-cont{
