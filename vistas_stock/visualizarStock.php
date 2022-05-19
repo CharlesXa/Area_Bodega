@@ -101,7 +101,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         <td>Nombre</td>
                                         <td>Cantidad</td>
                                         <td>Descripcion</td>
-                                        <td>Actualizar</td>
                                         </thead>
                                         <tbody>
 

@@ -102,7 +102,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <div class="col s12 m12">
                                     <div class="row">
                                         <div class="col s12 m12 l12 title_input">Descripción:
-                                            <input id="textarea2"  name="textarea2" type="text" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px" required>
+                                            <input id="textarea2"  name="txt_descrip" type="text" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px" required>
                                         </div>
                                     </div>
                                 </div>

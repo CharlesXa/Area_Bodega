@@ -89,6 +89,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <a href="#email"><span class="white-text email" style="font-size: 14px"><?php echo $correo ?></span></a>
                     </div></li>
                 <li><div class="divider"></div></li>
+                <li><a href="../menuBodega.php">Inicio</a></li>
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Stock<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
                 <ul id='dropdown1' class='dropdown-content' style="background-color: #1d1b31;">
                     <li><a href="../vistas_stock/ingresarStock.php">Ingreso</a></li>
