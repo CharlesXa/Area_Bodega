@@ -38,7 +38,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
-        <title>Menu Bodega</title>
+        <title>Menu Bodega - D. Equipaje</title>
 
     </head>
     <body style="background-color: #E4E9F7" >

@@ -54,9 +54,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </ul>
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Equipaje<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
                 <ul id='dropdown2' class='dropdown-content' style="background-color: #1d1b31;">
-                    <li><a href="#">Ingreso</a></li>
-                    <li><a href="#">Busqueda</a></li>
-                    <li><a href="#">Distribucion</a></li>
+                    <li><a href="../vistas_equipaje/ingresarEquipaje.php">Ingreso</a></li>
+                    <li><a href="../vistas_equipaje/busquedaEquipaje.php">Busqueda</a></li>
+                    <li><a href="../vistas_equipaje/distribucionEquipaje.php">Distribucion</a></li>
                 </ul>
                 <li><div class="divider"></div></li>
                 <li><a href="../Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
