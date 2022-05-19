@@ -54,7 +54,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="container" >
                 <div class="row">
                     <div class="col s12">
-                        <h2 align="center">T. Database</h2>
+                        <h2 align="center">Tablas Database</h2>
                         <div class="row">
                             <div class="col s12">
                                 <table class="table">
