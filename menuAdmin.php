@@ -27,6 +27,8 @@ $data = new Data();
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="Materialize/js/funciones.js"></script>
+        <script src="js/validarut.js"></script>
+        <script src="js/jquery.rut.js"></script>
 
 
         <title>Menu Administrador</title>
@@ -126,30 +128,30 @@ $data = new Data();
                             <div class="modal-content">
                                 <h4>Agregar nuevo usuario</h4>
                                 <div class="row">
-                                    <form class="col s12 grey lighten-3" style="padding: 20px; border-radius: 10px">
+                                    <form class="col s12 grey lighten-3" name="datosUser" style="padding: 20px; border-radius: 10px" method="post" >
                                         <div class="row">
                                             <div class="input-field col s12 m5 l6">
-                                                <input id="rut" type="text" name="txt_rut" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
+                                                <input id="rut" type="text" name="txt_rut" onchange="javascript:return Rut(document.datosUser.txt_rut.value)" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" required>
                                                 <label for="txt_rut">Rut</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12 m5 l6">
-                                                <input id="nombre" type="text" name="txt_nombre" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
+                                                <input id="nombre" type="text" name="txt_nombre" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" required="">
                                                 <label for="txt_nombre">Nombre</label>
                                             </div>
                                             <div class="input-field col s12 m5 l6">
-                                                <input id="apellido" type="text" name="txt_apellido" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
+                                                <input id="apellido" type="text" name="txt_apellido" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" required="">
                                                 <label for="txt_apellido">Apellido</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12 m5 l6">
-                                                <input id="email" type="text" name="txt_email" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
+                                                <input id="email" type="text" name="txt_email" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" required="">
                                                 <label for="txt_email">Email</label>
                                             </div>
                                             <div class="input-field col s12 m5 l6">
-                                                <input id="telefono" type="text" name="txt_telefono" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
+                                                <input id="telefono" type="text" name="txt_telefono" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" required>
                                                 <label for="txt_telefono">Telefono</label>
                                             </div>
                                         </div>
@@ -224,8 +226,12 @@ $data = new Data();
                                             </div>
                                         </div>
                                         <div class="row">
+                                            <div class="input-field col s12 m5 l6">
+                                                <input placeholder="" id="areaE" type="text" name="txt_area" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
+                                                <label for="txt_area">Area Actual</label>
+                                            </div>
                                             <div class="input-field col s10 m5 l5" style="background-color: white; border-radius: 5px; margin-left: 12px">
-                                                <select name="cbo_area" id="areaE" required>
+                                                <select name="cbo_area" id="areaN" required>Nueva Area
                                                     <option value="0">-- Seleccionar --</option>
                                                     <?php
                                                     $area = $data->getArea();
@@ -234,20 +240,12 @@ $data = new Data();
                                                         echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
                                                     }
                                                     ?>
-                                                </select>
+                                                </select><label for="areaN">Nueva Area</label>
                                             </div>
-                                            <div class="input-field col s10 m5 l5" style="background-color: white; border-radius: 5px; margin-left: 12px">
-                                                <select name="cbo_tipo" id="tipoE" required readonly>
-                                                    <option value="0">-- Seleccionar --</option>
-                                                    <?php
-                                                    $tipo = $data->getTypeUser();
-
-                                                    foreach ($tipo as $key) {
-                                                        echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            
+                                            
                                         </div>
                                     </form>
                                 </div>
@@ -331,7 +329,6 @@ $data = new Data();
                 });
 
                 $('#actualizar').click(function () {
-
                     actualizarUsuario();
                     location.reload(true);
                 });
@@ -361,7 +358,42 @@ $data = new Data();
 
             }
         </script>
+
         <script src="js/script.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("input#rut").rut({
+                    formatOn: 'keyup',
+                    minimumLength: 8, // validar largo mínimo; default: 2
+                    validateOn: 'change' // si no se quiere validar, pasar null
+                });
+                $(document).ready(function () {
+                    $('.sidenav').sidenav();
+                });
+                var input = document.getElementById('rut');
+                input.addEventListener('input', function () {
+                    if (this.value.length >= 13)
+                        this.value = this.value.slice(0, 12);
+                })
+            })
+            document.getElementById('correo').addEventListener('input', function () {
+                campo = event.target;
+                valido = document.getElementById('emailVal');
+                emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+                //Se muestra un texto a modo de ejemplo, luego va a ser un icono
+
+                if (emailRegex.test(campo.value)) {
+                    valido.innerText = "Correo válido";
+                } else {
+                    valido.innerText = "Correo no válido";
+                }
+            }
+            );
+            let toggle = document.getElementById('add');
+            toggle.onclick = function () {
+                toggle.classList.toggle('active');
+            }
+        </script>
     </body>
 </html>
 

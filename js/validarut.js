@@ -14,8 +14,8 @@ function revisarDigito(dvr)
     if (dv != '0' && dv != '1' && dv != '2' && dv != '3' && dv != '4' && dv != '5' && dv != '6' && dv != '7' && dv != '8' && dv != '9' && dv != 'k' && dv != 'K')
     {
         alert("Debe ingresar un digito verificador valido");
-        window.document.complemento3.rut.focus();
-        window.document.complemento3.rut.select();
+        window.document.datosUser.rut.focus();
+        window.document.datosUser.rut.select();
         return false;
     }
     return true;
@@ -28,7 +28,7 @@ function revisarDigito2(crut)
     {
         alert("Debe ingresar el rut completo")
         window.document.rut.focus();
-        window.document.login.rut.select();
+        window.document.datosUser.rut.select();
         return false;
     }
     if (largo > 2)
@@ -66,8 +66,8 @@ function revisarDigito2(crut)
     if (dvr != dv.toLowerCase())
     {
         alert("EL rut es incorrecto")
-        window.document.login.rut.focus();
-        window.document.login.rut.select();
+        window.document.datosUser.rut.focus();
+        window.document.datosUser.rut.select();
         return false
     }
 
@@ -86,8 +86,8 @@ function Rut(texto)
     if (largo < 5)
     {
         alert("Debe ingresar el rut completo")
-        window.document.login.rut.focus();
-        window.document.login.rut.select();
+        window.document.datosUser.rut.focus();
+        window.document.datosUser.rut.select();
         return false;
     }
 
@@ -96,8 +96,8 @@ function Rut(texto)
         if (texto.charAt(i) != "0" && texto.charAt(i) != "1" && texto.charAt(i) != "2" && texto.charAt(i) != "3" && texto.charAt(i) != "4" && texto.charAt(i) != "5" && texto.charAt(i) != "6" && texto.charAt(i) != "7" && texto.charAt(i) != "8" && texto.charAt(i) != "9" && texto.charAt(i) != "k" && texto.charAt(i) != "K")
         {
             alert("El valor ingresado no corresponde a un R.U.T valido");
-            window.document.login.rut.focus();
-            window.document.login.rut.select();
+            window.document.datosUser.rut.focus();
+            window.document.datosUser.rut.select();
             return false;
         }
     }
@@ -130,7 +130,7 @@ function Rut(texto)
     for (i = (dtexto.length - 1), j = 0; i >= 0; i--, j++)
         invertido = invertido + dtexto.charAt(i);
 
-    window.document.login.rut.value = invertido.toUpperCase()
+    window.document.datosUser.rut.value = invertido.toUpperCase()
 
     if (revisarDigito2(texto))
         return true;
