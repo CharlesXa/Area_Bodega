@@ -32,7 +32,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 30px">menu</i></a>
                     <a href="../menuBodega.php">
                         <img src="../img/iconoBodega.png">
-                        <span class="brand-logo">Menu Bodega</span>
+                        <span class="brand-logo">Menu Bodegas</span>
                     </a>
                 </div>
             </nav>
