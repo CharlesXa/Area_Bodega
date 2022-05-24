@@ -11,7 +11,7 @@
             function UpdateCorrect() {
                 swal({
                     title: "Contraseña reestablecida!",
-                    text: "debes iniciar sesion nuevamente",
+                    text: "Debes iniciar sesion nuevamente",
                     type: "success",
                     confirmButtonColor: "#DD6B55",
                     confirmButtonText: "Aceptar"

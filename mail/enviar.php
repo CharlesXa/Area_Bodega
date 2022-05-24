@@ -60,7 +60,7 @@ if ($_POST["btn_enviar"]) {
     $mail->Password = $smtpClave;
 
     $mail->From = $email; // Email desde donde envío el correo.
-    $mail->FromName = $user->getNombre();
+    $mail->FromName = "Quokka Team B&S";
     $mail->AddAddress($email); // Esta es la dirección a donde enviamos los datos del formulario
 
     $mail->Subject = "Solitud para cambiar la contraseña"; // Este es el titulo del email.

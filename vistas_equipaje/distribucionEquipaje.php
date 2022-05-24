@@ -13,10 +13,6 @@ if ($correo == null || "") {
     echo '<script language="javascript">alert("Acceso invalido");</script>';
     echo "<script> window.location.replace('index.php') </script>";
 }
-if ($correo != "nicolasperezcorreo@gmail.com") {
-    echo '<script language="javascript">alert("Acceso invalido");</script>';
-    echo "<script> window.location.replace('index.php') </script>";
-}
 
 $data = new Data();
 ?>
