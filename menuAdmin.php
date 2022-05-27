@@ -125,10 +125,11 @@ $data = new Data();
                 <div class="row">
                     <div class="col s12">
                         <div id="modalAgregar" class="modal">
-                            <div class="modal-content">
-                                <h4>Agregar nuevo usuario</h4>
-                                <div class="row">
-                                    <form class="col s12 grey lighten-3" name="datosUser" style="padding: 20px; border-radius: 10px" method="post" >
+                            <form class="col s12 grey lighten-3" style="padding: 20px; border-radius: 10px" method="post" action="Controller/agregarUsuario.php">
+                                <div class="modal-content">
+                                    <h4>Agregar nuevo usuario</h4>
+                                    <div class="row">
+
                                         <div class="row">
                                             <div class="input-field col s12 m5 l6">
                                                 <input id="rut" type="text" name="txt_rut" onchange="javascript:return Rut(document.datosUser.txt_rut.value)" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" required>
@@ -150,9 +151,15 @@ $data = new Data();
                                                 <input id="email" type="text" name="txt_email" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" required="">
                                                 <label for="txt_email">Email</label>
                                             </div>
+
                                             <div class="input-field col s12 m5 l6">
-                                                <input id="telefono" type="text" name="txt_telefono" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" required>
+                                                <input id="telefono" type="text" name="txt_telefono" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;" required>
                                                 <label for="txt_telefono">Telefono</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col s3">
+                                                <span id="emailVal"></span>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -168,25 +175,15 @@ $data = new Data();
                                                     ?>
                                                 </select>
                                             </div>
-                                            <div class="input-field col s10 m5 l5" style="background-color: white; border-radius: 5px; margin-left: 12px">
-                                                <select name="cbo_tipo" id="tipo" required>
-                                                    <option value="0">-- Seleccionar --</option>
-                                                    <?php
-                                                    $tipo = $data->getTypeUser();
 
-                                                    foreach ($tipo as $key) {
-                                                        echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
                                         </div>
-                                    </form>
+
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer center">
-                                <button id="agregarUsuario" type="button" class="modal-close waves-effect waves-light btn blue darken-3">Agregar Nuevo Usuario</button>
-                            </div>
+                                <div class="modal-footer center">
+                                    <button id="agregarUsuario" type="submit" class="modal-close waves-effect waves-light btn blue darken-3">Agregar Nuevo Usuario</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -221,8 +218,13 @@ $data = new Data();
                                                 <label for="txt_email">Email</label>
                                             </div>
                                             <div class="input-field col s12 m5 l6">
-                                                <input placeholder="" id="telefonoE" type="text" name="txt_telefono" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
+                                                <input placeholder="" id="telefonoE" type="text" name="txt_telefono" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" style="background-color: white; border-radius: 50px; border-bottom: none; text-indent: 18px;">
                                                 <label for="txt_telefono">Telefono</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col s3">
+                                                <span id="emailVal1"></span>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -244,8 +246,8 @@ $data = new Data();
                                             </div>
                                         </div>
                                         <div class="row">
-                                            
-                                            
+
+
                                         </div>
                                     </form>
                                 </div>
@@ -313,85 +315,88 @@ $data = new Data();
             </div>
         </footer>
         <script type="text/javascript">
-            $(document).ready(function () {
-                $('#agregarUsuario').click(function () {
-                    rut = $('#rut').val();
-                    nombre = $('#nombre').val();
-                    apellido = $('#apellido').val();
-                    email = $('#email').val();
-                    telefono = $('#telefono').val();
-                    area = $('#area').val();
-                    tipo = $('#tipo').val();
-                    passwT = rut.substring(0, 6) + nombre.substring(0, 3);
+            
 
-                    agregarUsuario(rut, nombre, apellido, email, telefono, area, tipo, passwT);
-                    location.reload(true);
-                });
-
-                $('#actualizar').click(function () {
-                    actualizarUsuario();
-                    location.reload(true);
-                });
-
+            $('#actualizar').click(function () {
+            actualizarUsuario();
+            location.reload(true);
+            });
             });
         </script>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                M.AutoInit();
+            M.AutoInit();
             });
             var temporal = "<?php echo $passwd_t ?>";
-
             if (temporal == 1) {
-                showModal();
-                console.log(temporal);
+            showModal();
+            console.log(temporal);
             } else {
-                CloseModal();
+            CloseModal();
             }
             function showModal() {
-                document.getElementById('modal_pass').style.display = 'block';
-                document.getElementById('menu').style.visibility = "hidden";
+            document.getElementById('modal_pass').style.display = 'block';
+            document.getElementById('menu').style.visibility = "hidden";
             }
 
             function CloseModal() {
-                document.getElementById('modal_pass').style.display = 'none';
-                document.getElementById('menu').style.visibility = "visible";
-
+            document.getElementById('modal_pass').style.display = 'none';
+            document.getElementById('menu').style.visibility = "visible";
             }
         </script>
 
         <script src="js/script.js"></script>
         <script type="text/javascript">
             $(function () {
-                $("input#rut").rut({
-                    formatOn: 'keyup',
+            $("input#rut").rut({
+            formatOn: 'keyup',
                     minimumLength: 8, // validar largo mínimo; default: 2
                     validateOn: 'change' // si no se quiere validar, pasar null
-                });
-                $(document).ready(function () {
-                    $('.sidenav').sidenav();
-                });
-                var input = document.getElementById('rut');
-                input.addEventListener('input', function () {
-                    if (this.value.length >= 13)
-                        this.value = this.value.slice(0, 12);
-                })
+            });
+            $(document).ready(function () {
+            $('.sidenav').sidenav();
+            });
+            var input = document.getElementById('rut');
+            input.addEventListener('input', function () {
+            if (this.value.length >= 13)
+                    this.value = this.value.slice(0, 12);
             })
-            document.getElementById('correo').addEventListener('input', function () {
-                campo = event.target;
-                valido = document.getElementById('emailVal');
-                emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-                //Se muestra un texto a modo de ejemplo, luego va a ser un icono
+            })
+                    document.getElementById('email').addEventListener('input', function () {
+            campo = event.target;
+            valido = document.getElementById('emailVal');
+            emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+            //Se muestra un texto a modo de ejemplo, luego va a ser un icono
 
-                if (emailRegex.test(campo.value)) {
-                    valido.innerText = "Correo válido";
-                } else {
-                    valido.innerText = "Correo no válido";
-                }
+            if (emailRegex.test(campo.value)) {
+            valido.innerText = "El correo es válido";
+            } else {
+            valido.innerText = "El correo no es válido";
+            }
+            if (campo.value === "") {
+            valido.innerText = "";
+            }
+            }
+            );
+            document.getElementById('emailE').addEventListener('input', function () {
+            campo = event.target;
+            valido = document.getElementById('emailVal1');
+            emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+            //Se muestra un texto a modo de ejemplo, luego va a ser un icono
+
+            if (emailRegex.test(campo.value)) {
+            valido.innerText = "El correo es válido";
+            } else {
+            valido.innerText = "El correo no es válido";
+            }
+            if (campo.value === "") {
+            valido.innerText = "";
+            }
             }
             );
             let toggle = document.getElementById('add');
             toggle.onclick = function () {
-                toggle.classList.toggle('active');
+            toggle.classList.toggle('active');
             }
         </script>
     </body>
