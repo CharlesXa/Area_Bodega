@@ -8,7 +8,7 @@
     </head>
     <body style="background-image: url('../img/fondo.png')">
         <script>
-            function envio() {
+            function envioS() {
                 swal({
                     title: "Enviado",
                     text: "Se ha generado el reporte",
@@ -20,6 +20,19 @@
                             window.location.href = '../menuSeguridad.php';
                         });
             }
+            
+            function envioB() {
+                swal({
+                    title: "Enviado",
+                    text: "Se ha generado el reporte",
+                    type: "success",
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Aceptar"
+                },
+                        function () {
+                            window.location.href = '../menuBodega.php';
+                        });
+            }
         </script>
     </body>
 </html>
@@ -27,6 +40,7 @@
 include_once '../Model_Data.php';
 session_start();
 $user = $_SESSION['id'];
+$area = $_SESSION['area_usuario'];
 $rut = isset($_POST['txt_rut']) ? $_POST['txt_rut'] : null;
 $nombre = isset($_POST['txt_nombre']) ? $_POST['txt_nombre'] : null;
 $apellido = isset($_POST['txt_apellido']) ? $_POST['txt_apellido'] : null;
@@ -57,7 +71,11 @@ switch ($gravedad) {
 
 $data = new Data();
 echo $rut . " " . $nombre . " " . $apellido . " " . $txtGravedad . " " . $newformat . " " . $hora . " " . $obs;
-$data->addObs($user, $txtGravedad, $newformat, $hora, $obs);
+$data->addObs($user, $txtGravedad, $newformat, $hora, $obs, $area);
 
-echo '<script>envio();</script>';
+if($area == 1){
+    echo '<script>envioB();</script>';
+}else if($area == 2){
+    echo '<script>envioS();</script>';
+}
 ?>

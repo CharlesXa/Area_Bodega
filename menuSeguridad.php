@@ -8,12 +8,9 @@ $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
 $passwd_t = $_SESSION['passwd_t'];
 $correo = $_SESSION['email'];
+$area = $_SESSION['area_usuario'];
 
 if ($correo == null || "") {
-    echo '<script language="javascript">alert("Acceso invalido");</script>';
-    echo "<script> window.location.replace('index.php') </script>";
-}
-if ($correo != "aweonao5000@gmail.com") {
     echo '<script language="javascript">alert("Acceso invalido");</script>';
     echo "<script> window.location.replace('index.php') </script>";
 }

@@ -118,9 +118,16 @@ class Data {
         return $query;
     }
 
-    public function addObs($user, $gravedad, $fecha, $hora, $obs) {
-        $sql = "INSERT INTO `reporte` (`id`, `usuario_id_fk`, `gravedad`, `fecha`, `hora`, `observacion`) VALUES (null, '$user', '$gravedad', '$fecha', '$hora', '$obs');";
+    public function addObs($user, $gravedad, $fecha, $hora, $obs, $areaUser) {
+        $sql = "INSERT INTO `reporte` (`id`, `usuario_id_fk`, `gravedad`, `fecha`, `hora`, `observacion`, `area_usuario_id_fk`) VALUES (null, '$user', '$gravedad', '$fecha', '$hora', '$obs', '$areaUser');";
         $query = $this->con->query($sql);
+    }
+    
+    public function getObsByArea($Area){
+        $sql = "SELECT reporte.id as 'Numero', usuario.nombre as 'nombre', usuario.apellido as 'apellido', reporte.gravedad as 'gravedad', reporte.fecha as 'fecha', reporte.hora as 'hora', reporte.observacion as 'observacion', area_usuario.nombre as 'area' FROM reporte INNER JOIN usuario ON usuario.id = reporte.usuario_id_fk INNER JOIN area_usuario ON area_usuario.id = reporte.area_usuario_id_fk where area_usuario.id = $Area;";
+        $query = $this->con->query($sql);
+        return $query;
+        
     }
 
     public function getTable($name) {
