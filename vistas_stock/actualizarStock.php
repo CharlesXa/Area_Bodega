@@ -126,7 +126,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                                 <tr>
                                                     <td><input type="number" name="txt_id" value="<?php echo $key['id']; ?>" style="width: 30px; border-bottom: none" readonly></td>
                                                     <td><?php echo $key['nombre']; ?></td>
-                                                    <td><input type="number" name="txt_cantidad" value="<?php echo $key['cantidad_t']; ?>" style="width: 70px; border: 1px solid grey; border-radius: 5px; text-indent: 10px"></td>
+                                                    <td><input type="number" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" name="txt_cantidad" value="<?php echo $key['cantidad_t']; ?>" style="width: 70px; border: 1px solid grey; border-radius: 5px; text-indent: 10px"></td>
                                                     <td><?php echo $key['descripcion']; ?></td>
                                                     <td><button class="btn white-text indigo darken-3" name="btn_actualizar" type="submit" style="height: auto; width: 130px; border-radius: 6px; font-weight: 500;">Actualizar</button></td>
                                                 </tr>

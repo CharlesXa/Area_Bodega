@@ -22,6 +22,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
+
         <link rel="icon" href="../img/iconoBodega.png"/>
         <title>Visualizar Stock - Menu Bodega</title>
     </head>
@@ -95,17 +98,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </div>
                             <div class="rows">
                                 <div class="col s12">
-                                    <table class="table responsive-table">
+                                    <table id="table_id" class="display">
                                         <thead >
-                                        <td>#</td>
-                                        <td>Nombre</td>
-                                        <td>Cantidad</td>
-                                        <td>Descripcion</td>
+                                            <tr>
+                                                <td>#</td>
+                                                <td>Nombre</td>
+                                                <td>Cantidad</td>
+                                                <td>Descripcion</td>
+                                            </tr>
                                         </thead>
                                         <tbody>
 
                                             <?php
-                                            $selected = 0;
+                                            /*$selected = 0;
                                             $stock_area = 0;
                                             if (isset($_POST['btn_cargar'])) {
                                                 $selected = $_POST['cbo_area'];
@@ -113,7 +118,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                                     $stock_area = $data->getAllStock();
                                                 } else {
                                                     $stock_area = $data->getStockByArea($selected);
-                                                }
+                                                }*/
+                                            $stock_area = $data->getAllStock();
                                                 foreach ($stock_area as $key) {
                                                     echo '
                                                                     <tr>
@@ -121,11 +127,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                                                         <td>' . $key['nombre'] . '</td>
                                                                         <td>' . $key['cantidad_t'] . '</td>
                                                                         <td>' . $key['descripcion'] . '</td>
-                                                                        <td></td>
+                                                                        
                                                                     </tr>
                                                                 ';
                                                 }
-                                            }
+                                            //}
                                             ?>
 
                                         </tbody>
@@ -144,12 +150,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
         </footer>
-        <script>
+        <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();
             });
+            
             $(document).ready(function () {
-                $('textarea#textarea2').characterCounter();
+                $('#table_id').DataTable();
             });
         </script>
         <script src="../js/script.js"></script>

@@ -32,7 +32,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 30px">menu</i></a>
                     <a href="../menuBodega.php">
                         <img src="../img/iconoBodega.png">
-                        <span class="brand-logo">Menu Bodegas</span>
+                        <span class="brand-logo">Menu Bodega</span>
                     </a>
                 </div>
             </nav>
@@ -65,12 +65,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="row">
                     <div class="col s12">
                         <h2 align="center" class="tit_admin">Ingreso de Stock</h2>
-                        <form method="post" action="../Controller/controller_ingStock.php">
+                        <form method="post" action="../Controller/controller_ingStock.php" name="stock">
                             <div class="row">
                                 <div class="col s12 m6">
                                     <div class="row">
                                         <div class="col s12 title_input">Nombre:
-                                            <input id="nombre"  name="txt_nombre" type="text" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px" required>
+                                            <input id="nombreStock"  name="txt_nombre" type="text" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px" required>
                                         </div>
                                     </div>
                                 </div>
@@ -85,7 +85,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <div class="row">
                                         <div class="col s12 title_input">Area:
                                             <div class="input-field col s12" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px">
-                                                <select name="cbo_area" id="salud" required>
+                                                <select name="cbo_area" id="salud" >
                                                     <option value="">-- Seleccionar --</option>
                                                     <?php
                                                     $area = $data->getArea();
@@ -128,10 +128,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();
             });
-            $(document).ready(function () {
-                $('textarea#textarea2').characterCounter();
-            });
+
         </script>
+
         <script src="../js/script.js"></script>
     </body>
 </html>

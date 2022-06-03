@@ -23,6 +23,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="../DataTables/datatables.min.css"/>
+        <script src="../DataTables/datatables.min.js"></script>
         <title>Visualizar Tablas</title>
     </head>
     <body style="background-color: white">
@@ -58,7 +60,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <h2 class="tit_admin center">Tablas de la base de datos</h2>
                         <div class="row">
                             <div class="col s12">
-                                <table class="table">
+                                <table id="table_id">
                                     <thead style="font-size: 20px; text-align: center">
                                         <tr>
                                             <td>Nombre</td>
@@ -643,13 +645,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
         </footer>
-        <script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#table_id').DataTable();
+            });
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();
             });
-            $(document).ready(function () {
-                $('textarea#textarea2').characterCounter();
-            });
+            
+
         </script>
         <script src="../js/script.js"></script>
     </body>
