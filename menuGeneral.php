@@ -60,7 +60,7 @@ $data = new Data();
                 <div class="nav-wrapper">
                     <a id="menu" href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 30px">menu</i></a>
                     <img src="img/iconGeneral.png">
-                    <span class="brand-logo">Menu General</span>
+                    <span class="brand-logo">Menu General (<?php echo $area;?>)</span>
                 </div>
             </nav>
             <ul id="slide-out" class="sidenav" style="background-color: #1d1b31;">

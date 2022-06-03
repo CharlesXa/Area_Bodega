@@ -223,7 +223,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         <th>Fecha</th>
                                         <th>Hora</th>
                                         <th>Observacion</th>
-                                        <th>Area</th>
                                     </tr>
                                 </thead>
 
@@ -239,7 +238,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         <td>' . $key['fecha'] . '</td>
                                         <td>' . $key['hora'] . '</td>
                                         <td>' . $key['observacion'] . '</td>
-                                        <td>' . $key['area'] . '</td>
                                     </tr>
                                 ';
                                     }
