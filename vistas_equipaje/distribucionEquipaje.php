@@ -31,13 +31,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 
         <title>Menu Bodega - D. Equipaje</title>
 
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.semanticui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.semanticui.min.css"/>
+
     </head>
-    <body style="background-color: #E4E9F7" >
+    <body style="background-color: #f5f7fb" >
         <div id="modal_pass" class="modal" style="margin-top: 100px">
             <div class="modal-content">
                 <form class="col s2" action="../controller/controllerUpdatepass.php" method="post">
@@ -100,38 +105,41 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <li><div class="divider"></div></li>
                 <li><a href="../Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
             </ul>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card" style="margin: 40px auto; max-width: 1680px; width: 100%; border-radius: 10px;">
+                        <div class="card-content" style="margin: 40px 100px; padding: 3.5% 0">
+                            <span class="table_Tit center" style="display: block; margin-bottom: 6%; margin-top: 1%">Distribucion de Equipaje</span>
+                            <div class="row center">
+                                <div class="col s6">
+                                    <button data-target="ModalX" style="background-color:#1d1b31;" class="btn modal-trigger ">Cargar</button>
+                                </div>
+                                <div class="col s6">
+                                    <button data-target="#" style="background-color:#1d1b31;" class="btn modal-trigger ">Cargar siguiente vuelo</button>
+                                </div>
+                            </div>
+                            <table class="table centered" id="datos">
+                                <thead>
 
-            <span class="table_Tit center" style="display: block; margin: 40px 0">Distribucion de Equipaje</span>
-            <div class="row center">
-                <div class="col s6">
-                    <button data-target="ModalX" style="background-color:#1d1b31;" class="btn modal-trigger ">Cargar</button>
-                </div>
-                <div class="col s6">
-                    <button data-target="#" style="background-color:#1d1b31;" class="btn modal-trigger ">Cargar siguiente vuelo</button>
-                </div>
-            </div>
-            <table class="table centered container" id="datos">
-                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Descripcion</th>
+                                        <th>Peso</th>
+                                        <th>Vuelo</th>
+                                        <th>Avion</th>
+                                    </tr>
+                                </thead>
 
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Descripcion</th>
-                        <th>Peso</th>
-                        <th>Vuelo</th>
-                        <th>Avion</th>
-                    </tr>
-                </thead>
+                                <tbody>
+                                    <?php
+                                    $destino = 'Rusia';
+                                    $pesoCarga = 0;
+                                    $volumenT = 0;
+                                    $pesoArray = [];
+                                    $cargas = $data->getCargaVuelo($destino);
+                                    foreach ($cargas as $key) {
 
-                <tbody>
-                    <?php
-                    $destino = 'Rusia';
-                    $pesoCarga = 0;
-                    $volumenT = 0;
-                    $pesoArray = [];
-                    $cargas = $data->getCargaVuelo($destino);
-                    foreach ($cargas as $key) {
-
-                        echo '
+                                        echo '
                                     <tr> 
                                         <td>' . $key['Cliente'] . '</td>   
                                         <td>' . $key['descripcion'] . '</td>   
@@ -140,13 +148,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         <td>' . $key['Avion'] . '</td>   
                                     </tr>
                                 ';
-                        $pesoCarga = $pesoCarga + $key['Peso kg'];
-                        array_push($pesoArray, $key['Peso kg']);
-                        $volumenT = $key['Volumen'];
-                    }
-                    ?>
-                </tbody>
-            </table>
+                                        $pesoCarga = $pesoCarga + $key['Peso kg'];
+                                        array_push($pesoArray, $key['Peso kg']);
+                                        $volumenT = $key['Volumen'];
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="ModalX" class="modal">
                 <div class="modal-content">
                     <h4>Modal Header</h4>
@@ -155,26 +167,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <?php
                     $disponible = 75;
                     $cargaC = 0;
-                    $int=0;
-                    $pendiente=[];
+                    $int = 0;
+                    $pendiente = [];
                     print_r($pesoArray);
                     foreach ($pesoArray as $value) {
                         if ($disponible >= 0) {
                             $disponible = $disponible - $value;
                             $cargaC = $cargaC + $value;
 
-                            echo "<br>".$value . " -- " . $cargaC . " -- " . $disponible . "<br>";
+                            echo "<br>" . $value . " -- " . $cargaC . " -- " . $disponible . "<br>";
                             if ($disponible <= 0) {
                                 echo 'No entro<br>';
                                 $disponible = $disponible + $value;
                                 $cargaC = $cargaC - $value;
-                                
-                                array_push($pendiente,$value);
+
+                                array_push($pendiente, $value);
                                 print_r($pesoArray);
-                            } else if($disponible>0) {
-                                 
+                            } else if ($disponible > 0) {
+
                                 unset($pesoArray[$int]);
-                                $int=$int+1;
+                                $int = $int + 1;
                                 print_r($pesoArray);
                                 echo '<br>';
                             }
@@ -184,20 +196,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     }
                     echo '<br> pendiente';
                     print_r($pendiente);
-                    /*$textos = array("Hola", "Chau", "Bien", "Mal");
-                    print_r($textos);
-                    echo "Borrando la palabra 'Chau' dentro del array:<br>";
-                    if (($clave = array_search("Chau", $textos)) !== false) {
-                        unset($textos[$clave]);
-                        print_r($textos);
-                    }*/
+                    /* $textos = array("Hola", "Chau", "Bien", "Mal");
+                      print_r($textos);
+                      echo "Borrando la palabra 'Chau' dentro del array:<br>";
+                      if (($clave = array_search("Chau", $textos)) !== false) {
+                      unset($textos[$clave]);
+                      print_r($textos);
+                      } */
                     ?>
                     <table>
                         <thead>
-                            
+
                         </thead>
                         <tbody>
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -213,6 +225,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
         </footer>
+        <script>
+            $(document).ready(function () {
+                $('#datos').DataTable({
+                    responsive: true,
+                    autoWidth: false,
+                    "language": {
+                        "lengthMenu": "Mostrar " + '<select><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="20">20</option></select>' + " registros por página",
+                        "zeroRecords": "No se han encontrado registros",
+                        "info": "Mostrando la página _PAGE_ de _PAGES_",
+                        "infoEmpty": "No hay registros disponibles",
+                        "infoFiltered": "(Filtrado de _MAX_ registros totales)",
+                        "search": "Buscar:",
+                        "paginate": {
+                            'next': 'Siguiente',
+                            'previous': 'Anterior',
+                        },
+                    }
+                });
+
+            });
+        </script>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();

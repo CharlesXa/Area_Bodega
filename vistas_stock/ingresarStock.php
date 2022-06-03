@@ -25,14 +25,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link rel="icon" href="../img/iconoBodega.png"/>
         <title>Ingreso de Stock - Menu Bodega</title>
     </head>
-    <body style="background-color: white">
+    <body style="background-color: #f5f7fb">
         <section>
             <nav class="nav-extended" style="background-color: #1d1b31;">
                 <div class="nav-wrapper">
                     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 30px">menu</i></a>
                     <a href="../menuBodega.php">
                         <img src="../img/iconoBodega.png">
-                        <span class="brand-logo">Menu Bodega</span>
+                        <span class="brand-logo">Menu Bodegas</span>
                     </a>
                 </div>
             </nav>
@@ -64,55 +64,59 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="container" >
                 <div class="row">
                     <div class="col s12">
-                        <h2 align="center" class="tit_admin">Ingreso de Stock</h2>
-                        <form method="post" action="../Controller/controller_ingStock.php" name="stock">
-                            <div class="row">
-                                <div class="col s12 m6">
+                        <div class="card" style="margin: 40px auto; max-width: 1680px; width: 100%; border-radius: 10px;">
+                            <div class="card-content" style="margin: 0 100px; padding: 40px 0">
+                                <h2 align="center" class="tit_admin">Ingreso de Stock</h2>
+                                <form method="post" action="../Controller/controller_ingStock.php">
                                     <div class="row">
-                                        <div class="col s12 title_input">Nombre:
-                                            <input id="nombreStock"  name="txt_nombre" type="text" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px" required>
+                                        <div class="col s12 m6">
+                                            <div class="row">
+                                                <div class="col s12 title_input">Nombre:
+                                                    <input id="nombre"  name="txt_nombre" type="text" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px" required>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col s12 m6">
-                                    <div class="row">
-                                        <div class="col s12 title_input">Cantidad:
-                                            <input id="cantidad" name="txt_cantidad" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="number" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px" required>
+                                        <div class="col s12 m6">
+                                            <div class="row">
+                                                <div class="col s12 title_input">Cantidad:
+                                                    <input id="cantidad" name="txt_cantidad" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="number" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px" required>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col s12 m6">
-                                    <div class="row">
-                                        <div class="col s12 title_input">Area:
-                                            <div class="input-field col s12" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px">
-                                                <select name="cbo_area" id="salud" >
-                                                    <option value="">-- Seleccionar --</option>
-                                                    <?php
-                                                    $area = $data->getArea();
+                                        <div class="col s12 m6">
+                                            <div class="row">
+                                                <div class="col s12 title_input">Area:
+                                                    <div class="input-field col s12" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px">
+                                                        <select name="cbo_area" id="salud" required>
+                                                            <option value="">-- Seleccionar --</option>
+                                                            <?php
+                                                            $area = $data->getArea();
 
-                                                    foreach ($area as $key) {
-                                                        echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
-                                                    }
-                                                    ?>
-                                                </select>
+                                                            foreach ($area as $key) {
+                                                                echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12">
+                                            <div class="row">
+                                                <div class="col s12 m12 l12 title_input">Descripción:
+                                                    <input id="textarea2"  name="txt_descrip" type="text" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px" required>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col s12 m12">
                                     <div class="row">
-                                        <div class="col s12 m12 l12 title_input">Descripción:
-                                            <input id="textarea2"  name="txt_descrip" type="text" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px" required>
+                                        <div class="col s6 offset-s3">
+                                            <button class="btn white-text waves-effect waves-light indigo darken-3 col s12 m4 offset-m4" name="btn_ingresar" type="submit" style=" height: 50px; margin-top: 40px; border-radius: 6px; font-weight: 600;">Ingresar Stock</button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
-                            <div class="row">
-                                <div class="col s6 offset-s3">
-                                    <button class="btn white-text waves-effect waves-light indigo darken-3 col s12 m4 offset-m4" name="btn_ingresar" type="submit" style=" height: 50px; margin-top: 40px; border-radius: 6px; font-weight: 600;">Ingresar Stock</button>
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -128,9 +132,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();
             });
-
+            $(document).ready(function () {
+                $('textarea#textarea2').characterCounter();
+            });
         </script>
-
         <script src="../js/script.js"></script>
     </body>
 </html>

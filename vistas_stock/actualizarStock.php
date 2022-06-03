@@ -24,8 +24,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="icon" href="../img/iconoBodega.png"/>
         <title>Actualizar Stock - Menu Bodega</title>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.semanticui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.semanticui.min.css"/>
+
     </head>
-    <body style="background-color: white">
+    <body style="background-color: #f5f7fb">
         <section>
             <nav class="nav-extended" style="background-color: #1d1b31;">
                 <div class="nav-wrapper">
@@ -64,81 +72,46 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="container">
                 <div class="row">
                     <div class="col s12">
-                        <h2 align="center" class="tit_admin">Actualizacion de Stock</h2>
-                        <form method="post">
-                            <div class="row">
-                                <div class="col s12 m6">
-                                    <div class="row">
-                                        <div class="col s12">
-                                            <div class="title_input">Area:
-                                                <div class="input-field col s12" style="border: 1px solid grey; border-radius: 5px;">
-                                                    <select name="cbo_area" id="area" required>
-                                                        <option value="0">-- Seleccionar --</option>
-                                                        <?php
-                                                        $area = $data->getArea();
-
-                                                        foreach ($area as $key) {
-                                                            echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col s12 m6">
-                                    <div class="row">
-                                        <div class="col s12 title_input">
-                                            <button class="btn white-text indigo darken-3 col s12 m4 offset-m4" name="btn_cargar" type="submit" style=" height: 50px; margin-top: 40px; border-radius: 6px; font-weight: 600;">Cargar Stock</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <div class="rows">
+                        <div class="row">
                             <div class="col s12">
-                                <table class="table responsive-table ">
-                                    <thead>
-                                    <td>#</td>
-                                    <td>Nombre</td>
-                                    <td>Cantidad</td>
-                                    <td>Descripcion</td>
-                                    <td>Actualizar</td>
-                                    </thead>
-                                    <tbody>
-
-                                        <?php
-                                        $selected = 0;
-                                        $n = 0;
-                                        if (isset($_POST['btn_cargar'])) {
-                                            $selected = $_POST['cbo_area'];
-                                            if ($selected == 0) {
-                                                $stock_area = $data->getAllStock();
-                                            } else {
-                                                $stock_area = $data->getStockByArea($selected);
-                                            }
-                                            foreach ($stock_area as $key) {
-                                                echo '
-                                                            '
-                                                ?>
-                                            <form method="post" id="form<?php echo $key['id']; ?>" action="../Controller/controller_actStock.php">
+                                <div class="card" style="margin: 40px auto; max-width: 1680px; width: 100%; border-radius: 10px;">
+                                    <div class="card-content" style="margin: 40px 100px; padding: 40px 0">
+                                        <h2 align="center" class="table_Tit" style="display: block; margin-bottom: 4%; margin-top: 1%">Actualizacion de Stock</h2>
+                                        <table class="table centered responsive-table" id="act_stock">
+                                            <thead>
                                                 <tr>
-                                                    <td><input type="number" name="txt_id" value="<?php echo $key['id']; ?>" style="width: 30px; border-bottom: none" readonly></td>
-                                                    <td><?php echo $key['nombre']; ?></td>
-                                                    <td><input type="number" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" name="txt_cantidad" value="<?php echo $key['cantidad_t']; ?>" style="width: 70px; border: 1px solid grey; border-radius: 5px; text-indent: 10px"></td>
-                                                    <td><?php echo $key['descripcion']; ?></td>
-                                                    <td><button class="btn white-text indigo darken-3" name="btn_actualizar" type="submit" style="height: auto; width: 130px; border-radius: 6px; font-weight: 500;">Actualizar</button></td>
+                                                    <td>#</td>
+                                                    <td>Nombre</td>
+                                                    <td>Cantidad</td>
+                                                    <td>Descripcion</td>
+                                                    <td>Actualizar</td>
                                                 </tr>
-                                            </form>
-                                            <?php
-                                            '';
-                                        }
-                                    }
-                                    ?>
-                                    </form>
-                                    </tbody>
-                                </table>
+                                            </thead>
+                                            <tbody>
+
+                                                <?php
+                                                $stock_area = $data->getAllStock();
+                                                foreach ($stock_area as $key) {
+                                                    echo '
+                                                            '
+                                                    ?>
+                                                <form method="post" id="form<?php echo $key['id']; ?>" action="../Controller/controller_actStock.php">
+                                                    <tr>
+                                                        <td><input type="number" name="txt_id" value="<?php echo $key['id']; ?>" style="width: 30px; border-bottom: none" readonly></td>
+                                                        <td><?php echo $key['nombre']; ?></td>
+                                                        <td><input type="number" name="txt_cantidad" value="<?php echo $key['cantidad_t']; ?>" style="width: 70px; border: 1px solid grey; border-radius: 5px; text-indent: 10px"></td>
+                                                        <td><?php echo $key['descripcion']; ?></td>
+                                                        <td><button class="btn white-text indigo darken-3" name="btn_actualizar" type="submit" style="height: auto; width: 130px; border-radius: 6px; font-weight: 500;">Actualizar</button></td>
+                                                    </tr>
+                                                </form>
+                                                <?php
+                                                '';
+                                            }
+                                            ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -152,6 +125,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
         </footer>
+        <script>
+            $(document).ready(function () {
+                $('#act_stock').DataTable({
+                    responsive: true,
+                    autoWidth: false,
+                    "language": {
+                        "lengthMenu": "Mostrar " + '<select><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="20">20</option></select>' + " registros por página",
+                        "zeroRecords": "No se han encontrado registros",
+                        "info": "Mostrando la página _PAGE_ de _PAGES_",
+                        "infoEmpty": "No hay registros disponibles",
+                        "infoFiltered": "(Filtrado de _MAX_ registros totales)",
+                        "search": "Buscar:",
+                        "paginate": {
+                            'next': 'Siguiente',
+                            'previous': 'Anterior',
+                        },
+                    }
+                });
+
+            });
+        </script>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();

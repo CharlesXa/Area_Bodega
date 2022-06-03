@@ -32,15 +32,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link rel="icon" href="img/iconoBodega.png"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 
         <title>Menu Bodega</title>
 
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.semanticui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.semanticui.min.css"/>
+
     </head>
-    <body style="background-color: #E4E9F7" >
-        <!-- Modal de generar Reporte -->
+    <body style="background-color: #f5f7fb" >
         <div id="modal1" class="modal">
             <form method="post" action="Controller/controller_obs.php">
                 <div class="modal-content">
@@ -110,7 +115,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </form>
         </div>
-        <!-- Modal Update pass -->
         <div id="modal_pass" class="modal" style="margin-top: 100px">
             <div class="modal-content">
                 <form class="col s2" action="controller/controllerUpdatepass.php" method="post">
@@ -121,7 +125,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <div class="row">
                                 <div class="input-field col s6">
                                     <input name="txt_pass" id="pass" type="password" class="validate" required>
-                                    <label for="pass">Nueva contraseña</label>
+                                    <label for="txt_pass">Nueva contraseña</label>
                                 </div>
                             </div>
                             <div class="row right">
@@ -130,7 +134,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <div class="row">
                                 <div class="input-field col s6">
                                     <input name="txt_pass2" id="pass2" type="password" class="validate" required>
-                                    <label for="pass">Confirmar nueva contraseña</label>
+                                    <label for="txt_pass2">Confirmar nueva contraseña</label>
                                 </div>
                             </div>
                             <div class="row">
@@ -162,41 +166,56 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <a class="modal-trigger waves-effect" href="#modal1">Generar reporte<i class='bx bx-comment white-text' style="font-size: 22px;"></i>
                     </a>
                 </li>
-                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Stock<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
-                <ul id='dropdown1' class='dropdown-content' style="background-color: #1d1b31;">
-                    <li><a href="vistas_stock/ingresarStock.php">Ingreso</a></li>
-                    <li><a href="vistas_stock/actualizarStock.php">Actualizar</a></li>
-                    <li><a href="vistas_stock/visualizarStock.php">Visualizar</a></li>
+                <ul class="collapsible collapsible-accordion">
+                    <li>
+                        <a class="collapsible-header waves-effect"><i class='bx bx-box white-text' style="font-size: 27px;"></i>Stock<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a>
+                        <div class="collapsible-body" style="background-color: #1d1b31">
+                            <ul>
+                                <li><a href="vistas_stock/ingresarStock.php"><i class='bx bx-upload white-text' style="font-size: 22px;"></i>Ingreso</a></li>
+                                <li><a href="vistas_stock/actualizarStock.php"><i class='bx bx-cloud-upload white-text' style="font-size: 22px;"></i>Actualizar</a></li>
+                                <li><a href="vistas_stock/visualizarStock.php"><i class="uil uil-eye white-text" style="font-size: 22px;"></i>Visualizar</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
-                <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Equipaje<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
-                <ul id='dropdown2' class='dropdown-content' style="background-color: #1d1b31;">
-                    <li><a href="vistas_equipaje/busquedaEquipaje.php">Busqueda</a></li>
-                    <li><a href="vistas_equipaje/distribucionEquipaje.php">Distribucion</a></li>
+                <ul class="collapsible collapsible-accordion">
+                    <li>
+                        <a class="collapsible-header waves-effect"><i class='bx bx-briefcase-alt white-text' style="font-size: 27px;"></i>Equipaje<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a>
+                        <div class="collapsible-body" style="background-color: #1d1b31">
+                            <ul>
+                                <li><a href="vistas_equipaje/busquedaEquipaje.php"><i class='bx bx-search white-text' style="font-size: 22px;"></i>Busqueda</a></li>
+                                <li><a href="vistas_equipaje/distribucionEquipaje.php"><i class='bx bxs-plane-alt white-text' style="font-size: 22px;"></i>Distribucion</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
                 <li><div class="divider"></div></li>
                 <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
             </ul>
-            <div class="container-fluid">
+            <div class="container_menu_seg">
                 <div class="row">
-                    <div class="col s6 m6 l6">
-                        <div class="card">
-                            <span class="table_Tit center" style="display: block; margin: 40px 0">Registro de solicitudes</span>
-                            <table class="table centered container" id="datos">
-                                <thead>
+                    <div class="col s12 m8 l8">
+                        <div class="card" style="margin: 40px auto; max-width: 1680px; width: 100%; border-radius: 10px;">
+                            <div class="card-content" style="margin: 40px 100px; padding: 5% 0">
+                                <span class="table_Tit center" style="display: block; margin-bottom: 7%; margin-top: 1%">Registro de solicitudes</span>
+                                <table class="table centered" id="datos">
+                                    <thead>
+                                        <!--<tr>
+                                            <th colspan="4" text-align: center" class="table_Tit">Historial de Solicitudes</th>
+                                        </tr>-->
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Cantidad</th>
+                                            <th>Fecha y Hora</th>
+                                            <th>ID de la solicitud</th>
+                                        </tr>
+                                    </thead>
 
-                                    <tr>
-                                        <th>Nombre</th>
-                                        <th>Cantidad</th>
-                                        <th>Fecha y Hora</th>
-                                        <th>ID de la solicitud</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    <?php
-                                    $historial = $data->getHistorial();
-                                    foreach ($historial as $key) {
-                                        echo '
+                                    <tbody>
+                                        <?php
+                                        $historial = $data->getHistorial();
+                                        foreach ($historial as $key) {
+                                            echo '
                                     <tr> 
                                         <td>' . $key['articulo'] . '</td>   
                                         <td>' . $key['cantidad'] . '</td>   
@@ -204,51 +223,53 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         <td>' . $key['id de la solicitud'] . '</td>   
                                     </tr>
                                 ';
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                    <div class="col s6 m6 l6">
-                        <div class="card">
-                            <span class="table_Tit center" style="display: block; margin: 40px 0">Historial de Reportes</span>
-                            <table class="table centered container" id="datos">
-                                <thead>
+                    <div class="col s12 m4 l4">
+                        <div class="card" style="margin: 40px auto; max-width: 1680px; width: 100%; border-radius: 10px;">
+                            <div class="card-content" style="margin: 4% 0; padding: 5% 0">
+                                <span class="table_Tit center" style="display: block; margin: 6% 0">Historial de Reportes</span>
+                                <table class="table centered container" id="datos">
+                                    <thead>
 
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Apellido</th>
+                                            <th>Gravedad</th>
+                                            <th>Fecha</th>
+                                            <th>Hora</th>
+                                            <th>Observacion</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <?php
+                                        $reportes = $data->getObsByArea($area_u);
+                                        foreach ($reportes as $key) {
+                                            echo '
                                     <tr>
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>Gravedad</th>
-                                        <th>Fecha</th>
-                                        <th>Hora</th>
-                                        <th>Observacion</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    <?php
-                                    $reportes = $data->getObsByArea($area_u);
-                                    foreach ($reportes as $key){
-                                        echo '
-                                    <tr>    
-                                        <td>' . $key['nombre'] . '</td>   
-                                        <td>' . $key['apellido'] . '</td>   
+                                        <td>' . $key['nombre'] . '</td>
+                                        <td>' . $key['apellido'] . '</td>
                                         <td>' . $key['gravedad'] . '</td> 
                                         <td>' . $key['fecha'] . '</td>
                                         <td>' . $key['hora'] . '</td>
                                         <td>' . $key['observacion'] . '</td>
                                     </tr>
                                 ';
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
         <footer class="page-footer" style="background-color: transparent">
             <div class="footer-copyright" style="background-color: #1d1b31">
@@ -257,6 +278,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
         </footer>
+        <script>
+            $(document).ready(function () {
+                $('#datos').DataTable({
+                    responsive: true,
+                    autoWidth: false,
+                    "language": {
+                        "lengthMenu": "Mostrar " + '<select><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="20">20</option></select>' + " registros por página",
+                        "zeroRecords": "No se han encontrado registros",
+                        "info": "Mostrando la página _PAGE_ de _PAGES_",
+                        "infoEmpty": "No hay registros disponibles",
+                        "infoFiltered": "(Filtrado de _MAX_ registros totales)",
+                        "search": "Buscar:",
+                        "paginate": {
+                            'next': 'Siguiente',
+                            'previous': 'Anterior',
+                        },
+                    }
+                });
+
+            });
+        </script>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();

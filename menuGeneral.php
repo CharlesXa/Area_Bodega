@@ -93,7 +93,7 @@ switch ($area) {
                 <li><div class="divider"></div></li>
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Solicitudes<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
                 <ul id='dropdown1' class='dropdown-content' style="background-color: #1d1b31;">
-                    <li><a href="">Ingresar</a></li>
+                    <li><a href="Vista_General/ingresoSolicitud.php">Ingresar</a></li>
                     <li><a href="historialSolicitud.php">Historial</a></li>
                 </ul>
                 <li><div class="divider"></div></li>

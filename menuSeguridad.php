@@ -8,7 +8,7 @@ $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
 $passwd_t = $_SESSION['passwd_t'];
 $correo = $_SESSION['email'];
-$area = $_SESSION['area_usuario'];
+$area_u = $_SESSION['area_usuario'];
 
 if ($correo == null || "") {
     echo '<script language="javascript">alert("Acceso invalido");</script>';
@@ -31,10 +31,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link rel="icon" href="img/favicon.png"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
         <title>Menu seguridad</title>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.semanticui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.semanticui.min.css"/>
+
     </head>
-    <body style="background-color: #E4E9F7">
+    <body style="background-color: #f5f7fb">
         <!-- Modal de generar Reporte -->
         <div id="modal1" class="modal">
             <form method="post" action="Controller/controller_obs.php">
@@ -108,25 +116,28 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <div id="modal2" class="modal">
             <div class="modal-content" style="padding: 40px 0">
                 <div class="row">
-                    <span class="table_Tit center" style="display: block; margin-bottom: 40px">Listado de personal</span>
-                    <table class="table centered responsive-table striped" id="datos">
-                        <thead>
-                            <tr>
-                                <th>R.U.T</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Email</th>
-                                <th>Telefono</th>
-                                <th>Area</th>
-                                <th>Tipo de usuario</th>
-                            </tr>
-                        </thead>
+                    <div class="col s12">
+                        <div class="card" style="margin: 40px auto; max-width: 1680px; width: 100%">
+                            <div class="card-content" style="margin: 40px 100px; padding: 3.5% 0">
+                                <span class="table_Tit center" style="display: block; margin-bottom: 40px">Listado de personal</span>
+                                <table class="table centered responsive-table striped" id="datos">
+                                    <thead>
+                                        <tr>
+                                            <th>R.U.T</th>
+                                            <th>Nombre</th>
+                                            <th>Apellido</th>
+                                            <th>Email</th>
+                                            <th>Telefono</th>
+                                            <th>Area</th>
+                                            <th>Tipo de usuario</th>
+                                        </tr>
+                                    </thead>
 
-                        <tbody>
-                            <?php
-                            $users = $data->getAllusers();
-                            foreach ($users as $key) {
-                                echo ' 
+                                    <tbody>
+                                        <?php
+                                        $users = $data->getAllusers();
+                                        foreach ($users as $key) {
+                                            echo ' 
                                 <tr>
                                     <td>' . $key['rut'] . '</td>
                                     <td>' . $key['nombre'] . '</td>
@@ -137,22 +148,28 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <td>' . $key['tipo'] . '</td>
                                 </tr>
                              ';
-                            }
-                            ?>                           
-                        </tbody>
-                    </table>
+                                        }
+                                        ?>                           
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer" style="text-align: center; margin-bottom: 10px;">
                 <a href="#!" class="modal-close waves-effect waves-light btn" style="background: #363771; width: 200px; border-radius: 3px; font-weight: 500; letter-spacing: 2px; font-size: 16px">Cerrar</a>
             </div>
         </div>
-
         <nav class="nav-extended" style="background-color: #1d1b31;">
             <div class="nav-wrapper">
                 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 35px">menu</i></a>
                 <img src="img/favicon.png">
                 <span class="brand-logo">Menu Seguridad</span>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><img class="circle" src="img/iconPerfil.png"></li>
+                    <li><a href="#"><?php echo $nombre . ' ' . $apellido ?><i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
             </div>
         </nav>
         <ul id="slide-out" class="sidenav" style="background-color: #1d1b31;">
@@ -176,15 +193,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
         </ul>
         <section>
-            <div class="container" style="background-color: white">
+            <div class="container_menu_seg">
                 <div class="row" style="margin: 0">
-                    <div class="col s12" style="margin-top: 20px; margin-bottom: 40px">
+                    <div class="col s12 m7 l8" style="margin-top: 40px; margin-bottom: 40px">
                         <div class="col s12 m12 l12">
-                            <div class="row center">
-                                <span class="card-title titel_img" style="font-weight: 700; color: #505050; letter-spacing: 2px">Terminal T1</span>
-                            </div>
-                            <section style="width: auto; height: auto; border-radius: 20px; border: 1px solid #bdbdbd">   
+                            <section class="z-depth-1" style="width: auto; height: auto; border-radius: 10px; background-color: white">
                                 <div class="row row_padd">
+                                    <div style="margin-left: 1rem; margin-bottom: 10px">
+                                        <span class="card-title titel_img" style="font-weight: 700; color: #505050; letter-spacing: 2px">Terminal T1</span>
+                                    </div>
                                     <div class="col s12 m6 l4">
                                         <div class="card">
                                             <div class="card-image waves-effect waves-block waves-light">
@@ -239,11 +256,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </section>
                         </div>
                         <div class="col s12 m12 l12">
-                            <div class="row center" style="margin-top: 10px">
-                                <span class="card-title titel_img" style="font-weight: 700; color: #505050; letter-spacing: 2px;">Terminal T2</span>
-                            </div>
-                            <section style="width: auto; height: auto; border-radius: 20px; border: 1px solid #bdbdbd">   
-                                <div class="row" style="padding-left: 40px; padding-right: 40px; padding-top: 40px; padding-bottom: 12px">
+                            <section class="z-depth-1" style="width: auto; height: auto; border-radius: 10px; background-color: white">   
+                                <div class="row row_padd">
+                                    <div style="margin-left: 1rem; margin-bottom: 10px">
+                                        <span class="card-title titel_img" style="font-weight: 700; color: #505050; letter-spacing: 2px">Terminal T2</span>
+                                    </div>
                                     <div class="col s12 m12 l4">
                                         <div class="card">
                                             <div class="card-image waves-effect waves-block waves-light">
@@ -298,11 +315,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </section>
                         </div>
                         <div class="col s12 m12 l12">
-                            <div class="row center" style="margin-top: 10px">
-                                <span class="card-title titel_img" style="font-weight: 700; color: #505050; letter-spacing: 2px">Estacionamientos</span>
-                            </div>
-                            <section style="width: auto; height: auto; border-radius: 20px; border: 1px solid #bdbdbd">   
-                                <div class="row" style="padding-left: 40px; padding-right: 40px; padding-top: 40px; padding-bottom: 12px">
+                            <section class="z-depth-1" style="width: auto; height: auto; border-radius: 10px; background-color: white">   
+                                <div class="row row_padd">
+                                    <div style="margin-left: 1rem; margin-bottom: 10px">
+                                        <span class="card-title titel_img" style="font-weight: 700; color: #505050; letter-spacing: 2px">Estacionamientos</span>
+                                    </div>
                                     <div class="col s12 m12 l4">
                                         <div class="card">
                                             <div class="card-image waves-effect waves-block waves-light">
@@ -357,11 +374,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </section>
                         </div>
                         <div class="col s12 m12 l12">
-                            <div class="row center" style="margin-top: 10px">
-                                <span class="card-title titel_img" style="font-weight: 700; color: #505050; letter-spacing: 2px">Área de Almacenamiento</span>
-                            </div>
-                            <section style="width: auto; height: auto; border-radius: 20px; border: 1px solid #bdbdbd">   
-                                <div class="row" style="padding-left: 40px; padding-right: 40px; padding-top: 40px; padding-bottom: 12px">
+                            <section class="z-depth-1" style="width: auto; height: auto; border-radius: 10px; background-color: white">   
+                                <div class="row row_padd">
+                                    <div style="margin-left: 1rem; margin-bottom: 10px">
+                                        <span class="card-title titel_img" style="font-weight: 700; color: #505050; letter-spacing: 2px">Área de Almacenamiento</span>
+                                    </div>
                                     <div class="col s12 m12 l4">
                                         <div class="card">
                                             <div class="card-image waves-effect waves-block waves-light">
@@ -386,6 +403,43 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </section>
                         </div>
                     </div>
+                    <div class="col s12 m3 l4" style="margin-top: 40px; margin-bottom: 40px;">
+                        <section class="z-depth-1 col s12" style="border-radius: 10px; background-color: white">   
+                            <div class="row" style="padding-left: 40px; padding-right: 40px; padding-top: 40px; padding-bottom: 12px">
+                                <span class="table_Tit center" style="display: block; margin: 40px 0">Historial de Reportes</span>
+                                <table class="table centered container" id="datos">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Apellido</th>
+                                            <th>Gravedad</th>
+                                            <th>Fecha</th>
+                                            <th>Hora</th>
+                                            <th>Observacion</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <?php
+                                        $reportes = $data->getObsByArea($area_u);
+                                        foreach ($reportes as $key) {
+                                            echo '
+                                    <tr>
+                                        <td>' . $key['nombre'] . '</td>
+                                        <td>' . $key['apellido'] . '</td>
+                                        <td>' . $key['gravedad'] . '</td> 
+                                        <td>' . $key['fecha'] . '</td>
+                                        <td>' . $key['hora'] . '</td>
+                                        <td>' . $key['observacion'] . '</td>
+                                    </tr>
+                                ';
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
                 </div>
             </div>
         </section>
@@ -396,7 +450,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
         </footer>
+        <script>
+            $(document).ready(function () {
+                $('#datos').DataTable({
+                    responsive: true,
+                    autoWidth: false,
+                    "language": {
+                        "lengthMenu": "Mostrar " + '<select><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="20">20</option></select>' + " registros por página",
+                        "zeroRecords": "No se han encontrado registros",
+                        "info": "Mostrando la página _PAGE_ de _PAGES_",
+                        "infoEmpty": "No hay registros disponibles",
+                        "infoFiltered": "(Filtrado de _MAX_ registros totales)",
+                        "search": "Buscar:",
+                        "paginate": {
+                            'next': 'Siguiente',
+                            'previous': 'Anterior',
+                        },
+                    }
+                });
 
+            });
+        </script>
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();

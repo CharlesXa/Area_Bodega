@@ -21,14 +21,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <script src="../Materialize/js/materialize.js"></script>
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
-        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
-
         <link rel="icon" href="../img/iconoBodega.png"/>
+
         <title>Visualizar Stock - Menu Bodega</title>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.semanticui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.semanticui.min.css"/>
+
     </head>
-    <body style="background-color: white">
+    <body style="background-color: #f5f7fb">
         <section>
             <nav class="nav-extended" style="background-color: #1d1b31;">
                 <div class="nav-wrapper">
@@ -67,75 +72,42 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="container" >
                 <div class="row">
                     <div class="col s12">
-                        <h2 align="center" class="tit_admin">Visualizacion de Stock Aeropuerto</h2>
                         <form method="post">
-                            <div class="row">
-                                <div class="col s12 m6">
-                                    <div class="row">
-                                        <div class="col s12 title_input">Area:
-                                            <div class="input-field col s12" style="border: 1px solid grey; border-radius: 6px; text-indent: 10px">
-                                                <select name="cbo_area" id="area" required>
-                                                    <option value="0">-- Seleccionar --</option>
-                                                    <?php
-                                                    $area = $data->getArea();
-
-                                                    foreach ($area as $key) {
-                                                        echo '<option value="' . $key['id'] . '">' . $key['nombre'] . '</option>';
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col s12 m6">
-                                    <div class="row">
-                                        <div class="col s12 title_input">
-                                            <button class="btn white-text waves-effect waves-light indigo darken-3 col s12 m7 offset-m4" name="btn_cargar" type="submit" style=" height: 50px; margin-top: 40px; border-radius: 6px; font-weight: 600;">Cargar Stock</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="rows">
                                 <div class="col s12">
-                                    <table id="table_id" class="display">
-                                        <thead >
-                                            <tr>
-                                                <td>#</td>
-                                                <td>Nombre</td>
-                                                <td>Cantidad</td>
-                                                <td>Descripcion</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                            <?php
-                                            /*$selected = 0;
-                                            $stock_area = 0;
-                                            if (isset($_POST['btn_cargar'])) {
-                                                $selected = $_POST['cbo_area'];
-                                                if ($selected == 0) {
+                                    <div class="card" style="margin: 40px auto; max-width: 1680px; width: 100%; border-radius: 10px;">
+                                        <div class="card-content" style="margin: 40px 100px; padding: 40px 0">
+                                            <h2 align="center" class="table_Tit" style="display: block; margin-bottom: 5%; margin-top: 1%">Visualizacion de Stock Aeropuerto</h2>
+                                            <table class="table centered responsive-table" id="view_stock">
+                                                <thead>
+                                                    <tr>
+                                                        <td>#</td>
+                                                        <td>Nombre</td>
+                                                        <td>Cantidad</td>
+                                                        <td>Descripcion</td>
+                                                        <td></td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
                                                     $stock_area = $data->getAllStock();
-                                                } else {
-                                                    $stock_area = $data->getStockByArea($selected);
-                                                }*/
-                                            $stock_area = $data->getAllStock();
-                                                foreach ($stock_area as $key) {
-                                                    echo '
+                                                    foreach ($stock_area as $key) {
+                                                        echo '
                                                                     <tr>
                                                                         <td>' . $key['id'] . '</td>
                                                                         <td>' . $key['nombre'] . '</td>
                                                                         <td>' . $key['cantidad_t'] . '</td>
                                                                         <td>' . $key['descripcion'] . '</td>
-                                                                        
+                                                                        <td></td>
                                                                     </tr>
                                                                 ';
-                                                }
-                                            //}
-                                            ?>
+                                                    }
+                                                    ?>
 
-                                        </tbody>
-                                    </table>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -150,13 +122,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
         </footer>
-        <script type="text/javascript">
+        <script>
+            $(document).ready(function () {
+                $('#view_stock').DataTable({
+                    responsive: true,
+                    autoWidth: false,
+                    "language": {
+                        "lengthMenu": "Mostrar " + '<select><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="20">20</option></select>' + " registros por página",
+                        "zeroRecords": "No se han encontrado registros",
+                        "info": "Mostrando la página _PAGE_ de _PAGES_",
+                        "infoEmpty": "No hay registros disponibles",
+                        "infoFiltered": "(Filtrado de _MAX_ registros totales)",
+                        "search": "Buscar:",
+                        "paginate": {
+                            'next': 'Siguiente',
+                            'previous': 'Anterior',
+                        },
+                    }
+                });
+
+            });
+        </script>
+        <script>
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();
             });
-            
             $(document).ready(function () {
-                $('#table_id').DataTable();
+                $('textarea#textarea2').characterCounter();
             });
         </script>
         <script src="../js/script.js"></script>

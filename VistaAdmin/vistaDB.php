@@ -23,11 +23,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="../DataTables/datatables.min.css"/>
-        <script src="../DataTables/datatables.min.js"></script>
         <title>Visualizar Tablas</title>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.semanticui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.semanticui.min.css"/>
+
     </head>
-    <body style="background-color: white">
+    <body style="background-color: #f5f7fb">
         <section>
             <nav class="nav-extended" style="background-color: #1d1b31;">
                 <div class="nav-wrapper">
@@ -54,47 +60,46 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <li><div class="divider"></div></li>
                 <li><a href="../Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
             </ul>
-            <div class="container" >
-                <div class="row">
-                    <div class="col s12">
-                        <h2 class="tit_admin center">Tablas de la base de datos</h2>
-                        <div class="row">
-                            <div class="col s12">
-                                <table id="table_id">
-                                    <thead style="font-size: 20px; text-align: center">
-                                        <tr>
-                                            <td>Nombre</td>
-                                            <td>N° de Registros</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $table = $data->getAllTables();
-                                        $contador = 1;
-                                        foreach ($table as $key) {
-                                            $name = $key['table_name'];
-                                            $registro = $data->getTable($name);
-                                            foreach ($registro as $value) {
-                                                echo
-                                                ''
-                                                ?>
-                                            <form method="post" id="form<?php echo $contador; ?>">
-                                                <tr>
-                                                    <td><?php echo $name; ?></td>
-                                                    <td><?php echo $value['registro']; ?></td>
-                                                    <td><button data-target="<?php echo $name; ?>" style="background-color:#1d1b31" class="btn modal-trigger">Visualizar</button></td>
 
-                                                </tr>
-                                            </form>
-                                            <?php
-                                            '';
-                                        }
-                                        $contador = $contador + 1;
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="card" style="margin: 40px auto; max-width: 1680px; width: 100%; border-radius: 10px;">
+                        <div class="card-content" style="margin: 20px 100px; padding: 40px 0">
+                            <h2 class="table_Tit center" style="display: block; margin-bottom: 4%; margin-top: 1%">Tablas de la base de datos</h2>
+                            <table class="table " id="registros">
+                                <thead style="font-size: 20px; text-align: center">
+                                    <tr>
+                                        <td>Nombre</td>
+                                        <td>N° de Registros</td>
+                                        <td></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $table = $data->getAllTables();
+                                    $contador = 1;
+                                    foreach ($table as $key) {
+                                        $name = $key['table_name'];
+                                        $registro = $data->getTable($name);
+                                        foreach ($registro as $value) {
+                                            echo
+                                            ''
+                                            ?>
+                                        <form method="post" id="form<?php echo $contador; ?>">
+                                            <tr>
+                                                <td><?php echo $name; ?></td>
+                                                <td><?php echo $value['registro']; ?></td>
+                                                <td><button data-target="<?php echo $name; ?>" style="background-color:#1d1b31" class="btn modal-trigger">Visualizar</button></td>
+                                            </tr>
+                                        </form>
+                                        <?php
+                                        '';
                                     }
-                                    ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                                    $contador = $contador + 1;
+                                }
+                                ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -645,15 +650,34 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
         </footer>
-        <script type="text/javascript">
+        <script>
             $(document).ready(function () {
-                $('#table_id').DataTable();
+                $('#registros').DataTable({
+                    responsive: true,
+                    autoWidth: false,
+                    "language": {
+                        "lengthMenu": "Mostrar " + '<select><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="20">20</option></select>' + " registros por página",
+                        "zeroRecords": "No se han encontrado registros",
+                        "info": "Mostrando la página _PAGE_ de _PAGES_",
+                        "infoEmpty": "No hay registros disponibles",
+                        "infoFiltered": "(Filtrado de _MAX_ registros totales)",
+                        "search": "Buscar:",
+                        "paginate": {
+                            'next': 'Siguiente',
+                            'previous': 'Anterior',
+                        },
+                    }
+                });
+
             });
+        </script>
+        <script>
             document.addEventListener('DOMContentLoaded', function () {
                 M.AutoInit();
             });
-            
-
+            $(document).ready(function () {
+                $('textarea#textarea2').characterCounter();
+            });
         </script>
         <script src="../js/script.js"></script>
     </body>

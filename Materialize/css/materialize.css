@@ -8,8 +8,11 @@
     background-color: #e51c23 !important;
 }
 
-body{
+*{
     font-family: 'Poppins', sans-serif;
+}
+
+body{
     background-color: #D6D5C9;
     display: flex;
     min-height: 100vh;
@@ -3039,8 +3042,9 @@ td, th {
     border-radius: 2px;
 }
 .table_Tit{
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 600;
+    color: #424242;
 }
 .tit_personal{
     font-weight: 500;
@@ -3472,6 +3476,11 @@ table span.badge {
     max-width: 1280px;
     width: 90%;
 }
+.container_menu_seg {
+    margin: 0 auto;
+    max-width: 1880px;
+    width: 95%;
+}
 
 @media only screen and (min-width: 601px) {
     .container {
@@ -3510,13 +3519,14 @@ table span.badge {
 .row {
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20px;
+    margin: 0;
 }
 .row_padd{
+    margin-bottom: 40px;
     padding-left: 40px;
     padding-right: 40px;
-    padding-top: 40px;
-    padding-bottom: 12px
+    padding-top: 30px;
+    padding-bottom: 40px;
 }
 
 @media only screen and (max-width: 450px) {
@@ -4352,6 +4362,12 @@ nav a {
 nav i,
 nav [class^="mdi-"], nav [class*="mdi-"],
 nav i.material-icons {
+    display: block;
+    font-size: 24px;
+    height: 56px;
+    line-height: 56px;
+}
+nav i .bx{
     display: block;
     font-size: 24px;
     height: 56px;
