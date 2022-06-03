@@ -3,14 +3,33 @@ error_reporting(E_NOTICE ^ E_ALL);
 
 include_once 'Model_Data.php';
 session_start();
+$data = new Data();
+
 $rut = $_SESSION['rut'];
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
 $passwd_t = $_SESSION['passwd_t'];
 $correo = $_SESSION['email'];
 $area = $_SESSION['area_usuario'];
-
-$data = new Data();
+switch ($area) {
+    case 1:
+        $area = "Bodega";
+        break;
+    case 2:
+        $area = "Seguridad";
+        break;
+    case 3:
+        $area = "RRHH";
+        break;
+    case 4:
+        $area = "Zona de Espera";
+        break;
+    case 5:
+        $area = "Gestion de Vuelos";
+        break;
+    default:
+        break;
+}
 ?>
 <html>
     <head>
@@ -60,7 +79,7 @@ $data = new Data();
                 <div class="nav-wrapper">
                     <a id="menu" href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 30px">menu</i></a>
                     <img src="img/iconGeneral.png">
-                    <span class="brand-logo">Menu General (<?php echo $area;?>)</span>
+                    <span class="brand-logo">Menu General (<?php echo $area?>)</span>
                 </div>
             </nav>
             <ul id="slide-out" class="sidenav" style="background-color: #1d1b31;">
