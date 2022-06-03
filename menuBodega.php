@@ -3,6 +3,7 @@ error_reporting(E_NOTICE ^ E_ALL);
 
 include_once 'Model_Data.php';
 session_start();
+echo 'a';
 $rut = $_SESSION['rut'];
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
