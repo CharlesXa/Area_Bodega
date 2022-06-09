@@ -64,8 +64,8 @@ class Data {
         $query = $this->con->query($sql);
         return $query;
     }
-    
-    public function getHistorialByArea($Area){
+
+    public function getHistorialByArea($Area) {
         $sql = "select stock.nombre as 'nombre', historial.cantidad as 'cantidad', solicitud.fecha_hora as 'fecha-hora', solicitud.descripcion as 'descripcion', solicitud.estado_s as 'estado', area_usuario.nombre as 'area' from historial INNER JOIN stock ON stock_id_fk = stock.id INNER JOIN solicitud ON solicitud_id_fk = solicitud.id INNER JOIN area_usuario ON area_usuario_id_fk = area_usuario.id where area_usuario.id = $Area";
         $query = $this->con->query($sql);
         return $query;
@@ -122,12 +122,11 @@ class Data {
         $sql = "INSERT INTO `reporte` (`id`, `usuario_id_fk`, `gravedad`, `fecha`, `hora`, `observacion`, `area_usuario_id_fk`) VALUES (null, '$user', '$gravedad', '$fecha', '$hora', '$obs', '$areaUser');";
         $query = $this->con->query($sql);
     }
-    
-    public function getObsByArea($Area){
+
+    public function getObsByArea($Area) {
         $sql = "SELECT reporte.id as 'Numero', usuario.nombre as 'nombre', usuario.apellido as 'apellido', reporte.gravedad as 'gravedad', reporte.fecha as 'fecha', reporte.hora as 'hora', reporte.observacion as 'observacion', area_usuario.nombre as 'area' FROM reporte INNER JOIN usuario ON usuario.id = reporte.usuario_id_fk INNER JOIN area_usuario ON area_usuario.id = reporte.area_usuario_id_fk where area_usuario.id = $Area;";
         $query = $this->con->query($sql);
         return $query;
-        
     }
 
     public function getTable($name) {
@@ -233,13 +232,13 @@ class Data {
         $query = $this->con->query($sql);
         return $query;
     }
-    
+
     public function getAllStock() {
         $sql = "SELECT * FROM stock";
         $query = $this->con->query($sql);
         return $query;
     }
-    
+
     public function addUser($rut, $nombre, $apellido, $email, $telefono, $area, $tipo, $passwT) {
         $sql = "INSERT INTO usuario (id, rut, nombre, apellido, passwd, email, telefono, area_usuario_id_fk, tipo_user_id_fk, passwd_t) VALUES (NULL, '$rut', '$nombre', '$apellido', sha2('$passwT',0), '$email', '$telefono', '$area', '$tipo', '1');";
         $query = $this->con->query($sql);
@@ -249,16 +248,44 @@ class Data {
         $sql = "UPDATE usuario SET email = '$email', telefono = '$telefono', area_usuario_id_fk = '$area' WHERE usuario.rut = '$rut';";
         $query = $this->con->query($sql);
     }
-    
+
     public function getCargaVuelo($vuelo) {
-        $sql="SELECT cliente.nombre as 'Cliente', carga.descripcion, carga.peso AS 'Peso kg', vuelo.codigo as 'Vuelo', avion.nombre AS 'Avion', avion.volumen as 'Volumen' FROM cliente
+        $sql = "SELECT cliente.nombre as 'Cliente', carga.descripcion, carga.peso AS 'Peso kg', vuelo.codigo as 'Vuelo', avion.nombre AS 'Avion', avion.volumen as 'Volumen' FROM cliente
                 INNER JOIN carga ON cliente.id=carga.cliente_id_fk
                 INNER JOIN boleto ON boleto.cliente_id_fk=cliente.id
                 INNER JOIN vuelo ON vuelo.id=boleto.vuelo_id_fk
                 INNER JOIN avion ON avion.id=vuelo.avion_id_fk
                 WHERE vuelo.destino='$vuelo';";
+        $query = $this->con->query($sql);
+        return $query;
+    }
+
+    public function instSoli($descripcion, $usuario) {
+        $sql = "INSERT INTO solicitud (id, descripcion, fecha_hora, estado_s, usuario_id_fk) VALUES (NULL, '$descripcion', now(),0,$usuario);";
+        $query = $this->con->query($sql);
+    }
+
+    public function updStockSoli($id, $cantidad) {
+        $sql = "UPDATE stock SET cantidad_t = (SELECT cantidad_t FROM stock WHERE id=$id)-$cantidad WHERE stock.id = $id;";
+
+        $query = $this->con->query($sql);
+    }
+
+    public function getStockById($id) {
+        $sql = "SELECT stock.id, stock.nombre, stock.descripcion FROM stock INNER JOIN area_usuario ON area_user_id_fk = area_usuario.id WHERE stock.id = '$id';";
+        $query = $this->con->query($sql);
+        return $query;
+    }
+    
+    public function getLimitSoli() {
+        $sql="select * from solicitud order by id desc limit 1;";
         $query= $this->con->query($sql);
         return $query;
+    }
+
+    public function instHist($cant,$idS,$isStock,$usuario) {
+        $sql = "INSERT INTO historial (id, cantidad, fecha_horaS, solicitud_id_fk, stock_id_fk,area_usuario_id_fk) VALUES (NULL, $cant, now(),$idS,$isStock,$usuario);";
+        $query = $this->con->query($sql);
     }
 
 }

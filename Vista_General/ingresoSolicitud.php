@@ -3,6 +3,7 @@ error_reporting(E_NOTICE ^ E_ALL);
 
 include_once '../Model_Data.php';
 session_start();
+$idU=$_SESSION['id'];
 $rut = $_SESSION['rut'];
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
@@ -11,6 +12,7 @@ $correo = $_SESSION['email'];
 $area = $_SESSION['area_usuario'];
 
 $data = new Data();
+$array = [];
 ?>
 <html>
     <head>
@@ -268,7 +270,7 @@ $data = new Data();
                 margin: 25px 0 15px 0;
 
                 &:hover {
-                    background: lighten($main-color, 3%)
+                    background: lighten($main-color, 3%);
                 }
             }
 
@@ -328,53 +330,179 @@ $data = new Data();
                 <li><div class="divider"></div></li>
                 <li><a href="../Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
             </ul>
-            <span class="table_Tit center" style="display: block; margin: 40px 0">Seleccione el stock que necesita</span>
-            <table class="table centered responsive-table container" id="datos" border="1">
-                <thead align="center">
-                    <tr>
-                        <th>#</th>
-                        <th>Nombre</th>
-                        <th>Activo</th>
-                        <th>Cantidad</th>
-                        <th>Descripcion</th>
-                        <th colspan="2">Añadir al carro</th>
-                    </tr>
-                </thead>
-                <tbody>
 
-                    <?php
-                    $stock = $data->getStockByArea($area);
-                    foreach ($stock as $key) {
-                        $activo = '';
-                        switch ($key['activo']) {
-                            case 1:
-                                $activo = 'SI';
-                                break;
-                            case 0:
-                                $activo = 'NO';
-                            default:
-                                break;
-                        }
-                        echo '
+
+            <div class="container_menu_seg">
+                <div class="row">
+                    <div class="col s12 m8 l8">
+                        <div class="card">
+                            <div class="card-content">
+                                <span class="table_Tit center" style="display: block; margin: 40px 0">Seleccione el stock que necesita</span>
+                                <table class="table centered responsive-table container" id="datos" border="1">
+                                    <form method="post">
+                                        <thead align="center">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Nombre</th>
+                                                <th>Activo</th>
+                                                <th>Cantidad</th>
+                                                <th>Descripcion</th>
+                                                <th colspan="2">Añadir al carro</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <?php
+                                            $stock = $data->getStockByArea($area);
+                                            foreach ($stock as $key) {
+                                                $activo = '';
+                                                switch ($key['activo']) {
+                                                    case 1:
+                                                        $activo = 'SI';
+                                                        break;
+                                                    case 0:
+                                                        $activo = 'NO';
+                                                    default:
+                                                        break;
+                                                }
+                                                echo '
                                         '
-                        ?>
-                        <form method="post">
-                            <tr>
-                                <td><input name="txt_id" value="<?php echo $key['id']; ?>" id="idBD" style="width: 60px;" class="center-align" readonly></td>
-                                <td><input name="txt_nombBD" value="<?php echo $key['nombre']; ?>" id="nomBdS" style="width: 150px;" class="center-align" readonly></td>
-                                <td><?php echo $activo; ?></td>
-                                <td><input name="txt_cantBD" value="<?php echo $key['cantidad_t']; ?>" id="cant" style="width: 70px;" class="center-align" readonly></td>
-                                <td><?php echo $key['descripcion']; ?></td>
-                                <td><input class="hola" id="cant_S<?php echo $key['id']; ?>" type = "number" min="0" max="<?php echo $key['cantidad_t'] - 1; ?>" onkeypress = "return (event.charCode >= 48 && event.charCode <= 57)" name = "txt_cantidad" style = "width: 70px; border: 1px solid grey; border-radius: 5px; text-indent: 10px"></td>
-                                <td><button class = "btn white-text waves-effect waves-light indigo darken-3 col s12 m6" name = "btn_ingresar" id="agregar" onclick="agregarCarrito()" type = "button" style = " height: 50px; border-radius: 6px; font-weight: 600;"><i class = "material-icons">add</i></button></td>
-                            </tr>
-                        </form>
+                                                ?>
+
+                                                <tr>
+                                                    <td><input name="txt_id" value="<?php echo $key['id']; ?>" id="idBD" style="width: 60px;" class="center-align" readonly></td>
+                                                    <td><input name="txt_nombBD" value="<?php echo $key['nombre']; ?>" id="nomBdS" style="width: 150px;" class="center-align" readonly></td>
+                                                    <td><?php echo $activo; ?></td>
+                                                    <td><input name="txt_cantBD" value="<?php echo $key['cantidad_t']; ?>" id="cant" style="width: 70px;" class="center-align" readonly></td>
+                                                    <td><?php echo $key['descripcion']; ?></td>
+                                                    <td><input class="hola"  type = "number" min="0"  name="cantidad[]" max="<?php echo $key['cantidad_t'] - 1; ?>" onkeypress = "return (event.charCode >= 48 && event.charCode <= 57)" style = "width: 70px; border: 1px solid grey; border-radius: 5px; text-indent: 10px"></td>
+                                                    <td><label><input  name = "stock[]"value="<?php echo $key['id']; ?>"  type = "checkbox"/><span><i class="material-icons">add_shopping_cart</i></span></label></td>
+
+                                                </tr>
+
+                                                <?php
+                                                '';
+                                            }
+                                            ?>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <button class="btn waves-effect waves-light"  type="submit" name="action">Submit
+                                                        <i class="material-icons right">send</i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </form>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                     <?php
-                    '';
-                }
-                ?>
-                </tbody>
-            </table>
+                    if (isset($_POST['action'])) {
+                        echo '<div class="col s12 m4 l4">
+                                <div class="card">
+                                    <div class="card-content">
+                                    <form method="post">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                        <th>Detalle:</th>
+                                                </tr>
+                                                <tr>
+                                                        <th>#</th>
+                                                        <th colspan="2">Producto</th>
+                                                        <th>Cantidad</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                        ';
+                        if (!empty($_POST['cantidad'])) {
+                            foreach ($_POST['cantidad'] as $check) {
+                                array_push($array, $check);
+                            }
+                        }
+
+                        $i = 0;
+                        if (!empty($_POST['stock'])) {
+                            foreach ($_POST['stock'] as $selected1) {
+                                $array = array_values($array);
+
+                                $stockS = $data->getStockById($selected1);
+
+                                foreach ($stockS as $key1) {
+
+                                    //echo $array[$i];
+                                    if (empty($array[$i]) || $array[$i] == 0) {
+                                        $i++;
+                                    }
+                                    echo '
+
+                                        <tr>
+                                            <td>' . $key1['id'] . '</td>
+                                            <td><input  name = "stockS[]" id="agregarS" value="' . $key1['id'] . '" checked type = "checkbox"/><span><i class="material-icons">add_shopping_cart</i></span></label></td>
+                                            <td>' . $key1['nombre'] . '</td>
+                                            <td>' . $array[$i] . '</td>
+                                            <td><input type="hidden" value="' . $array[$i] . '" name="nuevo[]"></td>
+                                        </tr>        
+                                                
+                                        ';
+                                    $i++;
+                                }
+                            }
+                        }
+                        echo '              </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td>
+                                                            <button class="btn waves-effect waves-light"  type="submit" name="solicitar">Submit
+                                                                <i class="material-icons right">send</i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>';
+                    }
+
+                    if (isset($_POST['solicitar'])) {
+                        $arrayn = [];
+                        if (!empty($_POST['nuevo'])) {
+                            foreach ($_POST['nuevo'] as $checki) {
+                                array_push($arrayn, $checki);
+                                echo $checki;
+                            }
+                        }
+                        $a=0;
+                        if (!empty($_POST['stockS'])) {
+                            foreach ($_POST['stockS'] as $selected2){
+                                echo '<br>'.$selected2." ".$arrayn[$a];
+                                
+                                $stockA=$data->getStockById($selected2);
+                                
+                                foreach ($stockA as $keyF){
+                                    $id=$keyF['id'];
+                                    $nom=$keyF['nombre'];
+                                    $des=$keyF['descripcion'];
+                                    $descripcion=$id." ".$nom;
+                                    echo "<br>".$descripcion;
+                                    $data->instSoli($descripcion, $idU);
+                                    $data->updStockSoli($id, $arrayn[$a]);
+                                    $a++;
+                                    
+                                }
+                            }
+                            echo '<script language="javascript">alert("Reserva Exitosa'.$arrayn[$a].'");window.location.href="ingresoSolicitud.php"</script>';
+                        }
+                    }
+                    ?>
+
+                </div>
+            </div>
         </section>
         <footer class="page-footer" style="background-color: transparent">
             <div class="footer-copyright" style="background-color: #1d1b31">
@@ -383,6 +511,7 @@ $data = new Data();
                 </div>
             </div>
         </footer>
+
         <script>
             (function () {
 
@@ -391,40 +520,40 @@ $data = new Data();
                 });
 
                 /*$("#agregar").on("click", function () {
-                    agregarCarrito();
-                })*/
+                 agregarCarrito();
+                 })*/
 
 
 
             })();
-            
-            function eliminarCarrito(id){
+
+            function eliminarCarrito(id) {
                 console.log(id);
             }
 
             function agregarCarrito() {
-                
-                rut=$('#idBD').val();
+
+                rut = $('#idBD').val();
                 //rut1=$('.hola'+rut).val();
-                
-                
-                
-                
+
+
+
+
                 //rut=$('#form'+rut).val();
-                
-                /*var id = document.getElementById("idBD").value;
-                //var cant = document.getElementById("cant").value;
+
+                var id = document.getElementById("idBD").value;
+                var cant = document.getElementById("cant").value;
                 var nombre = document.getElementById("nomBdS").value;
                 var cant_S = document.getElementById("cant_S").value;
                 var data = document.getElementById("carro");
-                //const b=docume1nt.querySelector("agregar");*/
+                //const b=docume1nt.querySelector("agregar");
                 console.log(rut);
-                /*if (cant_S != 0) {
+                if (cant_S != 0) {
                     var numberC = data.getAttribute('data-number');
 
                     data.setAttribute('data-number', parseInt(numberC) + 1);
 
-                    
+
 
                     console.log(id + " Hola " + numberC + " " + cant_S);
 
@@ -432,14 +561,14 @@ $data = new Data();
 
                     const row = document.createElement('tr');
 
-                    row.innerHTML = '<td>' + id + '</td><td>' + nombre + '</td><td>' + cant_S + '</td><button class = "btn white-text waves-effect waves-light indigo darken-3 col s12 m6" name = "btn_eliminar" onclick="eliminarCarrito('+id+')" id="eliminar" type = "button" style = " height: 50px; border-radius: 6px; font-weight: 600;"><i class = "material-icons">delete</i></button><td></td>';
+                    row.innerHTML = '<td>' + id + '</td><td>' + nombre + '</td><td>' + cant_S + '</td><button class = "btn white-text waves-effect waves-light indigo darken-3 col s12 m6" name = "btn_eliminar" onclick="eliminarCarrito(' + id + ')" id="eliminar" type = "button" style = " height: 50px; border-radius: 6px; font-weight: 600;"><i class = "material-icons">delete</i></button><td></td>';
 
                     lista.appendChild(row);
-                    
+
                     //b.disabled=true;
                 } else {
                     alert("puto");
-                }*/
+                }
             }
 
 

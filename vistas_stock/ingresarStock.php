@@ -20,6 +20,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link rel="stylesheet" href="../Materialize/css/materialize.css">
         <script src="../Materialize/js/materialize.js"></script>
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="icon" href="../img/iconoBodega.png"/>
@@ -45,8 +46,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <a href="#email"><span class="white-text email" style="font-size: 14px"><?php echo $correo ?></span></a>
                     </div></li>
                 <li><div class="divider"></div></li>
-                <li><a href="../menuBodega.php">Inicio</a></li>
-                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Stock<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
+                <li><a href="../menuBodega.php" class="waves-effect" style="margin-left: -3px">Inicio<i class='bx bx-home white-text' style="font-size: 27px;"></i></a></li>
+                <ul class="collapsible collapsible-accordion">
+                    <li>
+                        <a class="collapsible-header waves-effect"><i class='bx bx-box white-text' style="font-size: 27px;"></i>Stock<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a>
+                        <div class="collapsible-body" style="background-color: #1d1b31">
+                            <ul>
+                                <li><a href="actualizarStock.php"><i class='bx bx-cloud-upload white-text' style="font-size: 22px;"></i>Actualizar</a></li>
+                                <li><a href="visualizarStock.php"><i class="uil uil-eye white-text" style="font-size: 22px;"></i>Visualizar</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="collapsible collapsible-accordion">
+                    <li>
+                        <a class="collapsible-header waves-effect"><i class='bx bx-briefcase-alt white-text' style="font-size: 27px;"></i>Equipaje<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a>
+                        <div class="collapsible-body" style="background-color: #1d1b31">
+                            <ul>
+                                <li><a href="../vistas_equipaje/distribucionEquipaje.php"><i class='bx bxs-plane-alt white-text' style="font-size: 22px;"></i>Distribucion</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <!--<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Stock<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
                 <ul id='dropdown1' class='dropdown-content' style="background-color: #1d1b31;">
                     <li><a href="#">Ingreso</a></li>
                     <li><a href="actualizarStock.php">Actualizar</a></li>
@@ -54,12 +76,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </ul>
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Equipaje<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
                 <ul id='dropdown2' class='dropdown-content' style="background-color: #1d1b31;">
-                    <!--<li><a href="../vistas_equipaje/ingresarEquipaje.php">Ingreso</a></li>-->
-                    <li><a href="../vistas_equipaje/busquedaEquipaje.php">Busqueda</a></li>
-                    <li><a href="../vistas_Equipaje/distribucionEquipaje.php">Distribucion</a></li>
-                </ul>
+                <!--<li>
+                <li><a href="../vistas_equipaje/busquedaEquipaje.php">Busqueda</a></li>
+                <li><a href="../vistas_Equipaje/distribucionEquipaje.php">Distribucion</a></li>
+            </ul>-->
                 <li><div class="divider"></div></li>
-                <li><a href="../Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
+                <li><a href="../Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 27px;"></i></a></li>
             </ul>
             <div class="container" >
                 <div class="row">

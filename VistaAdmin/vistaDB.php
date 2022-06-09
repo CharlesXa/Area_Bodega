@@ -30,8 +30,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.semanticui.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css"/>
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.semanticui.min.css"/>
-
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.semanticui.min.css"/>        
     </head>
     <body style="background-color: #f5f7fb">
         <section>
@@ -51,14 +50,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <a href="#email"><span class="white-text email" style="font-size: 14px"><?php echo $correo ?></span></a>
                     </div></li>
                 <li><div class="divider"></div></li>
-                <li><a href="../menuAdmin.php">Inicio</a></li>
-                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Database<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
-                <ul id='dropdown1' class='dropdown-content' style="background-color: #1d1b31;">
-                    <li><a href="../backup.php">Respaldo</a></li>
-                    <li><a href="#">Visualizar tablas</a></li>
+                <li><a href="../menuAdmin.php" class="waves-effect" style="margin-left: -3px">Inicio<i class='bx bx-home white-text' style="font-size: 27px;"></i></a></li>
+                <ul class="collapsible collapsible-accordion">
+                    <li>
+                        <a class="collapsible-header waves-effect"><i class='bx bx-data white-text' style="font-size: 27px;"></i>Base de datos<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a>
+                        <div class="collapsible-body" style="background-color: #1d1b31">
+                            <ul>
+                                <li><a href="../backup.php"><i class='bx bx-file white-text' style="font-size: 22px;"></i>Respaldo</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
                 <li><div class="divider"></div></li>
-                <li><a href="../Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
+                <li><a href="../Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 27px;"></i></a></li>
             </ul>
 
             <div class="row">
@@ -66,12 +70,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="card" style="margin: 40px auto; max-width: 1680px; width: 100%; border-radius: 10px;">
                         <div class="card-content" style="margin: 20px 100px; padding: 40px 0">
                             <h2 class="table_Tit center" style="display: block; margin-bottom: 4%; margin-top: 1%">Tablas de la base de datos</h2>
-                            <table class="table " id="registros">
+                            <table class="table centered" id="registros">
                                 <thead style="font-size: 20px; text-align: center">
                                     <tr>
-                                        <td>Nombre</td>
-                                        <td>N° de Registros</td>
-                                        <td></td>
+                                        <th>Nombre</th>
+                                        <th>N° de Registros</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -89,7 +93,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                             <tr>
                                                 <td><?php echo $name; ?></td>
                                                 <td><?php echo $value['registro']; ?></td>
-                                                <td><button data-target="<?php echo $name; ?>" style="background-color:#1d1b31" class="btn modal-trigger">Visualizar</button></td>
+                                                <td><button data-target="<?php echo $name; ?>" class="btn white-text waves-effect waves-light indigo darken-3 modal-trigger" style="height: 43px; border-radius: 6px; font-weight: 600;">Visualizar</button></td>
                                             </tr>
                                         </form>
                                         <?php

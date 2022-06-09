@@ -3,7 +3,6 @@ error_reporting(E_NOTICE ^ E_ALL);
 
 include_once 'Model_Data.php';
 session_start();
-echo 'a';
 $rut = $_SESSION['rut'];
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
@@ -22,7 +21,7 @@ $data = new Data();
 <!DOCTYPE html>
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
+Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this templateasd
 -->
 
 <html>
@@ -46,7 +45,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.semanticui.min.css"/>
 
     </head>
-    <body style="background-color: #f5f7fb" >
+    <body style="background-color: #f5f7fb; background-image: url(img/imgBodega.png); background-attachment: fixed" >
         <div id="modal1" class="modal">
             <form method="post" action="Controller/controller_obs.php">
                 <div class="modal-content">
@@ -184,14 +183,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <a class="collapsible-header waves-effect"><i class='bx bx-briefcase-alt white-text' style="font-size: 27px;"></i>Equipaje<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a>
                         <div class="collapsible-body" style="background-color: #1d1b31">
                             <ul>
-                                <li><a href="vistas_equipaje/busquedaEquipaje.php"><i class='bx bx-search white-text' style="font-size: 22px;"></i>Busqueda</a></li>
                                 <li><a href="vistas_equipaje/distribucionEquipaje.php"><i class='bx bxs-plane-alt white-text' style="font-size: 22px;"></i>Distribucion</a></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
                 <li><div class="divider"></div></li>
-                <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
+                <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 27px;"></i></a></li>
             </ul>
             <div class="container_menu_seg">
                 <div class="row">

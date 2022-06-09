@@ -30,6 +30,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link rel="icon" href="../img/iconoBodega.png"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <title>Menu Bodega - D. Equipaje</title>
@@ -90,17 +91,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <a href="#email"><span class="white-text email" style="font-size: 14px"><?php echo $correo ?></span></a>
                     </div></li>
                 <li><div class="divider"></div></li>
-                <li><a href="../menuBodega.php">Inicio</a></li>
-                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Stock<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
-                <ul id='dropdown1' class='dropdown-content' style="background-color: #1d1b31;">
-                    <li><a href="../vistas_stock/ingresarStock.php">Ingreso</a></li>
-                    <li><a href="../vistas_stock/actualizarStock.php">Actualizar</a></li>
-                    <li><a href="../vistas_stock/visualizarStock.php">Visualizar</a></li>
-                </ul>
-                <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Equipaje<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
-                <ul id='dropdown2' class='dropdown-content' style="background-color: #1d1b31;">
-                    <li><a href="vistas_equipaje/busquedaEquipaje.php">Busqueda</a></li>
-                    <li><a href="vistas_equipaje/distribucionEquipaje.php">Distribucion</a></li>
+                <li><a href="../menuBodega.php" class="waves-effect" style="margin-left: -3px">Inicio<i class='bx bx-home white-text' style="font-size: 27px;"></i></a></li>
+                <ul class="collapsible collapsible-accordion">
+                    <li>
+                        <a class="collapsible-header waves-effect"><i class='bx bx-box white-text' style="font-size: 27px;"></i>Stock<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a>
+                        <div class="collapsible-body" style="background-color: #1d1b31">
+                            <ul>
+                                <li><a href="../vistas_stock/ingresarStock.php"><i class='bx bx-upload white-text' style="font-size: 22px;"></i>Ingreso</a></li>
+                                <li><a href="../vistas_stock/actualizarStock.php"><i class='bx bx-cloud-upload white-text' style="font-size: 22px;"></i>Actualizar</a></li>
+                                <li><a href="../vistas_stock/visualizarStock.php"><i class="uil uil-eye white-text" style="font-size: 22px;"></i>Visualizar</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
                 <li><div class="divider"></div></li>
                 <li><a href="../Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
@@ -111,35 +113,36 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="card-content" style="margin: 40px 100px; padding: 3.5% 0">
                             <span class="table_Tit center" style="display: block; margin-bottom: 6%; margin-top: 1%">Distribucion de Equipaje</span>
                             <div class="row center">
-                                <div class="col s6">
-                                    <button data-target="ModalX" style="background-color:#1d1b31;" class="btn modal-trigger ">Cargar</button>
+                                <div class="col s12 m6 l6">
+                                    <button data-target="ModalX" class="btn white-text waves-effect waves-light modal-trigger indigo darken-3" name="btn_ingresar" type="submit" style="height: 50px; margin-bottom: 6%; border-radius: 6px; font-weight: 600;">Cargar</button>
                                 </div>
-                                <div class="col s6">
-                                    <button data-target="#" style="background-color:#1d1b31;" class="btn modal-trigger ">Cargar siguiente vuelo</button>
+                                <div class="col s12 m6 l6">
+                                    <button data-target="#" class="btn white-text waves-effect waves-light indigo darken-3" name="btn_ingresar" type="submit" style="height: 50px; margin-bottom: 6%; border-radius: 6px; font-weight: 600;">Cargar siguiente vuelo</button>
                                 </div>
                             </div>
-                            <table class="table centered" id="datos">
-                                <thead>
+                            <div class="row">
+                                <div class="col s12 m12 l12">   
+                                    <table class="table centered responsive-table" id="datos">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Descripcion</th>
+                                                <th>Peso</th>
+                                                <th>Vuelo</th>
+                                                <th>Avion</th>
+                                            </tr>
+                                        </thead>
 
-                                    <tr>
-                                        <th>Nombre</th>
-                                        <th>Descripcion</th>
-                                        <th>Peso</th>
-                                        <th>Vuelo</th>
-                                        <th>Avion</th>
-                                    </tr>
-                                </thead>
+                                        <tbody>
+                                            <?php
+                                            $destino = 'Rusia';
+                                            $pesoCarga = 0;
+                                            $volumenT = 0;
+                                            $pesoArray = [];
+                                            $cargas = $data->getCargaVuelo($destino);
+                                            foreach ($cargas as $key) {
 
-                                <tbody>
-                                    <?php
-                                    $destino = 'Rusia';
-                                    $pesoCarga = 0;
-                                    $volumenT = 0;
-                                    $pesoArray = [];
-                                    $cargas = $data->getCargaVuelo($destino);
-                                    foreach ($cargas as $key) {
-
-                                        echo '
+                                                echo '
                                     <tr> 
                                         <td>' . $key['Cliente'] . '</td>   
                                         <td>' . $key['descripcion'] . '</td>   
@@ -148,13 +151,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         <td>' . $key['Avion'] . '</td>   
                                     </tr>
                                 ';
-                                        $pesoCarga = $pesoCarga + $key['Peso kg'];
-                                        array_push($pesoArray, $key['Peso kg']);
-                                        $volumenT = $key['Volumen'];
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
+                                                $pesoCarga = $pesoCarga + $key['Peso kg'];
+                                                array_push($pesoArray, $key['Peso kg']);
+                                                $volumenT = $key['Volumen'];
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

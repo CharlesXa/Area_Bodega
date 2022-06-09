@@ -21,13 +21,11 @@ $data = new Data();
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
         <link rel="icon" href="img/iconAdmin.png"/>
-
         <link rel="stylesheet" href="Materialize/css/materialize.css">
         <script src="Materialize/js/materialize.js"></script>
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="Materialize/js/funciones.js"></script>
         <script src="js/validarut.js"></script>
         <script src="js/jquery.rut.js"></script>
 
@@ -41,7 +39,7 @@ $data = new Data();
         <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.semanticui.min.css"/>
 
     </head>
-    <body style="background-color: white" >
+    <body style="background-color: white; background-image: url(img/imgAdmin.png); background-attachment: fixed" >
         <!-- Modal cambio de pass -->
         <div id="modal_pass" class="modal" style="margin-top: 100px">
             <div class="modal-content">
@@ -90,13 +88,19 @@ $data = new Data();
                         <a href="#email"><span class="white-text email" style="font-size: 14px"><?php echo $correo ?></span></a>
                     </div></li>
                 <li><div class="divider"></div></li>
-                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Database<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
-                <ul id='dropdown1' class='dropdown-content' style="background-color: #1d1b31;">
-                    <li><a href="backup.php">Respaldo</a></li>
-                    <li><a href="VistaAdmin/vistaDB.php">Visualizar tablas</a></li>
+                <ul class="collapsible collapsible-accordion">
+                    <li>
+                        <a class="collapsible-header waves-effect"><i class='bx bx-data white-text' style="font-size: 27px;"></i>Base de datos<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a>
+                        <div class="collapsible-body" style="background-color: #1d1b31">
+                            <ul>
+                                <li><a href="backup.php"><i class='bx bx-file white-text' style="font-size: 22px;"></i>Respaldo</a></li>
+                                <li><a href="VistaAdmin/vistaDB.php"><i class="uil uil-eye white-text" style="font-size: 22px; transform: translateY(14px)"></i>Visualizar tablas</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
                 <li><div class="divider"></div></li>
-                <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
+                <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 27px;"></i></a></li>
             </ul>
             <div>
                 <!--Modal Structure-->

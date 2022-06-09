@@ -5995,7 +5995,7 @@ body.keyboard-focused .dropdown-content li:focus {
 }
 
 .keyboard-focused .collapsible-header:focus {
-    background-color: #eee;
+    *background-color: #eee;
 }
 
 .collapsible-body {
@@ -6029,7 +6029,8 @@ body.keyboard-focused .dropdown-content li:focus {
 
 .sidenav .collapsible-header:hover,
 .sidenav.fixed .collapsible-header:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    *background-color: rgba(0, 0, 0, 0.05);
+    background-color: #363771;
 }
 
 .sidenav .collapsible-header i,
@@ -7704,7 +7705,8 @@ input[type=range]::-ms-thumb {
 }
 
 .sidenav li.active {
-    background-color: rgba(0, 0, 0, 0.05);
+    *background-color: rgba(0, 0, 0, 0.05);
+    background-color: #363771;
 }
 
 .sidenav li > a {

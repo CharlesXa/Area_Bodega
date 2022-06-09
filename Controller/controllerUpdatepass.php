@@ -2,11 +2,12 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <title>Title</title>
+        <title>Actualizando Contraseña</title>
+        <link rel="stylesheet" href="../Materialize/css/styleBody.css"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet"/>
     </head>
-    <body style="background-image: url('../img/fondo.png')">
+    <body style="background-image: url('../img/imgLogin.png')">
         <script>
             function UpdateCorrect() {
                 swal({

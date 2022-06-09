@@ -42,7 +42,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.semanticui.min.css"/>
 
     </head>
-    <body style="background-color: #f5f7fb">
+    <body style="background-color: #f5f7fb; background-image: url(img/imgSeguridad.png); background-attachment: fixed">
         <!-- Modal de generar Reporte -->
         <div id="modal1" class="modal">
             <form method="post" action="Controller/controller_obs.php">
@@ -166,10 +166,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 35px">menu</i></a>
                 <img src="img/favicon.png">
                 <span class="brand-logo">Menu Seguridad</span>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><img class="circle" src="img/iconPerfil.png"></li>
-                    <li><a href="#"><?php echo $nombre . ' ' . $apellido ?><i class="material-icons right">arrow_drop_down</i></a></li>
-                </ul>
             </div>
         </nav>
         <ul id="slide-out" class="sidenav" style="background-color: #1d1b31;">
