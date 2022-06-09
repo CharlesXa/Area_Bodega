@@ -39,7 +39,7 @@ $data = new Data();
         <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.semanticui.min.css"/>
 
     </head>
-    <body style="background-color: white; background-image: url(img/imgAdmin.png); background-attachment: fixed" >
+    <body style="background-color: white; background-image: url(img/imgAdmin.png); background-attachment: fixed; background-size: cover" >
         <!-- Modal cambio de pass -->
         <div id="modal_pass" class="modal" style="margin-top: 100px">
             <div class="modal-content">

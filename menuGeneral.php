@@ -79,7 +79,7 @@ switch ($area) {
                 <div class="nav-wrapper">
                     <a id="menu" href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 30px">menu</i></a>
                     <img src="img/iconGeneral.png">
-                    <span class="brand-logo">Menu General (<?php echo $area?>)</span>
+                    <span class="brand-logo">Menu General (<?php echo $area ?>)</span>
                 </div>
             </nav>
             <ul id="slide-out" class="sidenav" style="background-color: #1d1b31;">
@@ -91,41 +91,52 @@ switch ($area) {
                         <a href="#email"><span class="white-text email" style="font-size: 14px"><?php echo $correo ?></span></a>
                     </div></li>
                 <li><div class="divider"></div></li>
-                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Solicitudes<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
-                <ul id='dropdown1' class='dropdown-content' style="background-color: #1d1b31;">
-                    <li><a href="Vista_General/ingresoSolicitud.php">Ingresar</a></li>
-                    <li><a href="historialSolicitud.php">Historial</a></li>
+                <ul class="collapsible collapsible-accordion">
+                    <li>
+                        <a class="collapsible-header waves-effect"><i class='bx bx-box white-text' style="font-size: 27px;"></i>Solicitudes<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a>
+                        <div class="collapsible-body" style="background-color: #1d1b31">
+                            <ul>
+                                <li><a href="Vista_General/ingresoSolicitud.php"><i class="bx bx-upload white-text" style="font-size: 22px;"></i>Ingresar</a></li>
+                                <li><a href="historialSolicitud.php"><i class="bx bx-history white-text" style="font-size: 22px;"></i>Historial</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
                 <li><div class="divider"></div></li>
-                <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
+                <li><a href="Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 27px;"></i></a></li>
             </ul>
-            <span class="table_Tit center" style="display: block; margin: 40px 0">Stock Disponible</span>
-            <table class="table centered responsive-table container" id="datos" border="1">
-                <thead align="center">
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Activo</th>
-                        <th>Cantidad</th>
-                        <th>Descripcion</th>
-                        <th>Area</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $stock = $data->getStockByArea($area);
-                    foreach ($stock as $key) {
-                        $activo = '';
-                        switch ($key['activo']) {
-                            case 1:
-                                $activo = 'SI';
-                                break;
-                            case 0:
-                                $activo = 'NO';
-                            default:
-                                break;
-                        }
-                        
-                        echo '
+            <div class="container_menu_seg">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <div class="card" style="margin: 40px auto; max-width: 1680px; width: 100%; border-radius: 10px;">
+                            <div class="card-content" style="margin: 40px 0; padding: 5% 0">
+                                <span class="table_Tit center" style="display: block; margin-bottom: 4%">Stock Disponible</span>
+                                <table class="table centered responsive-table container" id="datos" border="1">
+                                    <thead align="center">
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Activo</th>
+                                            <th>Cantidad</th>
+                                            <th>Descripcion</th>
+                                            <th>Area</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $stock = $data->getStockByArea($area);
+                                        foreach ($stock as $key) {
+                                            $activo = '';
+                                            switch ($key['activo']) {
+                                                case 1:
+                                                    $activo = 'SI';
+                                                    break;
+                                                case 0:
+                                                    $activo = 'NO';
+                                                default:
+                                                    break;
+                                            }
+
+                                            echo '
                                     <tr> 
                                         <td>' . $key['nombre'] . '</td>   
                                         <td>' . $activo . '</td>   
@@ -134,10 +145,15 @@ switch ($area) {
                                         <td>' . $key['area'] . '</td>
                                     </tr>
                                 ';
-                    }
-                    ?>
-                </tbody>
-            </table>
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <footer class="page-footer" style="background-color: transparent">
             <div class="footer-copyright" style="background-color: #1d1b31">

@@ -45,7 +45,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.semanticui.min.css"/>
 
     </head>
-    <body style="background-color: #f5f7fb; background-image: url(img/imgBodega.png); background-attachment: fixed" >
+    <body style="background-color: #f5f7fb; background-image: url(img/imgBodega.png); background-attachment: fixed; background-size: cover">
         <div id="modal1" class="modal">
             <form method="post" action="Controller/controller_obs.php">
                 <div class="modal-content">

@@ -42,7 +42,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.semanticui.min.css"/>
 
     </head>
-    <body style="background-color: #f5f7fb; background-image: url(img/imgSeguridad.png); background-attachment: fixed">
+    <body style="background-color: #f5f7fb; background-image: url(img/imgSeguridad.png); background-attachment: fixed; background-size: cover">
         <!-- Modal de generar Reporte -->
         <div id="modal1" class="modal">
             <form method="post" action="Controller/controller_obs.php">
@@ -114,10 +114,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </form>
         </div>
         <div id="modal2" class="modal">
-            <div class="modal-content" style="padding: 40px 0">
+            <div class="modal-content" style="padding: 0">
                 <div class="row">
                     <div class="col s12">
-                        <div class="card" style="margin: 40px auto; max-width: 1680px; width: 100%">
+                        <div class="card">
                             <div class="card-content" style="margin: 40px 100px; padding: 3.5% 0">
                                 <span class="table_Tit center" style="display: block; margin-bottom: 40px">Listado de personal</span>
                                 <table class="table centered responsive-table striped" id="datos">
@@ -156,9 +156,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer" style="text-align: center; margin-bottom: 10px;">
-                <a href="#!" class="modal-close waves-effect waves-light btn" style="background: #363771; width: 200px; border-radius: 3px; font-weight: 500; letter-spacing: 2px; font-size: 16px">Cerrar</a>
             </div>
         </div>
         <nav class="nav-extended" style="background-color: #1d1b31;">

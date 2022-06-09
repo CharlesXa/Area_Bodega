@@ -3,13 +3,32 @@ error_reporting(E_NOTICE ^ E_ALL);
 
 include_once '../Model_Data.php';
 session_start();
-$idU=$_SESSION['id'];
+$idU = $_SESSION['id'];
 $rut = $_SESSION['rut'];
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
 $passwd_t = $_SESSION['passwd_t'];
 $correo = $_SESSION['email'];
 $area = $_SESSION['area_usuario'];
+switch ($area) {
+    case 1:
+        $area = "Bodega";
+        break;
+    case 2:
+        $area = "Seguridad";
+        break;
+    case 3:
+        $area = "RRHH";
+        break;
+    case 4:
+        $area = "Zona de Espera";
+        break;
+    case 5:
+        $area = "Gestion de Vuelos";
+        break;
+    default:
+        break;
+}
 
 $data = new Data();
 $array = [];
@@ -285,34 +304,10 @@ $array = [];
                 <div class="nav-wrapper">
                     <a id="menu" href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 30px">menu</i></a>
                     <img src="../img/iconGeneral.png">
-                    <span class="brand-logo">Menu General</span>
-                    <div class="right icon-wrapper" id="carro" data-number="0" style="margin-right: 50px">
-                        <!--<a><i style="font-size: 35px;" class="material-icons cart-icon">shopping_cart</i></a>-->
-                        <!-- comment <img  src="../img/shopping-cart.svg" alt="" class="cart-icon">-->
-                        <a href="#" id="cart"><i class="small material-icons red-text">add_shopping_cart</i></a>
-                    </div>
+                    <span class="brand-logo">Menu General (<?php echo $area ?>)</span>
                 </div>
-
+                </div>
             </nav>
-            <div class="shopping-cart">
-                <button>Hola</button>
-                <table class="shopping-cart-items" id="carrito-compra">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Elemento</th>
-                            <th>Cantidad</th>
-                            <th>Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody id="bodyT">
-
-                    </tbody>
-                </table>
-
-
-                <a href="#" class="button">Checkout</a>
-            </div>
             <ul id="slide-out" class="sidenav" style="background-color: #1d1b31;">
                 <li><div class="user-view">
                         <div class="background" style="background-color: #1d1b31;">
@@ -322,21 +317,25 @@ $array = [];
                         <a href="#email"><span class="white-text email" style="font-size: 14px"><?php echo $correo ?></span></a>
                     </div></li>
                 <li><div class="divider"></div></li>
-                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Solicitudes<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a></li>
-                <ul id='dropdown1' class='dropdown-content' style="background-color: #1d1b31;">
-                    <li><a href="../menuGeneral.php">Ingresar</a></li>
-                    <li><a href="historialSolicitud.php">Historial</a></li>
+                <li><a href="../menuGeneral.php" class="waves-effect" style="margin-left: -3px">Inicio<i class='bx bx-home white-text' style="font-size: 27px;"></i></a></li>
+                <ul class="collapsible collapsible-accordion">
+                    <li>
+                        <a class="collapsible-header waves-effect"><i class='bx bx-box white-text' style="font-size: 27px;"></i>Solicitudes<i class="material-icons right white-text" style="font-size: 30px;">arrow_drop_down</i></a>
+                        <div class="collapsible-body" style="background-color: #1d1b31">
+                            <ul>
+                                <li><a href="#"><i class="bx bx-history white-text" style="font-size: 22px;"></i>Historial</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
                 <li><div class="divider"></div></li>
                 <li><a href="../Controller/controllerLogOut.php" class="waves-effect">Cerrar sesión<i class='bx bx-log-out white-text' style="font-size: 22px;"></i></a></li>
             </ul>
-
-
             <div class="container_menu_seg">
                 <div class="row">
                     <div class="col s12 m8 l8">
-                        <div class="card">
-                            <div class="card-content">
+                        <div class="card" style="margin: 40px auto; max-width: 1680px; width: 100%; border-radius: 10px;">
+                            <div class="card-content" style="margin: 40px 0; padding: 5% 0">
                                 <span class="table_Tit center" style="display: block; margin: 40px 0">Seleccione el stock que necesita</span>
                                 <table class="table centered responsive-table container" id="datos" border="1">
                                     <form method="post">
@@ -388,9 +387,7 @@ $array = [];
                                         <tfoot>
                                             <tr>
                                                 <td colspan="5">
-                                                    <button class="btn waves-effect waves-light"  type="submit" name="action">Submit
-                                                        <i class="material-icons right">send</i>
-                                                    </button>
+                                                    <button class="btn waves-effect waves-light indigo darken-3" style="height: 50px; border-radius: 6px; font-weight: 600;" type="submit" name="solicitar">Solicitar</button>
                                                 </td>
                                             </tr>
                                         </tfoot>
@@ -402,8 +399,8 @@ $array = [];
                     <?php
                     if (isset($_POST['action'])) {
                         echo '<div class="col s12 m4 l4">
-                                <div class="card">
-                                    <div class="card-content">
+                            <div class="card" style="margin: 40px auto; max-width: 1680px; width: 100%; border-radius: 10px;">
+                                <div class="card-content" style="margin: 40px 50px; padding: 5% 0">
                                     <form method="post">
                                         <table>
                                             <thead>
@@ -456,9 +453,7 @@ $array = [];
                                                 <tfoot>
                                                     <tr>
                                                         <td>
-                                                            <button class="btn waves-effect waves-light"  type="submit" name="solicitar">Submit
-                                                                <i class="material-icons right">send</i>
-                                                            </button>
+                                                            <button class="btn waves-effect waves-light indigo darken-3" style="height: 50px; border-radius: 6px; font-weight: 600;" type="submit" name="solicitar">Solicitar</button>
                                                         </td>
                                                     </tr>
                                                 </tfoot>
@@ -477,26 +472,25 @@ $array = [];
                                 echo $checki;
                             }
                         }
-                        $a=0;
+                        $a = 0;
                         if (!empty($_POST['stockS'])) {
-                            foreach ($_POST['stockS'] as $selected2){
-                                echo '<br>'.$selected2." ".$arrayn[$a];
-                                
-                                $stockA=$data->getStockById($selected2);
-                                
-                                foreach ($stockA as $keyF){
-                                    $id=$keyF['id'];
-                                    $nom=$keyF['nombre'];
-                                    $des=$keyF['descripcion'];
-                                    $descripcion=$id." ".$nom;
-                                    echo "<br>".$descripcion;
+                            foreach ($_POST['stockS'] as $selected2) {
+                                echo '<br>' . $selected2 . " " . $arrayn[$a];
+
+                                $stockA = $data->getStockById($selected2);
+
+                                foreach ($stockA as $keyF) {
+                                    $id = $keyF['id'];
+                                    $nom = $keyF['nombre'];
+                                    $des = $keyF['descripcion'];
+                                    $descripcion = $id . " " . $nom;
+                                    echo "<br>" . $descripcion;
                                     $data->instSoli($descripcion, $idU);
                                     $data->updStockSoli($id, $arrayn[$a]);
                                     $a++;
-                                    
                                 }
                             }
-                            echo '<script language="javascript">alert("Reserva Exitosa'.$arrayn[$a].'");window.location.href="ingresoSolicitud.php"</script>';
+                            echo '<script language="javascript">alert("Reserva Exitosa' . $arrayn[$a] . '");window.location.href="ingresoSolicitud.php"</script>';
                         }
                     }
                     ?>
